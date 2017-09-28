@@ -8,4 +8,23 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.Toolbar" parent="AppTheme">
+        <item name="android:textColorSecondary">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="AppTheme.Spinner" parent="AppTheme">
+        <item name="android:textColorSecondary">@color/spinner_color_clicked</item>
+    </style>
+
+    <style name="AppTheme.RatingBar" parent="AppTheme">
+        <item name="colorControlActivated">@color/colorYellow</item>
+    </style>
+
 </resources>

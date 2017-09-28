@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activity.MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/tb_review"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:theme="@style/AppTheme.Toolbar"
+            app:popupTheme="@style/AppTheme.NoActionBar" />
+
+        <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_48dp_default_margin"
+            android:contentDescription="@string/review"
+            android:src="@drawable/ic_review_header" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_icon"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/activity_16dp_default_margin"
+            android:paddingEnd="@dimen/activity_56dp_default_margin"
+            android:paddingStart="@dimen/activity_56dp_default_margin"
+            android:paddingTop="@dimen/activity_16dp_default_margin">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/review"
+                android:src="@drawable/ic_review" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/activity_4dp_default_margin"
+                android:layout_marginBottom="@dimen/activity_32dp_default_margin"
+                android:layout_marginTop="@dimen/activity_4dp_default_margin"
+                android:background="@color/colorAccent" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/name"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="italic" />
+
+            <EditText
+                android:id="@+id/et_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_8dp_default_margin"
+                android:background="@drawable/edittext_style"
+                android:gravity="center"
+                android:inputType="text|textPersonName|textCapWords"
+                android:padding="@dimen/activity_8dp_default_margin"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/colorBlack" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_24dp_default_margin"
+                android:gravity="center"
+                android:text="@string/email"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="italic" />
+
+            <EditText
+                android:id="@+id/et_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_8dp_default_margin"
+                android:background="@drawable/edittext_style"
+                android:gravity="center"
+                android:inputType="text|textEmailAddress"
+                android:padding="@dimen/activity_8dp_default_margin"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/colorBlack" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_24dp_default_margin"
+                android:gravity="center"
+                android:text="@string/comment"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="italic" />
+
+            <EditText
+                android:id="@+id/et_comment"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/activity_96dp_default_margin"
+                android:layout_marginTop="@dimen/activity_8dp_default_margin"
+                android:background="@drawable/edittext_style"
+                android:gravity="center_horizontal"
+                android:inputType="text|textMultiLine"
+                android:padding="@dimen/activity_8dp_default_margin"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/colorBlack" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_24dp_default_margin"
+                android:gravity="center"
+                android:text="@string/rate"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="italic" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RatingBar
+                    android:id="@+id/rb_rate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/activity_8dp_default_margin"
+                    android:numStars="5"
+                    android:stepSize="1"
+                    android:theme="@style/AppTheme.RatingBar" />
+
+                <Button
+                    android:id="@+id/btn_submit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rb_rate"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/activity_32dp_default_margin"
+                    android:background="@drawable/button_style"
+                    android:gravity="center"
+                    android:text="@string/submit"
+                    android:textColor="@color/colorWhite" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</ScrollView>

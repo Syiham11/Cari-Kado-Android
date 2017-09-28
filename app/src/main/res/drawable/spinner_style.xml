@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/activity_8dp_default_margin" />
+            <stroke android:width="@dimen/activity_4dp_default_margin" android:color="@color/spinner_color_clicked" />
+        </shape>
+    </item>
+</selector>
