@@ -5,6 +5,14 @@ import android.os.Bundle;
 
 import com.example.carikado.R;
 
+/**
+ * Activity yang digunakna untuk mengatur tampilan hasil pencarian kado
+ *
+ * @author Faza Zulfika P P
+ * @version 1.0
+ * @since 28 September 2017
+ */
+
 public class ResultGiftActivity extends AppCompatActivity {
 
     @Override

@@ -1,9 +1,326 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.carikado.view.activity.GiftInfoDetailActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/tb_gift_info_detail"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:theme="@style/AppTheme.Toolbar"
+            app:popupTheme="@style/AppTheme.NoActionBar" />
+
+        <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/activity_56dp_default_margin"
+            android:layout_marginStart="@dimen/activity_56dp_default_margin"
+            android:layout_marginTop="@dimen/activity_16dp_default_margin"
+            android:contentDescription="@string/gift_info"
+            android:src="@drawable/ic_gift_info_header" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_icon"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/activity_16dp_default_margin"
+            android:paddingEnd="@dimen/activity_16dp_default_margin"
+            android:paddingStart="@dimen/activity_16dp_default_margin">
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/vp_gift_info_detail_image"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/gift_info_detail_image_height" />
+
+            <TextView
+                android:id="@+id/tv_gift_info_detail_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_16dp_default_margin"
+                android:gravity="center"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:textColor="@color/colorPrimary" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/activity_4dp_default_margin"
+                android:layout_marginBottom="@dimen/activity_16dp_default_margin"
+                android:layout_marginEnd="@dimen/activity_8dp_default_margin"
+                android:layout_marginStart="@dimen/activity_8dp_default_margin"
+                android:layout_marginTop="@dimen/activity_8dp_default_margin"
+                android:background="@color/colorAccent" />
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_16dp_default_margin"
+                app:cardBackgroundColor="@color/colorAccent"
+                app:cardCornerRadius="@dimen/activity_16dp_default_margin">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/activity_16dp_default_margin">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/description"
+                        android:textAppearance="?android:textAppearanceMedium"
+                        android:textColor="@color/colorWhite" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/activity_4dp_default_margin"
+                        android:layout_marginBottom="@dimen/activity_16dp_default_margin"
+                        android:layout_marginTop="@dimen/activity_16dp_default_margin"
+                        android:background="@color/colorWhite" />
+
+                    <TextView
+                        android:id="@+id/tv_gift_info_detail_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:textAppearanceMedium"
+                        android:textColor="@color/colorWhite" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_16dp_default_margin"
+                app:cardBackgroundColor="@color/colorAccent"
+                app:cardCornerRadius="@dimen/activity_16dp_default_margin">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/activity_16dp_default_margin">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/essence"
+                        android:textAppearance="?android:textAppearanceMedium"
+                        android:textColor="@color/colorWhite" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/activity_4dp_default_margin"
+                        android:layout_marginBottom="@dimen/activity_16dp_default_margin"
+                        android:layout_marginTop="@dimen/activity_16dp_default_margin"
+                        android:background="@color/colorWhite" />
+
+                    <TextView
+                        android:id="@+id/tv_gift_info_detail_essence"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:textAppearanceMedium"
+                        android:textColor="@color/colorWhite" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_16dp_default_margin"
+                app:cardBackgroundColor="@color/colorAccent"
+                app:cardCornerRadius="@dimen/activity_16dp_default_margin">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/activity_16dp_default_margin">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/age"
+                        android:textAppearance="?android:textAppearanceMedium"
+                        android:textColor="@color/colorWhite" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/activity_4dp_default_margin"
+                        android:layout_marginBottom="@dimen/activity_16dp_default_margin"
+                        android:layout_marginTop="@dimen/activity_16dp_default_margin"
+                        android:background="@color/colorWhite" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tv_gift_info_detail_age_from"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:textAppearanceMedium"
+                            android:textColor="@color/colorWhite" />
+
+                        <TextView
+                            android:id="@+id/tv_age_to"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/activity_8dp_default_margin"
+                            android:layout_marginStart="@dimen/activity_8dp_default_margin"
+                            android:layout_toEndOf="@id/tv_gift_info_detail_age_from"
+                            android:text="@string/to"
+                            android:textAppearance="?android:textAppearanceMedium"
+                            android:textColor="@color/colorWhite" />
+
+                        <TextView
+                            android:id="@+id/tv_gift_info_detail_age_to"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/tv_age_to"
+                            android:textAppearance="?android:textAppearanceMedium"
+                            android:textColor="@color/colorWhite" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/activity_8dp_default_margin"
+                            android:layout_marginStart="@dimen/activity_8dp_default_margin"
+                            android:layout_toEndOf="@id/tv_gift_info_detail_age_to"
+                            android:text="@string/year"
+                            android:textAppearance="?android:textAppearanceMedium"
+                            android:textColor="@color/colorWhite" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_16dp_default_margin"
+                app:cardBackgroundColor="@color/colorAccent"
+                app:cardCornerRadius="@dimen/activity_16dp_default_margin">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/activity_16dp_default_margin">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/budget"
+                        android:textAppearance="?android:textAppearanceMedium"
+                        android:textColor="@color/colorWhite" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/activity_4dp_default_margin"
+                        android:layout_marginBottom="@dimen/activity_16dp_default_margin"
+                        android:layout_marginTop="@dimen/activity_16dp_default_margin"
+                        android:background="@color/colorWhite" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/tv_gift_info_detail_budget_from"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:textAppearanceMedium"
+                            android:textColor="@color/colorWhite" />
+
+                        <TextView
+                            android:id="@+id/tv_budget_to"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/activity_8dp_default_margin"
+                            android:layout_marginStart="@dimen/activity_8dp_default_margin"
+                            android:layout_toEndOf="@id/tv_gift_info_detail_budget_from"
+                            android:text="@string/to"
+                            android:textAppearance="?android:textAppearanceMedium"
+                            android:textColor="@color/colorWhite" />
+
+                        <TextView
+                            android:id="@+id/tv_gift_info_detail_budget_to"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/tv_budget_to"
+                            android:textAppearance="?android:textAppearanceMedium"
+                            android:textColor="@color/colorWhite" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/activity_8dp_default_margin"
+                            android:layout_marginStart="@dimen/activity_8dp_default_margin"
+                            android:layout_toEndOf="@id/tv_gift_info_detail_budget_to"
+                            android:text="@string/year"
+                            android:textAppearance="?android:textAppearanceMedium"
+                            android:textColor="@color/colorWhite" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_16dp_default_margin"
+                app:cardBackgroundColor="@color/colorAccent"
+                app:cardCornerRadius="@dimen/activity_16dp_default_margin">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/activity_16dp_default_margin">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/category"
+                        android:textAppearance="?android:textAppearanceMedium"
+                        android:textColor="@color/colorWhite" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/activity_4dp_default_margin"
+                        android:layout_marginBottom="@dimen/activity_16dp_default_margin"
+                        android:layout_marginTop="@dimen/activity_16dp_default_margin"
+                        android:background="@color/colorWhite" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rv_gift_info_detail_category"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:scrollbars="none" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</android.support.v4.widget.NestedScrollView>

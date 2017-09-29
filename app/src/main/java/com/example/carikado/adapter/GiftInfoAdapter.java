@@ -18,7 +18,11 @@ import java.util.ArrayList;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
- * Created by Faza Zulfika P P on 9/28/2017.
+ * Merupakan class adapter untuk menggenerate list informasi kado
+ *
+ * @author Faza Zulfika P P
+ * @version 1.0
+ * @since 28 September 2017
  */
 
 public class GiftInfoAdapter extends RecyclerView.Adapter<GIftInfoViewHolder> {
@@ -27,6 +31,12 @@ public class GiftInfoAdapter extends RecyclerView.Adapter<GIftInfoViewHolder> {
     private Context context;
     private LayoutInflater inflater;
 
+    /**
+     * Constructor untuk membuat object layout inflater yang digunakna untuk menginflate layout list
+     *
+     * @param context merupakan context dari activity yang menggunakan list
+     * @param giftInfoList merupakan list data yang akan ditampilkan
+     */
     public GiftInfoAdapter(Context context, ArrayList giftInfoList) {
         this.context = context;
         this.giftInfoList = giftInfoList;
@@ -34,12 +44,25 @@ public class GiftInfoAdapter extends RecyclerView.Adapter<GIftInfoViewHolder> {
         this.inflater = LayoutInflater.from(context);
     }
 
+    /**
+     * Method yang dipanggil saat membuat view untuk item list
+     *
+     * @param parent merupakan parent dari setiap list item
+     * @param viewType merupakan tipe view dari setiap list item
+     * @return merupakan view holder dari setiap list item
+     */
     @Override
     public GIftInfoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.row_gift_info, parent, false);
         return new GIftInfoViewHolder(view);
     }
 
+    /**
+     * Method yang dipanggil saat view list item telah dibuat
+     *
+     * @param holder merupakan holder dari setiap list item
+     * @param position merupakan posisi dari list item
+     */
     @Override
     public void onBindViewHolder(GIftInfoViewHolder holder, int position) {
         CardView cvGiftInfo = holder.getCvGiftInfo();
@@ -50,19 +73,37 @@ public class GiftInfoAdapter extends RecyclerView.Adapter<GIftInfoViewHolder> {
         tvGiftInfo.setText((String) giftInfoList.get(position));
     }
 
+    /**
+     * Method untuk mengambil jumlah seluruh item list
+     *
+     * @return merupakan jumlah seluruh item list
+     */
     @Override
     public int getItemCount() {
         return giftInfoList.size();
     }
 
+    /**
+     * Merupakan class listener saat list item di klik
+     */
     private class GiftInfoClickListener implements View.OnClickListener {
 
         private int position;
 
+        /**
+         * Constructor yang mengambil posisi dari list item
+         *
+         * @param position merupakan posisi list item
+         */
         private GiftInfoClickListener(int position) {
             this.position = position;
         }
 
+        /**
+         * Method yang dijalankan saat list item di klik
+         *
+         * @param v merupakan view yang di klik user
+         */
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(context, GiftInfoDetailActivity.class);

@@ -17,7 +17,11 @@ import com.example.carikado.R;
 import com.example.carikado.view.activity.ReviewActivity;
 
 /**
- * Created by Faza Zulfika P P on 9/27/2017.
+ * Merupakan tampilan untuk bantuan
+ *
+ * @author Faza Zulfika P P
+ * @version 1.0
+ * @since 27 September 2017
  */
 
 public class HelpFragment extends Fragment {

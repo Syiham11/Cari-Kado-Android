@@ -10,7 +10,11 @@ import android.view.MenuItem;
 import com.example.carikado.R;
 
 /**
- * Created by Faza Zulfika P P on 9/27/2017.
+ * Class yang mengatur tampilan review
+ *
+ * @author Faza Zulfika P P
+ * @version 1.0
+ * @since 27 September 2017
  */
 
 public class ReviewActivity extends AppCompatActivity {

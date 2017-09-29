@@ -3,12 +3,12 @@
 
     <item
         is-multidex="true"
-        jar="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jar="C:\Users\Faza Zulfika\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\glide\4.0.0\dff931af436f0a2815d0109ab2258bbce2d6275d\glide-4.0.0.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.3"
-        sha1="483ea60aea09a2f70525375507b6301581cfe28a">
-        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_be9c35dbcee0e29f54d456447c36d3010aed2885\classes.dex" />
+        sha1="dff931af436f0a2815d0109ab2258bbce2d6275d">
+        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\transforms\dex\debug\folders\1000\10\glide-4.0.0_54e956d2d2ad8603b6632aa11453248e0e729846\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -18,6 +18,42 @@
         revision="25.0.3"
         sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
         <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_afc17f4386aece64000216f76182089d2736ed61\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Faza Zulfika\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\disklrucache\4.0.0\d88059003509074dd59fa226c822724bcf5ec0ca\disklrucache-4.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="d88059003509074dd59fa226c822724bcf5ec0ca">
+        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\transforms\dex\debug\folders\1000\10\disklrucache-4.0.0_ff4bf69158821d3be0569c03d0865f911a92efcd\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Faza Zulfika\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\annotations\4.0.0\f80192e6fd828d41c7da6f3552b0bef5d89cb26e\annotations-4.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="f80192e6fd828d41c7da6f3552b0bef5d89cb26e">
+        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\transforms\dex\debug\folders\1000\10\annotations-4.0.0_f6f6455a935a1df16693b8ecfb09f58e91873b34\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Faza Zulfika\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\gifdecoder\4.0.0\47c487cc4e64e6ab127a517669ca9a7b49f8c61d\gifdecoder-4.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="47c487cc4e64e6ab127a517669ca9a7b49f8c61d">
+        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\transforms\dex\debug\folders\1000\10\gifdecoder-4.0.0_02cfa39a393e530d81b92de3ff76df73cac4b88c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="0787bee71885b4e3e4d4af236974121801202412">
+        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_be9c35dbcee0e29f54d456447c36d3010aed2885\classes.dex" />
     </item>
 
 </items>
