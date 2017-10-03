@@ -9,11 +9,11 @@
     <item
         android:id="@+id/menu_gift_info"
         android:title="@string/gift_info"
-        android:icon="@drawable/ic_info_outline" />
+        android:icon="@drawable/ic_gift_info_inactive" />
 
     <item
         android:id="@+id/menu_help"
         android:title="@string/help"
-        android:icon="@drawable/ic_help_outline" />
+        android:icon="@drawable/ic_help_inactive" />
 
 </menu>

@@ -6,8 +6,8 @@
     android:layout_height="wrap_content"
     android:layout_marginEnd="@dimen/activity_8dp_default_margin"
     android:layout_marginStart="@dimen/activity_8dp_default_margin"
-    app:cardBackgroundColor="@color/colorPrimary"
-    app:cardCornerRadius="@dimen/activity_16dp_default_margin">
+    app:cardBackgroundColor="@color/colorAccent"
+    app:cardCornerRadius="@dimen/activity_8dp_default_margin">
 
     <RelativeLayout
         android:layout_width="wrap_content"

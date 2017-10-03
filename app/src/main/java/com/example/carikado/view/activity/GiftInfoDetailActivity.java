@@ -4,6 +4,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
@@ -25,6 +26,7 @@ import java.util.ArrayList;
 
 public class GiftInfoDetailActivity extends AppCompatActivity {
 
+    private ArrayList<String> giftInfoDummyList = new ArrayList<>();
     private RecyclerView rvGiftInfoDetailCategory;
     private TextView tvGiftInfoDetailName, tvGiftInfoDetailDescription, tvGiftInfoDetailEssence, tvGiftInfoDetailAgeFrom, tvGiftInfoDetailAgeTo, tvGiftInfoDetailBudgetFrom, tvGiftInfoDetailBudgetTo;
     private ViewPager vpGiftInfoDetailImage;
@@ -51,20 +53,11 @@ public class GiftInfoDetailActivity extends AppCompatActivity {
         tvGiftInfoDetailName.setText(name);
 
         rvGiftInfoDetailCategory = (RecyclerView) findViewById(R.id.rv_gift_info_detail_category);
-        rvGiftInfoDetailCategory.setLayoutManager(new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL));
+        rvGiftInfoDetailCategory.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         rvGiftInfoDetailCategory.setHasFixedSize(true);
         rvGiftInfoDetailCategory.setNestedScrollingEnabled(false);
 
-        ArrayList<String> giftInfoDummyList = new ArrayList<>();
-
-        giftInfoDummyList.add("Teddy Bear");
-        giftInfoDummyList.add("Kaca Mata");
-        giftInfoDummyList.add("Bunga Mawar");
-        giftInfoDummyList.add("Bunga Melati");
-        giftInfoDummyList.add("Teddy Bear");
-        giftInfoDummyList.add("Kaca Mata");
-        giftInfoDummyList.add("Bunga Mawar");
-        giftInfoDummyList.add("Bunga Melati");
+        setGiftInfoDetailCategoryData();
 
         GiftInfoDetailAdapter giftInfoDetailAdapter = new GiftInfoDetailAdapter(this, giftInfoDummyList);
         rvGiftInfoDetailCategory.setAdapter(giftInfoDetailAdapter);
@@ -81,5 +74,16 @@ public class GiftInfoDetailActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void setGiftInfoDetailCategoryData() {
+        giftInfoDummyList.add("Teddy Bear");
+        giftInfoDummyList.add("Kaca Mata");
+        giftInfoDummyList.add("Bunga Mawar");
+        giftInfoDummyList.add("Bunga Melati");
+        giftInfoDummyList.add("Teddy Bear");
+        giftInfoDummyList.add("Kaca Mata");
+        giftInfoDummyList.add("Bunga Mawar");
+        giftInfoDummyList.add("Bunga Melati");
     }
 }

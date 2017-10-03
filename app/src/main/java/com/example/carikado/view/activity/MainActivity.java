@@ -84,16 +84,16 @@ public class MainActivity extends AppCompatActivity {
         objectHashMap = new HashMap<>();
         objectHashMap.put(FRAGMENT_TAG, new GiftInfoFragment());
         objectHashMap.put(TAG, GIFT_INFO_TAG);
-        objectHashMap.put(ACTIVE_TAG, ContextCompat.getDrawable(this, R.drawable.ic_info));
-        objectHashMap.put(INACTIVE_TAG, ContextCompat.getDrawable(this, R.drawable.ic_info_outline));
+        objectHashMap.put(ACTIVE_TAG, ContextCompat.getDrawable(this, R.drawable.ic_gift_info_active));
+        objectHashMap.put(INACTIVE_TAG, ContextCompat.getDrawable(this, R.drawable.ic_gift_info_inactive));
 
         menuMap.put(R.id.menu_gift_info, objectHashMap);
 
         objectHashMap = new HashMap<>();
         objectHashMap.put(FRAGMENT_TAG, new HelpFragment());
         objectHashMap.put(TAG, HELP_TAG);
-        objectHashMap.put(ACTIVE_TAG, ContextCompat.getDrawable(this, R.drawable.ic_help));
-        objectHashMap.put(INACTIVE_TAG, ContextCompat.getDrawable(this, R.drawable.ic_help_outline));
+        objectHashMap.put(ACTIVE_TAG, ContextCompat.getDrawable(this, R.drawable.ic_help_active));
+        objectHashMap.put(INACTIVE_TAG, ContextCompat.getDrawable(this, R.drawable.ic_help_inactive));
 
         menuMap.put(R.id.menu_help, objectHashMap);
     }

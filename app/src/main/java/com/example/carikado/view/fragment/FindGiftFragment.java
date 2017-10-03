@@ -3,6 +3,8 @@ package com.example.carikado.view.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -28,7 +30,8 @@ import com.example.carikado.view.activity.ReviewActivity;
 
 public class FindGiftFragment extends Fragment {
 
-    private EditText etAge, etBudgetFrom, etBudgetTo;
+    private TextInputEditText tietAge, tietBudgetFrom, tietBudgetTo;
+    private TextInputLayout tilAge, tilBudgetFrom, tilBudgetTo;
     private Spinner spGender, spCategory;
 
     @Nullable
@@ -41,9 +44,9 @@ public class FindGiftFragment extends Fragment {
 
         ((AppCompatActivity) getActivity()).setSupportActionBar(tbFindGift);
 
-        etAge = (EditText) view.findViewById(R.id.et_age);
-        etBudgetFrom = (EditText) view.findViewById(R.id.et_budget_from);
-        etBudgetTo = (EditText) view.findViewById(R.id.et_budget_to);
+        tietAge = (TextInputEditText) view.findViewById(R.id.tiet_age);
+        tietBudgetFrom = (TextInputEditText) view.findViewById(R.id.tiet_budget_from);
+        tietBudgetTo = (TextInputEditText) view.findViewById(R.id.tiet_budget_to);
 
         spGender = (Spinner) view.findViewById(R.id.sp_gender);
         spCategory = (Spinner) view.findViewById(R.id.sp_category);
