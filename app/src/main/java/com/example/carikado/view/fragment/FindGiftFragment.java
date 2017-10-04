@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.carikado.R;
+import com.example.carikado.view.activity.ResultGiftActivity;
 import com.example.carikado.view.activity.ReviewActivity;
 
 /**
@@ -84,7 +85,7 @@ public class FindGiftFragment extends Fragment {
 
         @Override
         public void onClick(View v) {
-            // Do nothing
+            getActivity().startActivity(new Intent(getContext(), ResultGiftActivity.class));
         }
     }
 }

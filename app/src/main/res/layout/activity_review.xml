@@ -64,9 +64,9 @@
 
                 <android.support.design.widget.TextInputEditText
                     android:id="@+id/tiet_name"
+                    style="@style/AppTheme.EditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/edittext_style"
                     android:gravity="center"
                     android:inputType="text|textPersonName|textCapWords"
                     android:padding="@dimen/activity_8dp_default_margin"
@@ -92,9 +92,9 @@
 
                 <android.support.design.widget.TextInputEditText
                     android:id="@+id/tiet_email"
+                    style="@style/AppTheme.EditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/edittext_style"
                     android:gravity="center"
                     android:inputType="text|textEmailAddress"
                     android:padding="@dimen/activity_8dp_default_margin"
@@ -120,9 +120,9 @@
 
                 <android.support.design.widget.TextInputEditText
                     android:id="@+id/tiet_comment"
+                    style="@style/AppTheme.EditText"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/activity_96dp_default_margin"
-                    android:background="@drawable/edittext_style"
                     android:gravity="center_horizontal"
                     android:inputType="text|textMultiLine"
                     android:padding="@dimen/activity_8dp_default_margin"
@@ -147,22 +147,22 @@
 
                 <RatingBar
                     android:id="@+id/rb_rate"
+                    style="@style/AppTheme.RatingBar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="@dimen/activity_8dp_default_margin"
                     android:numStars="5"
-                    android:stepSize="1"
-                    android:theme="@style/AppTheme.RatingBar" />
+                    android:stepSize="1" />
 
                 <Button
                     android:id="@+id/btn_submit"
+                    style="@style/AppTheme.Button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/rb_rate"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="@dimen/activity_32dp_default_margin"
-                    android:background="@drawable/button_style"
+                    android:layout_marginTop="@dimen/activity_24dp_default_margin"
                     android:gravity="center"
                     android:text="@string/submit"
                     android:textColor="@color/colorWhite" />

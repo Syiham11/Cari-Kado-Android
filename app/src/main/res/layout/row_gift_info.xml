@@ -8,12 +8,13 @@
     android:layout_marginEnd="@dimen/activity_16dp_default_margin"
     android:layout_marginStart="@dimen/activity_16dp_default_margin"
     android:layout_marginTop="@dimen/activity_8dp_default_margin"
-    app:cardBackgroundColor="@color/gift_info_row_clicked"
+    app:cardBackgroundColor="@color/colorAccent"
     app:cardCornerRadius="@dimen/activity_8dp_default_margin">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/gift_info_row_height"
+        android:background="@drawable/card_style"
         android:orientation="horizontal">
 
         <de.hdodenhof.circleimageview.CircleImageView

@@ -18,6 +18,6 @@
     <dimen name="activity_1dp_default_margin">1dp</dimen>
 
     <dimen name="gift_info_row_height">88dp</dimen>
-    <dimen name="result_gift_row_height">400dp</dimen>
+    <dimen name="result_gift_image_height">160dp</dimen>
     <dimen name="gift_info_detail_image_height">256dp</dimen>
 </resources>

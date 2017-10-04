@@ -141,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             boolean isNull;
             int id = item.getItemId();
+            item.setChecked(true);
 
             HashMap<String, Object> menu;
 

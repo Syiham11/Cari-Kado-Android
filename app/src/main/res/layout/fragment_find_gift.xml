@@ -49,9 +49,9 @@
 
                 <android.support.design.widget.TextInputEditText
                     android:id="@+id/tiet_age"
+                    style="@style/AppTheme.EditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/edittext_style"
                     android:gravity="center"
                     android:inputType="number"
                     android:padding="@dimen/activity_8dp_default_margin"
@@ -72,13 +72,12 @@
 
             <Spinner
                 android:id="@+id/sp_gender"
+                style="@style/AppTheme.Spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/activity_8dp_default_margin"
                 android:entries="@array/loren_ipsum"
-                android:foreground="@drawable/spinner_style"
-                android:padding="@dimen/activity_8dp_default_margin"
-                android:theme="@style/AppTheme.Spinner" />
+                android:padding="@dimen/activity_8dp_default_margin" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -104,9 +103,9 @@
 
                     <android.support.design.widget.TextInputEditText
                         android:id="@+id/tiet_budget_from"
+                        style="@style/AppTheme.EditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/edittext_style"
                         android:gravity="center"
                         android:inputType="number"
                         android:padding="@dimen/activity_8dp_default_margin"
@@ -134,9 +133,9 @@
 
                     <android.support.design.widget.TextInputEditText
                         android:id="@+id/tiet_budget_to"
+                        style="@style/AppTheme.EditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/edittext_style"
                         android:gravity="center"
                         android:inputType="number"
                         android:padding="@dimen/activity_8dp_default_margin"
@@ -159,25 +158,24 @@
 
             <Spinner
                 android:id="@+id/sp_category"
+                style="@style/AppTheme.Spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/activity_8dp_default_margin"
                 android:entries="@array/loren_ipsum"
-                android:foreground="@drawable/spinner_style"
-                android:padding="@dimen/activity_8dp_default_margin"
-                android:theme="@style/AppTheme.Spinner" />
+                android:padding="@dimen/activity_8dp_default_margin" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_32dp_default_margin">
+                android:layout_marginTop="@dimen/activity_24dp_default_margin">
 
                 <Button
                     android:id="@+id/btn_search"
+                    style="@style/AppTheme.Button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:background="@drawable/button_style"
                     android:gravity="center"
                     android:text="@string/search"
                     android:textColor="@color/colorWhite" />

@@ -8,13 +8,10 @@
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bnv_main"
+        style="@style/AppTheme.BottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/colorWhite"
-        android:padding="@dimen/activity_8dp_default_margin"
-        app:itemIconTint="@color/bnv_main_color"
-        app:itemTextColor="@color/bnv_main_color"
         app:menu="@menu/menu_main" />
 
     <FrameLayout

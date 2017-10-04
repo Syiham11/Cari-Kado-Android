@@ -6,13 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.carikado.R;
-import com.example.carikado.adapter.GiftInfoDetailAdapter;
+import com.example.carikado.adapter.GiftInfoDetailCategoryAdapter;
 
 import java.util.ArrayList;
 
@@ -59,8 +58,8 @@ public class GiftInfoDetailActivity extends AppCompatActivity {
 
         setGiftInfoDetailCategoryData();
 
-        GiftInfoDetailAdapter giftInfoDetailAdapter = new GiftInfoDetailAdapter(this, giftInfoDummyList);
-        rvGiftInfoDetailCategory.setAdapter(giftInfoDetailAdapter);
+        GiftInfoDetailCategoryAdapter giftInfoDetailCategoryAdapter = new GiftInfoDetailCategoryAdapter(this, giftInfoDummyList);
+        rvGiftInfoDetailCategory.setAdapter(giftInfoDetailCategoryAdapter);
     }
 
     @Override

@@ -36,12 +36,11 @@
 
             <EditText
                 android:id="@+id/et_search"
+                style="@style/AppTheme.EditText.Search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/activity_40dp_default_margin"
                 android:layout_marginStart="@dimen/activity_40dp_default_margin"
-                android:background="@drawable/edittext_style"
-                android:drawableEnd="@drawable/ic_find_in_page"
                 android:hint="@string/search"
                 android:inputType="text"
                 android:paddingBottom="@dimen/activity_8dp_default_margin"
