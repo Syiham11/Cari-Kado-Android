@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.carikado">
 
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,17 +11,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".view.activity.SplashActivity">
+        <activity android:name=".splashscreen.view.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.activity.MainActivity" />
-        <activity android:name=".view.activity.ReviewActivity" />
-        <activity android:name=".view.activity.ResultGiftActivity" />
-        <activity android:name=".view.activity.GiftInfoDetailActivity" />
+        <activity android:name=".main.view.MainActivity" />
+        <activity
+            android:name=".review.view.activity.ReviewActivity"
+            android:parentActivityName=".main.view.MainActivity" />
+        <activity
+            android:name=".resultgift.view.activity.ResultGiftActivity"
+            android:parentActivityName=".main.view.MainActivity" />
+        <activity
+            android:name=".giftinfodetail.view.activity.GiftInfoDetailActivity"
+            android:parentActivityName=".main.view.MainActivity" />
     </application>
 
 </manifest>

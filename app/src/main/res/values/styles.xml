@@ -35,6 +35,7 @@
     <style name="AppTheme.RatingBar.Theme" parent="AppTheme">
         <item name="colorControlNormal">@color/colorYellow</item>
         <item name="colorControlActivated">@color/colorYellow</item>
+        <item name="colorControlHighlight">@color/colorYellow</item>
         <item name="android:textColorSecondary">@color/colorYellow</item>
     </style>
 
@@ -45,6 +46,7 @@
 
     <style name="AppTheme.BottomNavigation" parent="AppTheme">
         <item name="android:background">@color/colorWhite</item>
+        <item name="android:padding">@dimen/activity_4dp_default_margin</item>
         <item name="itemIconTint">@color/bnv_main_color</item>
         <item name="itemTextColor">@color/bnv_main_color</item>
     </style>

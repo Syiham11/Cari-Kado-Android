@@ -2,22 +2,310 @@
 <items version="2" >
 
     <item
-        is-multidex="true"
-        jar="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="C:\Users\Faza Zulfika\.android\build-cache\ef2830a02abed3a56f30b63c5fe3f495f063f64a\output\jars\classes.jar"
+        jumboMode="false"
         optimize="true"
-        revision="25.0.3"
-        sha1="99c95609d59b8aadce86c1bf75f13db4754c03e4">
-        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_be9c35dbcee0e29f54d456447c36d3010aed2885\classes.dex" />
+        revision="26.0.2"
+        sha1="b12cd9c87c3dfb012a911b6e38d2444ed0a65e1f">
+        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\pre-dexed\debug\classes_aa59745878cfdfa16ba07152b1d361dcd8422908.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="C:\Users\Faza Zulfika\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\glide\4.2.0\b76d4269b06b8bda96aac32342a05843b4c0be41\glide-4.2.0.jar"
+        jumboMode="false"
         optimize="true"
-        revision="25.0.3"
-        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
-        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_afc17f4386aece64000216f76182089d2736ed61\classes.dex" />
+        revision="26.0.2"
+        sha1="b76d4269b06b8bda96aac32342a05843b4c0be41">
+        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\pre-dexed\debug\glide-4.2.0_945c41fe0964ca54053b2dbc3c8ea21adc896833.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Faza Zulfika\.gradle\caches\modules-2\files-2.1\com.android.support\support-annotations\26.1.0\814258103cf26a15fcc26ecce35f5b7d24b73f8\support-annotations-26.1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="0814258103cf26a15fcc26ecce35f5b7d24b73f8">
+        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\pre-dexed\debug\support-annotations-26.1.0_e8e6bc4fa950fd8c0782d45757597096eed0cbfa.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Faza Zulfika\.android\build-cache\f2dff8116093672ef27f9fda0f829a75c8f888e3\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="a37fc31c5ceeaa4532a37358add1b189d8db4af1">
+        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\pre-dexed\debug\classes_3f71ccdd961e3749f1230b60323d0c0d3780a6cd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Faza Zulfika\.android\build-cache\079b311dd764d2dd64c177612762042b015b7e93\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="b62fdc4cfef174c1e456014195c83fa7de7dc041">
+        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\pre-dexed\debug\classes_f379de0b81597389d9f4127724f52ec2c8269d6c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Faza Zulfika\.android\build-cache\8e13e55f4e6a90e80b0f1d81c068a7c63cfff91f\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="40392f30a601db5675cdf18192aab013d6fee6ec">
+        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\pre-dexed\debug\classes_7e198e33fa16a820aefd61178646f816590e9e08.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Faza Zulfika\.gradle\caches\modules-2\files-2.1\android.arch.lifecycle\common\1.0.0\e414a4cb28434e25c4f6aa71426eb20cf4874ae9\common-1.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="e414a4cb28434e25c4f6aa71426eb20cf4874ae9">
+        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\pre-dexed\debug\common-1.0.0_5ecd92469c107e722d3513724ae14205aa571ba7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Faza Zulfika\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.9.0\1b6c10b5120995a7542c1a31b7828fb8593c8ba\okhttp-3.9.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="01b6c10b5120995a7542c1a31b7828fb8593c8ba">
+        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\pre-dexed\debug\okhttp-3.9.0_0d93d22f80a2fa09200d6f5a614986c8c652226c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Faza Zulfika\.android\build-cache\65e729ee648c7d9eb47f6b6041c8ecad5be63a24\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="e5553c3597d5f766a8364a49925fcbb304bb091b">
+        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\pre-dexed\debug\classes_4f45c8b8238216a03e6ef287ea781a4005542ddd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Faza Zulfika\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.8.2\3edcfe49d2c6053a70a2a47e4e1c2f94998a49cf\gson-2.8.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="3edcfe49d2c6053a70a2a47e4e1c2f94998a49cf">
+        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\pre-dexed\debug\gson-2.8.2_64a96ada5a1de3304908098cdd7960901abba2e6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Android\sdk\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.2\constraint-layout-solver-1.0.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\pre-dexed\debug\constraint-layout-solver-1.0.2_dce0f5dc4ec87302d879250c45fe5f3f72f02917.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Faza Zulfika\.android\build-cache\f1fd4c8ffc2d5c547b340ef585a800a56e0a11d7\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\pre-dexed\debug\classes_52f66260bf3de10ede2a718cb6bda79538c9d23a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Faza Zulfika\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\gifdecoder\4.2.0\f196283dab426e09559bfe7385f162b2b254cf72\gifdecoder-4.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="f196283dab426e09559bfe7385f162b2b254cf72">
+        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\pre-dexed\debug\gifdecoder-4.2.0_9e5d27aeda683eb81b94a1b678edf993faa007fa.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Faza Zulfika\.android\build-cache\5cf06bdf314dedb728540d9361a182fc016fecfd\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="f428e2fbc9ed0b297e3a3f420e51e6982f66822d">
+        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\pre-dexed\debug\classes_7b2918c903b329a17a8c3cef4c26f2cf0182169a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Faza Zulfika\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\annotations\4.2.0\1d6fc29f2af61d8fdc31018416040c560423c4b3\annotations-4.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="1d6fc29f2af61d8fdc31018416040c560423c4b3">
+        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\pre-dexed\debug\annotations-4.2.0_df61c76594131e991ee710e36f0ad38b561593f1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Faza Zulfika\.android\build-cache\2f737ee2cedd34a850f7fc31ba70e09b06600599\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="b4d6fbbb48b42dd03fd9c5a09b3b7a53266df6ed">
+        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\pre-dexed\debug\classes_8b9ddd0db46fcaf23dd65fa360900612bbdded52.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Faza Zulfika\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife-annotations\8.8.1\bc373fb6bc7bca3035041b924f158fd2b946ee8d\butterknife-annotations-8.8.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="bc373fb6bc7bca3035041b924f158fd2b946ee8d">
+        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\pre-dexed\debug\butterknife-annotations-8.8.1_05711f17318f0c6c3b8116e5ceca0d68c1f7c7f2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Faza Zulfika\.android\build-cache\97dd62ce6917bd43fb720426076e45dbdb3020c8\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="508f50705b4fde51a16259f29c854201a3044516">
+        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\pre-dexed\debug\classes_d7578280e2004fd200b8a52f9036e28a09ded36c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Faza Zulfika\.android\build-cache\5cbad4f411fe3a32a36e773f334a616dbfff6809\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\pre-dexed\debug\classes_7219d87ac969d3db3c2b757c3f088dabe8dd3261.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Faza Zulfika\.android\build-cache\d5e05e07ff1846405717b0137b94f79fea03da4c\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="6f4138a4e065826cb044d49faea4cfd7191773d1">
+        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\pre-dexed\debug\classes_788267da033b1ad3a07d1c8b5751fc920830c128.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Faza Zulfika\.android\build-cache\8c708594c675fba949e50a9de6413c3e96dc85bc\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="58b12bdb21a84f22e0dc3b047aeceb0a546b1b44">
+        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\pre-dexed\debug\classes_807fadd9a95a89fccc615844829687ee573aafba.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Faza Zulfika\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\converter-gson\2.3.0\9e09011e9767bb76b5e27c9b8223476b93b14631\converter-gson-2.3.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="9e09011e9767bb76b5e27c9b8223476b93b14631">
+        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\pre-dexed\debug\converter-gson-2.3.0_9fffc52ed2fde36523ed01f681d6c5e952d1e24c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Program Files\Android\Android Studio\gradle\m2repository\commons-io\commons-io\2.4\commons-io-2.4.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="b1b6ea3b7e4aa4f492509a4952029cd8e48019ad">
+        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\pre-dexed\debug\commons-io-2.4_b2955a73e8fdec69863902c786dced8321b28c5c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Faza Zulfika\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\disklrucache\4.2.0\fd3a444cc7987b5fa2a60fabb116395ca2a4da1c\disklrucache-4.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="fd3a444cc7987b5fa2a60fabb116395ca2a4da1c">
+        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\pre-dexed\debug\disklrucache-4.2.0_bd5c0f1d91b6e1ffd4141f8ca72f5a1f07ea688c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Faza Zulfika\.android\build-cache\067c25bd18f9a3ddce1cebe0d7bb2bb783de8771\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="2442771a5590dd4eb4bce00c2e9dca9e22e4c963">
+        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\pre-dexed\debug\classes_6411c3a756c22928c0803f3b9c042ae6fc25bbad.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Faza Zulfika\.android\build-cache\21251b52b8b3d6486daea264a55c24509ffc128e\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="6a2bcb61342d09fe9acf55c9daf63961c8866cc0">
+        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\pre-dexed\debug\classes_98d1b07228ef3d0b8f3c5923a3c676ccc4370ea9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Faza Zulfika\.android\build-cache\e83b0643c84c90cceabd28ec5fdbc2a44a2afcae\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="7efef32744ca4a436492d5cf28c08698cc2af256">
+        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\pre-dexed\debug\classes_cdc282793f2e5b5914fcd78e3e1ff19e01b6c10d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Faza Zulfika\.android\build-cache\b1c90ed90ceecd04a176fbd2f2d00d864d49fab5\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="233f60a165ae622c8b36731502ebbda0f65e1930">
+        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\pre-dexed\debug\classes_d36ff80f146ff71efd58bcc6e0a4755b2f48fc75.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Faza Zulfika\.android\build-cache\7000fa4d2f0efa70c4170c6887658bd29b8f28c1\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="f97cf85b0fe70d37a705111dafa6b1b418ea1650">
+        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\pre-dexed\debug\classes_46afcb122adcc2d93e898754b2057e2aeb2ac806.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Faza Zulfika\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.13.0\a9283170b7305c8d92d25aff02a6ab7e45d06cbe\okio-1.13.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="a9283170b7305c8d92d25aff02a6ab7e45d06cbe">
+        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\pre-dexed\debug\okio-1.13.0_7245162e46998b43b79b92beeca9c4a51047f6d1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Faza Zulfika\.android\build-cache\86f1dde5c0458d65768a66fec6ffe305603ff98e\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="a2af9c72ccaa4c5c049b500ca6ea664a4ce1f7d4">
+        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\pre-dexed\debug\classes_f8ca8e6d4af3de4d9dbe6f81fb256b466c891cf0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Faza Zulfika\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\logging-interceptor\3.9.0\3bf7f8d6a20c90ffe9fc3f3c9118193c7720ecf1\logging-interceptor-3.9.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="3bf7f8d6a20c90ffe9fc3f3c9118193c7720ecf1">
+        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\pre-dexed\debug\logging-interceptor-3.9.0_dd158e1a3a4277873de901b03ea170dd8c51c63d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Faza Zulfika\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\retrofit\2.3.0\bcacde6a8ccedcc56c127403d26b76072fe6214d\retrofit-2.3.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="bcacde6a8ccedcc56c127403d26b76072fe6214d">
+        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\pre-dexed\debug\retrofit-2.3.0_82cea3c2a72810797e526884f5ec8dca25bf609f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Faza Zulfika\.gradle\caches\modules-2\files-2.1\android.arch.core\common\1.0.0\a2d487452376193fc8c103dd2b9bd5f2b1b44563\common-1.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.2"
+        sha1="a2d487452376193fc8c103dd2b9bd5f2b1b44563">
+        <dex dex="D:\Android\AndroidStudioProjects\Cari-Kado-Android\app\build\intermediates\pre-dexed\debug\common-1.0.0_7d9931f741973c9b16d89b82b84dc918ae387e5a.jar" />
     </item>
 
 </items>

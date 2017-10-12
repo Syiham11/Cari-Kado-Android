@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".main.view.MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/tb_find_gift"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:theme="@style/AppTheme.Toolbar"
+            app:popupTheme="@style/AppTheme.NoActionBar" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/activity_16dp_default_margin"
+            android:paddingEnd="@dimen/activity_56dp_default_margin"
+            android:paddingStart="@dimen/activity_56dp_default_margin"
+            android:paddingTop="@dimen/activity_16dp_default_margin">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_24dp_default_margin"
+                android:contentDescription="@string/find_gift"
+                android:src="@drawable/ic_find_gift_header" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/age"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="italic" />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/til_age"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/tiet_age"
+                    style="@style/AppTheme.EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:padding="@dimen/activity_8dp_default_margin"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textColor="@color/colorBlack" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_24dp_default_margin"
+                android:gravity="center"
+                android:text="@string/gender"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="italic" />
+
+            <Spinner
+                android:id="@+id/sp_gender"
+                style="@style/AppTheme.Spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_8dp_default_margin"
+                android:entries="@array/loren_ipsum"
+                android:padding="@dimen/activity_8dp_default_margin" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_24dp_default_margin"
+                android:gravity="center"
+                android:text="@string/budget"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="italic" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/til_budget_from"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/tiet_budget_from"
+                        style="@style/AppTheme.EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:padding="@dimen/activity_8dp_default_margin"
+                        android:textAppearance="?android:textAppearanceMedium"
+                        android:textColor="@color/colorBlack" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingTop="@dimen/activity_8dp_default_margin"
+                    android:text="@string/to"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="italic" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/til_budget_to"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/tiet_budget_to"
+                        style="@style/AppTheme.EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:padding="@dimen/activity_8dp_default_margin"
+                        android:textAppearance="?android:textAppearanceMedium"
+                        android:textColor="@color/colorBlack" />
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_24dp_default_margin"
+                android:gravity="center"
+                android:text="@string/category"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="italic" />
+
+            <Spinner
+                android:id="@+id/sp_category"
+                style="@style/AppTheme.Spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_8dp_default_margin"
+                android:entries="@array/loren_ipsum"
+                android:padding="@dimen/activity_8dp_default_margin" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_24dp_default_margin">
+
+                <Button
+                    android:id="@+id/btn_search"
+                    style="@style/AppTheme.Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:text="@string/search"
+                    android:textColor="@color/colorWhite" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</android.support.v4.widget.NestedScrollView>

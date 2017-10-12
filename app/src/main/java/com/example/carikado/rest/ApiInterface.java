@@ -7,7 +7,6 @@ package com.example.carikado.rest;
  * @version 1.0
  * @since 29 September 2017
  */
-
 public interface ApiInterface {
 
 }

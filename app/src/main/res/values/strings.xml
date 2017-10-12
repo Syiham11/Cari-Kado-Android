@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Cari Kado</string>
-    <string name="base_url">http://localhost:8080</string>
+    <string name="base_url">http://localhost:8080/api/</string>
 
     <string name="find_gift">Cari Kado</string>
     <string name="gift_info">Info Kado</string>
@@ -13,8 +13,10 @@
     <string name="no">Tidak</string>
 
     <string name="age">Usia</string>
+    <string name="age_empty">Usia tidak dapat kosong</string>
     <string name="gender">Jenis Kelamin</string>
     <string name="budget">Budget</string>
+    <string name="budget_empty">Budget tidak dapat kosong</string>
     <string name="to">sampai</string>
     <string name="category">Kategori</string>
     <string name="search">Cari</string>
@@ -27,10 +29,24 @@
     <string name="year">tahun</string>
 
     <string name="name">Nama</string>
+    <string name="name_empty">Nama tidak dapat kosong</string>
     <string name="email">Email</string>
+    <string name="email_empty">Email tidak dapat kosong</string>
     <string name="comment">Komentar</string>
+    <string name="comment_empty">Komentar tidak dapat kosong</string>
     <string name="rate">Peringkat</string>
+    <string name="rate_empty">Peringkat tidak dapat kosong</string>
     <string name="submit">Submit</string>
+    <string name="ok">Ok</string>
+
+    <string name="chat">Chatting</string>
+    <string name="call">Telepon</string>
+    <string name="contact">Hubungi</string>
+
+    <string name="base_phone_number">085648897482</string>
+    <string name="base_email_address">zulffaza@gmail.com</string>
+    <string name="base_email_subject">Bantuan Kado : </string>
+    <string name="email_not_found">Aplikasi email tidak ditemukan#8230</string>
 
     <string-array name="loren_ipsum">
         <item>Loren</item>

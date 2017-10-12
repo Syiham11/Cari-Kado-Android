@@ -14,7 +14,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * @version 1.0
  * @since 29 September 2017
  */
-
 public class ApiClient {
 
     private static Retrofit retrofit = null;
