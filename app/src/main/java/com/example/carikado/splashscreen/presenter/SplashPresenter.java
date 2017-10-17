@@ -13,8 +13,17 @@ import com.example.carikado.splashscreen.contract.SplashContract;
  */
 public class SplashPresenter implements SplashContract.Presenter {
 
+    /**
+     * Merupakan object dari view yang terhubung dengan presenter
+     */
     private final SplashContract.View mSplashView;
 
+    /**
+     * Merupakan default constructor yang pada saat object presenter dibuat, maka akan mengatur
+     * agar view memiliki presenter ini
+     *
+     * @param splashView merupakan view yang akan dihubungkan dengan presenter
+     */
     public SplashPresenter(@NonNull SplashContract.View splashView) {
         mSplashView = splashView;
         mSplashView.setPresenter(this);
@@ -25,6 +34,10 @@ public class SplashPresenter implements SplashContract.Presenter {
         // Do nothing
     }
 
+    /**
+     * Merupakan method yang dijalankan saat view dalam fase onStart
+     * Method ini akan metrigger view untuk menampilkan animasi
+     */
     @Override
     public void onStart() {
         mSplashView.showSplashAnimation();
@@ -50,6 +63,9 @@ public class SplashPresenter implements SplashContract.Presenter {
         // Do nothing
     }
 
+    /**
+     * Method yang digunakan untuk mentrigger view agar menampilkan main activity
+     */
     @Override
     public void openMainActivity() {
         mSplashView.showMainActivity();

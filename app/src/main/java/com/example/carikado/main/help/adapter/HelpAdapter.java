@@ -50,9 +50,9 @@ public class HelpAdapter extends RecyclerView.Adapter<HelpViewHolder> {
         holder.mTvHelpActive.setText(help.getName());
         holder.mTvHelpInactive.setText(help.getName());
         holder.mTvHelpDesc.setText(help.getDesc());
-        holder.mCvHelp.setCardBackgroundColor(help.getColor());
+        holder.mRvHelp.setBackgroundColor(help.getColor());
 
-        holder.mCvHelp.setOnClickListener(new CardClickListener(help));
+        holder.mRvHelp.setOnClickListener(new CardClickListener(help));
         holder.mBtnHelp.setOnClickListener(new HelpClickListener(help));
 
         if (help.isActive()) {
@@ -63,12 +63,12 @@ public class HelpAdapter extends RecyclerView.Adapter<HelpViewHolder> {
             holder.mLlInactive.setVisibility(View.VISIBLE);
         }
 
-        ViewGroup.LayoutParams params = holder.mCvHelp.getLayoutParams();
+        ViewGroup.LayoutParams params = holder.mRvHelp.getLayoutParams();
 
         params.width = ViewGroup.LayoutParams.MATCH_PARENT;
         params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
 
-        holder.mCvHelp.setLayoutParams(params);
+        holder.mRvHelp.setLayoutParams(params);
     }
 
     @Override

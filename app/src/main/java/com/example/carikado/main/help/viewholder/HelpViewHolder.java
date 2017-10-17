@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.carikado.R;
@@ -25,8 +26,8 @@ public class HelpViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.btn_help)
     public Button mBtnHelp;
 
-    @BindView(R.id.cv_help)
-    public CardView mCvHelp;
+    @BindView(R.id.rv_help)
+    public RelativeLayout mRvHelp;
 
     @BindView(R.id.ll_inactive)
     public LinearLayout mLlInactive;

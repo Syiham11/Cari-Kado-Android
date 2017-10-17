@@ -3,6 +3,7 @@
     package="com.example.carikado">
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -27,6 +28,9 @@
             android:parentActivityName=".main.view.MainActivity" />
         <activity
             android:name=".giftinfodetail.view.activity.GiftInfoDetailActivity"
+            android:parentActivityName=".main.view.MainActivity" />
+        <activity
+            android:name=".emailhelp.view.activity.EmailHelpActivity"
             android:parentActivityName=".main.view.MainActivity" />
     </application>
 

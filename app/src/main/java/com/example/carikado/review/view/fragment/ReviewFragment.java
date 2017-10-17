@@ -1,5 +1,6 @@
 package com.example.carikado.review.view.fragment;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 
 import com.example.carikado.R;
 import com.example.carikado.review.contract.ReviewContract;
+import com.example.carikado.review.model.Review;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -54,21 +56,27 @@ public class ReviewFragment extends Fragment implements ReviewContract.View {
     @BindView(R.id.til_comment)
     public TextInputLayout mTilComment;
 
-    @BindView(R.id.rb_rate)
-    public RatingBar mRbRate;
+    @BindView(R.id.rb_rating)
+    public RatingBar mRbRating;
 
     @OnClick(R.id.btn_submit)
-    public void submit(View view) {
+    public void submit() {
+        Review review = new Review();
+
         String name = mTietName.getText().toString();
         String email = mTietEmail.getText().toString();
         String comment = mTietComment.getText().toString();
-        String rate = String.valueOf(mRbRate.getRating());
+        int rating = (int) mRbRating.getRating();
 
-        // TODO simpan didalam model
+        review.setName(name);
+        review.setEmail(email);
+        review.setComment(comment);
+        review.setRating(rating);
 
-        mReviewPresenter.submitReview();
+        mReviewPresenter.submitReview(review);
     }
 
+    private ProgressDialog mProgressDialog;
     private ReviewContract.Presenter mReviewPresenter;
 
     public ReviewFragment() {
@@ -93,6 +101,13 @@ public class ReviewFragment extends Fragment implements ReviewContract.View {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setDisplayShowHomeEnabled(true);
         }
+
+        mTietName.requestFocus();
+
+        mProgressDialog = new ProgressDialog(getContext());
+        mProgressDialog.setMessage(getString(R.string.review_loading));
+        mProgressDialog.setCanceledOnTouchOutside(false);
+        mProgressDialog.setCancelable(false);
 
         return view;
     }
@@ -141,7 +156,17 @@ public class ReviewFragment extends Fragment implements ReviewContract.View {
     }
 
     @Override
-    public void showSubmitAlert(@NonNull String message) {
+    public void showProgressDialog() {
+        mProgressDialog.show();
+    }
+
+    @Override
+    public void hideProgressDialog() {
+        mProgressDialog.dismiss();
+    }
+
+    @Override
+    public void showSubmitAlert(@NonNull String message, @NonNull Boolean isFinish) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 
         String title = getString(R.string.review);
@@ -149,19 +174,29 @@ public class ReviewFragment extends Fragment implements ReviewContract.View {
 
         builder.setTitle(title)
                 .setMessage(message)
-                .setNegativeButton(ok, new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        getActivity().finish();
-                    }
-                });
+                .setNegativeButton(ok, new AlertOkClickListener(isFinish));
 
         AlertDialog dialog = builder.create();
 
         dialog.setCancelable(false);
         dialog.setCanceledOnTouchOutside(false);
         dialog.show();
+    }
+
+    private class AlertOkClickListener implements DialogInterface.OnClickListener {
+
+        private boolean mIsFinish;
+
+        private AlertOkClickListener(boolean isFinish) {
+            mIsFinish = isFinish;
+        }
+
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            dialog.dismiss();
+
+            if (mIsFinish)
+                getActivity().finish();
+        }
     }
 }

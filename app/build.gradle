@@ -62,4 +62,5 @@ dependencies {
 
     // Unit testing
     testCompile "junit:junit:$rootProject.ext.junitVersion"
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
 }

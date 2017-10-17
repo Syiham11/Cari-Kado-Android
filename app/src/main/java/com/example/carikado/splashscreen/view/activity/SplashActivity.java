@@ -17,16 +17,21 @@ import com.example.carikado.util.ActivityUtils;
  */
 public class SplashActivity extends AppCompatActivity {
 
+    /**
+     * Merupakan method yang dijalankan saat activity dalam fase onCreate
+     *
+     * @param savedInstanceState merupakan object yang menyimpan state activity ini sebelumnya
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_activity);
 
-        // Create fragment and add it to activity
+        // Membuat view dan menampilkannya di activity
         SplashFragment splashFragment = SplashFragment.newInstance();
         ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), splashFragment, R.id.fl_splash);
 
-        // Create the presenter
-        SplashPresenter splashPresenter = new SplashPresenter(splashFragment);
+        // Membuat presenter
+        new SplashPresenter(splashFragment);
     }
 }

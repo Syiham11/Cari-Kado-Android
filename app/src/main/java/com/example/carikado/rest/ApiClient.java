@@ -18,7 +18,7 @@ public class ApiClient {
 
     private static Retrofit retrofit = null;
 
-    public static Retrofit getClient(Context context) {
+    private static Retrofit getClient(Context context) {
         String baseUrl = context.getString(R.string.base_url);
 
         if (retrofit == null)
@@ -32,5 +32,9 @@ public class ApiClient {
                 .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
+    }
+
+    public static ApiInterface getApiInterface(Context context) {
+        return getClient(context).create(ApiInterface.class);
     }
 }

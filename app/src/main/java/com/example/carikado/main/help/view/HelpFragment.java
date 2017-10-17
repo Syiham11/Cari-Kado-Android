@@ -1,7 +1,6 @@
 package com.example.carikado.main.help.view;
 
 import android.Manifest;
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -21,9 +20,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.carikado.R;
+import com.example.carikado.emailhelp.view.activity.EmailHelpActivity;
 import com.example.carikado.main.help.adapter.HelpAdapter;
 import com.example.carikado.main.help.contract.HelpContract;
 import com.example.carikado.main.help.model.Help;
@@ -141,20 +140,8 @@ public class HelpFragment extends Fragment implements HelpContract.View {
 
     @Override
     public void showEmailHelp() {
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        String[] emailTo = {getString(R.string.base_email_address)};
-        String emailSubject = getString(R.string.base_email_subject);
-
-        intent.setData(Uri.parse("mailto:"));
-        intent.setType("text/plain");
-        intent.putExtra(Intent.EXTRA_EMAIL, emailTo);
-        intent.putExtra(Intent.EXTRA_SUBJECT, emailSubject);
-
-        try {
-            startActivity(Intent.createChooser(intent, "Send email with..."));
-        } catch (ActivityNotFoundException e) {
-            Toast.makeText(getContext(), getString(R.string.email_not_found), Toast.LENGTH_LONG).show();
-        }
+        Intent intent = new Intent(getContext(), EmailHelpActivity.class);
+        startActivity(intent);
     }
 
     @Override

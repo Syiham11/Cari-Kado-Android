@@ -36,15 +36,29 @@ import butterknife.ButterKnife;
  */
 public class SplashFragment extends Fragment implements SplashContract.View {
 
+    /**
+     * Merupakan object dari icon yang akan menampilkan animasi
+     */
     @BindView(R.id.iv_icon)
     public ImageView mIvIcon;
 
+    /**
+     * Merupakan object dari presenter
+     */
     private SplashContract.Presenter mSplashPresenter;
 
+    /**
+     * Merupakan constructor kosong yang menjadi default constructor
+     */
     public SplashFragment() {
         // Default constructor
     }
 
+    /**
+     * Merupakan method yang akan membuat instance / object baru dari view
+     *
+     * @return merupakan instance / object baru dari view splash
+     */
     public static SplashFragment newInstance() {
         return new SplashFragment();
     }
@@ -55,13 +69,7 @@ public class SplashFragment extends Fragment implements SplashContract.View {
         View view = inflater.inflate(R.layout.splash_fragment, container, false);
         ButterKnife.bind(this, view);
 
-        view.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                mSplashPresenter.openMainActivity();
-            }
-        });
+        view.setOnClickListener(new ViewClickListener());
 
         try {
             InputStream inputStream = getContext().getAssets().open("ic_splash.gif");
@@ -106,5 +114,13 @@ public class SplashFragment extends Fragment implements SplashContract.View {
         Intent intent = new Intent(getContext(), MainActivity.class);
         startActivity(intent);
         getActivity().finish();
+    }
+
+    private class ViewClickListener implements View.OnClickListener {
+
+        @Override
+        public void onClick(View v) {
+            mSplashPresenter.openMainActivity();
+        }
     }
 }

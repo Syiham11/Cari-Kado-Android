@@ -11,6 +11,7 @@ import com.example.carikado.R;
 import com.example.carikado.review.presenter.ReviewPresenter;
 import com.example.carikado.review.view.fragment.ReviewFragment;
 import com.example.carikado.util.ActivityUtils;
+import com.example.carikado.util.Injection;
 
 /**
  * Class yang mengatur tampilan review
@@ -31,6 +32,6 @@ public class ReviewActivity extends AppCompatActivity {
         ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), reviewFragment,
                 R.id.fl_review);
 
-        new ReviewPresenter(reviewFragment); // TODO tambahkan repository
+        new ReviewPresenter(Injection.proviceReviewRepository(this), reviewFragment); // TODO tambahkan repository
     }
 }

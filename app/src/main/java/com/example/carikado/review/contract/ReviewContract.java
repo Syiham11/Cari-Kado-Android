@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.example.carikado.base.BasePresenter;
 import com.example.carikado.base.BaseView;
+import com.example.carikado.review.model.Review;
 
 /**
  * Merupakan contract yang mengatur hubungan view dan presenter review
@@ -23,11 +24,13 @@ public interface ReviewContract {
         void showCommentEmpty();
         void hideCommentEmpty();
         void showStarsEmpty();
-        void showSubmitAlert(@NonNull String message);
+        void showProgressDialog();
+        void hideProgressDialog();
+        void showSubmitAlert(@NonNull String message, @NonNull Boolean isFinish);
     }
 
     interface Presenter extends BasePresenter {
 
-        void submitReview(); // TODO masukkan parameter model
+        void submitReview(@NonNull Review review);
     }
 }

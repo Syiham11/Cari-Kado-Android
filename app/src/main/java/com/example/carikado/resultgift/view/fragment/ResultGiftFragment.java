@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
-import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -38,9 +37,6 @@ public class ResultGiftFragment extends Fragment implements ResultGiftContract.V
 
     @BindView(R.id.tiet_search)
     public TextInputEditText mTietSearch;
-
-    @BindView(R.id.til_search)
-    public TextInputLayout mTilSearch;
 
     @BindView(R.id.rv_result_gift)
     public RecyclerView mRvResultGift;

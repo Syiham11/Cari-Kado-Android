@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Cari Kado</string>
-    <string name="base_url">http://localhost:8080/api/</string>
+    <string name="base_url">http://192.168.43.210:8080/api/</string>
 
     <string name="find_gift">Cari Kado</string>
     <string name="gift_info">Info Kado</string>
@@ -38,10 +38,21 @@
     <string name="rate_empty">Peringkat tidak dapat kosong</string>
     <string name="submit">Submit</string>
     <string name="ok">Ok</string>
+    <string name="review_loading">Review sedang ditambahkan#8230</string>
+    <string name="review_complete">Review telah berhasil ditambahkan</string>
+    <string name="review_error">Tidak dapat menambahkan review</string>
 
     <string name="chat">Chatting</string>
     <string name="call">Telepon</string>
     <string name="contact">Hubungi</string>
+
+    <string name="email_user">Email Anda</string>
+    <string name="email_user_empty">Email anda tidak dapat kosong</string>
+    <string name="email_subject">Subyek</string>
+    <string name="email_subject_empty">Subyek tidak dapat kosong</string>
+    <string name="email_content">Pesan</string>
+    <string name="email_content_empty">Pesan tidak dapat kosong</string>
+    <string name="send">Kirim</string>
 
     <string name="base_phone_number">085648897482</string>
     <string name="base_email_address">zulffaza@gmail.com</string>

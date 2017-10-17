@@ -12,14 +12,30 @@ import com.example.carikado.base.BaseView;
  */
 public interface SplashContract {
 
+    /**
+     * Merupakan interface yang mengatur apa-apa saja event pada view
+     */
     interface View extends BaseView<Presenter> {
 
+        /**
+         * Merupakan method yang digunakan untuk menampilkan animasi pada splash screen
+         */
         void showSplashAnimation();
+
+        /**
+         * Merupakan method yang digunakan untuk menampilkan main activity
+         */
         void showMainActivity();
     }
 
+    /**
+     * Merupakan interface yang mengatur apa-apa saja event pada presenter
+     */
     interface Presenter extends BasePresenter {
 
+        /**
+         * Merupakan method yang digunakan untuk mentrigger view agar menampilkan main activity
+         */
         void openMainActivity();
     }
 }
