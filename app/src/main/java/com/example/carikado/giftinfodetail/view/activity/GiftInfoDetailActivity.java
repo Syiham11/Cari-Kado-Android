@@ -14,6 +14,7 @@ import com.example.carikado.R;
 import com.example.carikado.giftinfodetail.adapter.GiftInfoDetailCategoryAdapter;
 import com.example.carikado.giftinfodetail.presenter.GiftInfoDetailPresenter;
 import com.example.carikado.giftinfodetail.view.fragment.GiftInfoDetailFragment;
+import com.example.carikado.main.giftinfo.model.GiftInfo;
 import com.example.carikado.util.ActivityUtils;
 
 import java.util.ArrayList;
@@ -32,9 +33,9 @@ public class GiftInfoDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gift_info_detail_activity);
 
-        String name = (String) getIntent().getSerializableExtra("Gift Info"); // TODO ambil model dari activity sebelumnya
+        GiftInfo giftInfo = (GiftInfo) getIntent().getSerializableExtra("Gift Info"); // TODO ambil model dari activity sebelumnya
 
-        GiftInfoDetailFragment giftInfoDetailFragment = GiftInfoDetailFragment.newInstance();
+        GiftInfoDetailFragment giftInfoDetailFragment = GiftInfoDetailFragment.newInstance(giftInfo);
         ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), giftInfoDetailFragment,
                 R.id.fl_gift_info_detail);
 

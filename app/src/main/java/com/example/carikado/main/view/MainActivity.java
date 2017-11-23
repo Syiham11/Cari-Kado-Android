@@ -174,6 +174,7 @@ public class MainActivity extends AppCompatActivity {
             boolean isNull;
             int id = item.getItemId();
             item.setEnabled(true);
+            item.setChecked(true);
 
             HashMap<String, Object> menu;
 

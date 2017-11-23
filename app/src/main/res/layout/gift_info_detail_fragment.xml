@@ -39,7 +39,8 @@
             <android.support.v4.view.ViewPager
                 android:id="@+id/vp_gift_info_detail_image"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/gift_info_detail_image_height" />
+                android:layout_height="@dimen/gift_info_detail_image_height"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/tv_gift_info_detail_name"

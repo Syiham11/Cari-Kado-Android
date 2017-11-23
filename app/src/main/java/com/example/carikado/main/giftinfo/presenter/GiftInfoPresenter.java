@@ -3,6 +3,7 @@ package com.example.carikado.main.giftinfo.presenter;
 import android.support.annotation.NonNull;
 
 import com.example.carikado.main.giftinfo.contract.GiftInfoContract;
+import com.example.carikado.main.giftinfo.model.GiftInfo;
 
 import java.util.List;
 
@@ -63,7 +64,7 @@ public class GiftInfoPresenter implements GiftInfoContract.Presenter {
     }
 
     @Override
-    public void openGiftInfoDetail(@NonNull String s) {
-        mView.showGiftInfoDetail(s);
+    public void openGiftInfoDetail(@NonNull GiftInfo giftInfo) {
+        mView.showGiftInfoDetail(giftInfo);
     }
 }

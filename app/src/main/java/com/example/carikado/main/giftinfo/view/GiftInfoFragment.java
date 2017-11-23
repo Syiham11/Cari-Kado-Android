@@ -20,9 +20,13 @@ import com.example.carikado.giftinfodetail.view.activity.GiftInfoDetailActivity;
 import com.example.carikado.main.giftinfo.adapter.GiftInfoAdapter;
 import com.example.carikado.R;
 import com.example.carikado.main.giftinfo.contract.GiftInfoContract;
+import com.example.carikado.main.giftinfo.model.GiftInfo;
+import com.example.carikado.main.giftinfo.model.GiftInfoAge;
+import com.example.carikado.main.giftinfo.model.GiftInfoBudget;
 import com.example.carikado.review.view.activity.ReviewActivity;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,7 +47,7 @@ public class GiftInfoFragment extends Fragment implements GiftInfoContract.View 
     @BindView(R.id.tb_gift_info)
     public Toolbar mTbGiftInfo;
 
-    private ArrayList<String> mGiftInfos;
+    private ArrayList<GiftInfo> mGiftInfos;
     private GiftInfoAdapter mGiftInfoAdapter;
     private GiftInfoContract.Presenter mGiftInfoPresenter;
 
@@ -108,22 +112,43 @@ public class GiftInfoFragment extends Fragment implements GiftInfoContract.View 
 
     @Override
     public void showGiftInfos() {
-        if (mGiftInfos == null)
+        if (mGiftInfos == null) {
             mGiftInfos = new ArrayList<>();
 
-        mGiftInfos.add("Teddy Bear");
-        mGiftInfos.add("Kaca Mata");
-        mGiftInfos.add("Bunga Mawar");
-        mGiftInfos.add("Bunga Melati");
-        mGiftInfos.add("Teddy Bear");
-        mGiftInfos.add("Kaca Mata");
-        mGiftInfos.add("Bunga Mawar");
-        mGiftInfos.add("Bunga Melati");
+            GiftInfo giftInfo = new GiftInfo();
+
+            GiftInfoAge giftInfoAge = new GiftInfoAge("3", "30");
+            GiftInfoBudget giftInfoBudget = new GiftInfoBudget("10.000", "2.500.000");
+
+            giftInfo.setTitle("Boneka Teddy Bear");
+            giftInfo.setCreatedAt(new Date());
+            giftInfo.setDescription("Sebuah boneka berbentuk beruang");
+            giftInfo.setEssence("Boneka dimaksudkan agar si penerima hadiah tidak pernah merasa sendiri dan selalu merasa memiliki teman");
+            giftInfo.setGiftInfoAge(giftInfoAge);
+            giftInfo.setGiftInfoBudget(giftInfoBudget);
+
+            mGiftInfos.add(giftInfo);
+
+            giftInfo = new GiftInfo();
+
+            giftInfoAge = new GiftInfoAge("8", "24");
+            giftInfoBudget = new GiftInfoBudget("50.000", "500.000");
+
+            giftInfo.setTitle("Jam Beker");
+            giftInfo.setCreatedAt(new Date());
+            giftInfo.setDescription("Sebuah jam yang ditaruh dimeja dan memiliki alarm");
+            giftInfo.setEssence("Hadiah ini diberikan dengan maksud agar si penerima dapat selalu tepat waktu");
+            giftInfo.setGiftInfoAge(giftInfoAge);
+            giftInfo.setGiftInfoBudget(giftInfoBudget);
+
+            mGiftInfos.add(giftInfo);
+        }
 
         mGiftInfoPresenter.loadGiftInfos(mGiftInfos);
 
         if (mGiftInfoAdapter == null)
             mGiftInfoAdapter = new GiftInfoAdapter(getContext(), mGiftInfos, mGiftInfoPresenter);
+
         mRvGiftInfo.setAdapter(mGiftInfoAdapter);
     }
 
@@ -134,9 +159,9 @@ public class GiftInfoFragment extends Fragment implements GiftInfoContract.View 
     }
 
     @Override
-    public void showGiftInfoDetail(@NonNull String s) {
+    public void showGiftInfoDetail(@NonNull GiftInfo giftInfo) {
         Intent intent = new Intent(getContext(), GiftInfoDetailActivity.class);
-        intent.putExtra("Gift Info", s);
+        intent.putExtra("Gift Info", giftInfo);
 
         startActivity(intent);
     }

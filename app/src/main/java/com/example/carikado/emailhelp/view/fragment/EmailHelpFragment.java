@@ -121,7 +121,7 @@ public class EmailHelpFragment extends Fragment implements EmailHelpContract.Vie
 
     @Override
     public void showEmailApplication(@NonNull EmailHelp emailHelp) {
-        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        Intent intent = new Intent(Intent.ACTION_SEND);
         String[] emailTo = {getString(R.string.base_email_address)};
         String emailSubject = getString(R.string.base_email_subject);
 

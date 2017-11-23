@@ -66,4 +66,17 @@
         <item>Mark</item>
         <item>Marquez</item>
     </string-array>
+
+    <string-array name="gender_array">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+    
+    <string-array name="category_array">
+        <item>Perhiasan</item>
+        <item>Barang Elektronik</item>
+        <item>Makanan</item>
+        <item>Minuman</item>
+        <item>Karya Tangan</item>
+    </string-array>
 </resources>

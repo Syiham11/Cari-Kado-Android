@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.example.carikado.base.BasePresenter;
 import com.example.carikado.base.BaseView;
+import com.example.carikado.main.giftinfo.model.GiftInfo;
 
 import java.util.List;
 
@@ -20,13 +21,13 @@ public interface GiftInfoContract {
 
         void showGiftInfos();
         void showReview();
-        void showGiftInfoDetail(@NonNull String s); // TODO mengirim parameter model
+        void showGiftInfoDetail(@NonNull GiftInfo giftInfo);
     }
 
     interface Presenter extends BasePresenter {
 
         void loadGiftInfos(@NonNull List giftInfoList);
         void openReview();
-        void openGiftInfoDetail(@NonNull String s); // TODO mengirim parameter model
+        void openGiftInfoDetail(@NonNull GiftInfo giftInfo);
     }
 }

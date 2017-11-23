@@ -31,14 +31,11 @@ public class GiftInfoDetailPresenter implements GiftInfoDetailContract.Presenter
 
         ArrayList<String> model = new ArrayList<>();
 
-        model.add("Teddy Bear");
-        model.add("Kaca Mata");
-        model.add("Bunga Mawar");
-        model.add("Bunga Melati");
-        model.add("Teddy Bear");
-        model.add("Kaca Mata");
-        model.add("Bunga Mawar");
-        model.add("Bunga Melati");
+        model.add("Perhiasan");
+        model.add("Barang Elektronik");
+        model.add("Makanan");
+        model.add("Minuman");
+        model.add("Karya Tangan");
 
         mView.showDetail();
         mView.showDetailImages(model); // TODO ambil list image dari model

@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.carikado.R;
 import com.example.carikado.main.giftinfo.contract.GiftInfoContract;
+import com.example.carikado.main.giftinfo.model.GiftInfo;
 import com.example.carikado.main.giftinfo.viewholder.GIftInfoViewHolder;
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class GiftInfoAdapter extends RecyclerView.Adapter<GIftInfoViewHolder> {
 
-    private ArrayList mGiftInfos;
+    private ArrayList<GiftInfo> mGiftInfos;
     private Context mContext;
     private GiftInfoContract.Presenter mPresenter;
     private LayoutInflater mInflater;
@@ -37,7 +38,7 @@ public class GiftInfoAdapter extends RecyclerView.Adapter<GIftInfoViewHolder> {
      * @param context merupakan mContext dari activity yang menggunakan list
      * @param giftInfos merupakan list data yang akan ditampilkan
      */
-    public GiftInfoAdapter(Context context, ArrayList giftInfos, GiftInfoContract.Presenter presenter) {
+    public GiftInfoAdapter(Context context, ArrayList<GiftInfo> giftInfos, GiftInfoContract.Presenter presenter) {
         mContext = context;
         mGiftInfos = giftInfos;
         mPresenter = presenter;
@@ -66,12 +67,14 @@ public class GiftInfoAdapter extends RecyclerView.Adapter<GIftInfoViewHolder> {
      */
     @Override
     public void onBindViewHolder(GIftInfoViewHolder holder, int position) {
+        GiftInfo giftInfo = mGiftInfos.get(position);
+
         CardView cvGiftInfo = holder.cvGiftInfo;
         CircleImageView civGiftInfo = holder.civGiftInfo;
         TextView tvGiftInfo = holder.tvGiftInfo;
 
         cvGiftInfo.setOnClickListener(new GiftInfoClickListener(position));
-        tvGiftInfo.setText((String) mGiftInfos.get(position));
+        tvGiftInfo.setText(giftInfo.getTitle());
     }
 
     /**
@@ -107,7 +110,7 @@ public class GiftInfoAdapter extends RecyclerView.Adapter<GIftInfoViewHolder> {
          */
         @Override
         public void onClick(View v) {
-            mPresenter.openGiftInfoDetail((String) mGiftInfos.get(mPosition));
+            mPresenter.openGiftInfoDetail(mGiftInfos.get(mPosition));
         }
     }
 }

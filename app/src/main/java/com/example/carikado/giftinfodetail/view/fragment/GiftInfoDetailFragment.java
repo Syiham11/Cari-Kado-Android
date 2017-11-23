@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.example.carikado.R;
 import com.example.carikado.giftinfodetail.adapter.GiftInfoDetailCategoryAdapter;
 import com.example.carikado.giftinfodetail.contract.GiftInfoDetailContract;
+import com.example.carikado.main.giftinfo.model.GiftInfo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,12 +70,16 @@ public class GiftInfoDetailFragment extends Fragment implements GiftInfoDetailCo
 
     public GiftInfoDetailFragment() {
         super();
-        // TODO menerima parameter model
     }
 
-    public static GiftInfoDetailFragment newInstance() {
-        // TODO menerima parameter model
-        return new GiftInfoDetailFragment();
+    public static GiftInfoDetailFragment newInstance(GiftInfo giftInfo) {
+        GiftInfoDetailFragment giftInfoDetailFragment = new GiftInfoDetailFragment();
+        Bundle bundle = new Bundle();
+
+        bundle.putSerializable("Gift Info", giftInfo);
+        giftInfoDetailFragment.setArguments(bundle);
+
+        return giftInfoDetailFragment;
     }
 
     @Nullable
@@ -91,6 +96,20 @@ public class GiftInfoDetailFragment extends Fragment implements GiftInfoDetailCo
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setDisplayShowHomeEnabled(true);
+        }
+
+        if (getArguments() != null) {
+            GiftInfo giftInfo = (GiftInfo) getArguments().getSerializable("Gift Info");
+
+            if (giftInfo != null) {
+                ((TextView) view.findViewById(R.id.tv_gift_info_detail_name)).setText(giftInfo.getTitle());
+                ((TextView) view.findViewById(R.id.tv_gift_info_detail_description)).setText(giftInfo.getDescription());
+                ((TextView) view.findViewById(R.id.tv_gift_info_detail_essence)).setText(giftInfo.getEssence());
+                ((TextView) view.findViewById(R.id.tv_gift_info_detail_age_from)).setText(giftInfo.getGiftInfoAge().getFrom());
+                ((TextView) view.findViewById(R.id.tv_gift_info_detail_age_to)).setText(giftInfo.getGiftInfoAge().getTo());
+                ((TextView) view.findViewById(R.id.tv_gift_info_detail_budget_from)).setText(giftInfo.getGiftInfoBudget().getFrom());
+                ((TextView) view.findViewById(R.id.tv_gift_info_detail_budget_to)).setText(giftInfo.getGiftInfoBudget().getTo());
+            }
         }
 
         mRvGiftInfoDetailCategory.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
