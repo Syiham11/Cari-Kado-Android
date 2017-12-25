@@ -1,12 +1,20 @@
 package com.example.carikado.rest;
 
+import com.example.carikado.base.model.MyPage;
 import com.example.carikado.base.model.MyResponse;
+import com.example.carikado.main.giftinfo.model.GiftInfo;
+import com.example.carikado.main.giftinfo.model.GiftInfoCategory;
 import com.example.carikado.review.model.Review;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Field;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 /**
  * Class yang dibuat untuk mengatur routing rest service aplikasi
@@ -20,9 +28,14 @@ public interface ApiInterface {
     @POST("review/add")
     Call<MyResponse<Integer>> addReview(@Body Review review);
 
-    @POST("giftinfo/{page}/{pageSize}")
-    Call<MyResponse> findGiftInfos(@Path("page") String page, @Path("pageSize") String pageSize);
+    @GET("gift-info-category/all")
+    Call<MyResponse<List<GiftInfoCategory>>> findAllGiftInfoCategories();
 
-    @POST("giftinfo/{giftInfoId}")
-    Call<MyResponse> findGiftInfo(@Path("giftInfoId") String giftInfoId);
+    @GET("gift-info")
+    Call<MyResponse<MyPage<List<GiftInfo>>>> findGiftInfos(@Query("page") Integer page,
+                                                           @Query("pageSize") Integer pageSize,
+                                                           @Query("sort") Integer sort);
+
+    @GET("gift-info/{giftInfoId}")
+    Call<MyResponse<GiftInfo>> findGiftInfo(@Path("giftInfoId") Integer giftInfoId);
 }

@@ -162,7 +162,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/activity_8dp_default_margin"
-                android:entries="@array/category_array"
                 android:padding="@dimen/activity_8dp_default_margin" />
 
             <RelativeLayout

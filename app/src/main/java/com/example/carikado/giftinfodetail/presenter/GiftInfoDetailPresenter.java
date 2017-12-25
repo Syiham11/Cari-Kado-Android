@@ -1,8 +1,11 @@
 package com.example.carikado.giftinfodetail.presenter;
 
+import android.support.annotation.NonNull;
+
 import com.example.carikado.giftinfodetail.contract.GiftInfoDetailContract;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Merupakan presenter yang mengatur logic dari gift info detail
@@ -27,19 +30,19 @@ public class GiftInfoDetailPresenter implements GiftInfoDetailContract.Presenter
 
     @Override
     public void onStart() {
+        // DO nothing
+    }
+
+    @Override
+    public void onStart(@NonNull List giftInfoCategories) {
+
         // TODO masukkan parameter model
 
         ArrayList<String> model = new ArrayList<>();
 
-        model.add("Perhiasan");
-        model.add("Barang Elektronik");
-        model.add("Makanan");
-        model.add("Minuman");
-        model.add("Karya Tangan");
-
         mView.showDetail();
         mView.showDetailImages(model); // TODO ambil list image dari model
-        mView.showDetailCategory(model); // TODO ambil list category dari model
+        mView.showDetailCategory(giftInfoCategories); // TODO ambil list category dari model
     }
 
     @Override

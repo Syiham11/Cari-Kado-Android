@@ -25,6 +25,6 @@ public interface GiftInfoDetailContract {
 
     interface Presenter extends BasePresenter {
 
-        // Do nothing
+        void onStart(@NonNull List giftInfoCategories);
     }
 }

@@ -12,7 +12,7 @@ public class GiftInfo implements Serializable {
     private String description;
     private String essence;
     private Date createdAt;
-//    private User user;
+    private User user;
     private GiftInfoAge giftInfoAge;
     private List<GiftInfoCategory> giftInfoCategories = new ArrayList<>();
     private GiftInfoBudget giftInfoBudget;
@@ -67,13 +67,13 @@ public class GiftInfo implements Serializable {
         this.createdAt = createdAt;
     }
 
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public GiftInfoAge getGiftInfoAge() {
         return giftInfoAge;

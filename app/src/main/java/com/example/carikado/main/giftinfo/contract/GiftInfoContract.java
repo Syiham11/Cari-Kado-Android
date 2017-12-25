@@ -19,14 +19,17 @@ public interface GiftInfoContract {
 
     interface View extends BaseView<Presenter> {
 
-        void showGiftInfos();
+        void showFirstGiftInfos();
+        void notifyAdapter();
+        void showToastMessage(@NonNull String message);
         void showReview();
         void showGiftInfoDetail(@NonNull GiftInfo giftInfo);
     }
 
     interface Presenter extends BasePresenter {
 
-        void loadGiftInfos(@NonNull List giftInfoList);
+        void loadFirstGiftInfos(@NonNull List giftInfoList);
+        void loadNextGiftInfos(@NonNull List giftInfoList);
         void openReview();
         void openGiftInfoDetail(@NonNull GiftInfo giftInfo);
     }

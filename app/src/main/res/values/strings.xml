@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Cari Kado</string>
-    <string name="base_url">http://192.168.100.12:8080/api/</string>
+    <string name="base_url">http://192.168.43.210:8080/api/</string>
 
     <string name="find_gift">Cari Kado</string>
     <string name="gift_info">Info Kado</string>
@@ -20,13 +20,16 @@
     <string name="to">sampai</string>
     <string name="category">Kategori</string>
     <string name="search">Cari</string>
+    <string name="gift_info_category_error">Tidak dapat mengambil data kategori</string>
 
     <string name="sort_by">Urutkan berdasarkan</string>
     <string name="filter_by">Filter item</string>
+    <string name="gift_info_error">Tidak dapat mengambil data info kado</string>
 
     <string name="description">Deskripsi</string>
     <string name="essence">Esensi</string>
     <string name="year">tahun</string>
+    <string name="rupiah">rupiah</string>
 
     <string name="name">Nama</string>
     <string name="name_empty">Nama tidak dapat kosong</string>

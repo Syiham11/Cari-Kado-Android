@@ -1,9 +1,13 @@
 package com.example.carikado.main.findgift.presenter;
 
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.example.carikado.main.findgift.contract.FindGiftContract;
+import com.example.carikado.main.findgift.datasource.GiftInfoCategoryDataSource;
+import com.example.carikado.main.findgift.datasource.GiftInfoCategoryRepository;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -16,8 +20,11 @@ import java.util.List;
 public class FindGiftPresenter implements FindGiftContract.Presenter {
 
     private final FindGiftContract.View mView;
+    private final GiftInfoCategoryRepository mGiftInfoCategoryRepository;
 
-    public FindGiftPresenter(@NonNull FindGiftContract.View view) {
+    public FindGiftPresenter(@NonNull GiftInfoCategoryRepository giftInfoCategoryRepository,
+                             @NonNull FindGiftContract.View view) {
+        mGiftInfoCategoryRepository = giftInfoCategoryRepository;
         mView = view;
         view.setPresenter(this);
     }
@@ -59,8 +66,22 @@ public class FindGiftPresenter implements FindGiftContract.Presenter {
     }
 
     @Override
-    public void loadCategory(@NonNull List categoryList) {
-        // TODO category from database
+    public void loadCategory(@NonNull final List categoryList) {
+        mGiftInfoCategoryRepository.loadGiftInfoCategories(new GiftInfoCategoryDataSource.LoadGiftInfoCategoriessCallback() {
+
+            @Override
+            public void onLoadSuccess(@NonNull List giftInfoCategories) {
+                for (Object o : giftInfoCategories)
+                    categoryList.add(o);
+
+                mView.notifyCategory();
+            }
+
+            @Override
+            public void onLoadFailed(@NonNull String message) {
+                mView.showToastMessage(message);
+            }
+        });
     }
 
     /*

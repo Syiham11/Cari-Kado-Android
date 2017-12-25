@@ -15,10 +15,13 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.carikado.R;
 import com.example.carikado.main.findgift.contract.FindGiftContract;
+import com.example.carikado.main.giftinfo.model.GiftInfoCategory;
 import com.example.carikado.resultgift.view.activity.ResultGiftActivity;
 import com.example.carikado.review.view.activity.ReviewActivity;
 
@@ -76,6 +79,7 @@ public class FindGiftFragment extends Fragment implements FindGiftContract.View 
         mFindGiftPresenter.findGift(); // TODO mengirim model sebagai parameter
     }
 
+    private ArrayList<GiftInfoCategory> mGiftInfoCategories;
     private FindGiftContract.Presenter mFindGiftPresenter;
 
     public FindGiftFragment() {
@@ -141,8 +145,20 @@ public class FindGiftFragment extends Fragment implements FindGiftContract.View 
 
     @Override
     public void showCategory() {
-        ArrayList<String> categoryList = new ArrayList<>();
-        mFindGiftPresenter.loadCategory(categoryList);
+        if (mGiftInfoCategories == null)
+            mGiftInfoCategories = new ArrayList<>();
+
+        mFindGiftPresenter.loadCategory(mGiftInfoCategories);
+    }
+
+    @Override
+    public void notifyCategory() {
+
+    }
+
+    @Override
+    public void showToastMessage(@NonNull String message) {
+        Toast.makeText(getContext(), message, Toast.LENGTH_LONG).show();
     }
 
     @Override

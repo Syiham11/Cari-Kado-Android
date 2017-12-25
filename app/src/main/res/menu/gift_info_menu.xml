@@ -12,9 +12,4 @@
         android:title="@string/sort_by"
         app:showAsAction="never" />
 
-    <item
-        android:id="@+id/menu_filter_by"
-        android:title="@string/filter_by"
-        app:showAsAction="never" />
-
 </menu>

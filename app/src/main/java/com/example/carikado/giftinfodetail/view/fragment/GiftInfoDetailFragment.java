@@ -19,6 +19,7 @@ import com.example.carikado.R;
 import com.example.carikado.giftinfodetail.adapter.GiftInfoDetailCategoryAdapter;
 import com.example.carikado.giftinfodetail.contract.GiftInfoDetailContract;
 import com.example.carikado.main.giftinfo.model.GiftInfo;
+import com.example.carikado.main.giftinfo.model.GiftInfoCategory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,6 +66,7 @@ public class GiftInfoDetailFragment extends Fragment implements GiftInfoDetailCo
     @BindView(R.id.rv_gift_info_detail_category)
     public RecyclerView mRvGiftInfoDetailCategory;
 
+    private ArrayList<GiftInfoCategory> giftInfoCategories;
     private GiftInfoDetailCategoryAdapter mAdapter;
     private GiftInfoDetailContract.Presenter mPresenter;
 
@@ -98,10 +100,14 @@ public class GiftInfoDetailFragment extends Fragment implements GiftInfoDetailCo
             actionBar.setDisplayShowHomeEnabled(true);
         }
 
+        giftInfoCategories = new ArrayList<>();
+
         if (getArguments() != null) {
             GiftInfo giftInfo = (GiftInfo) getArguments().getSerializable("Gift Info");
 
             if (giftInfo != null) {
+                giftInfoCategories = (ArrayList<GiftInfoCategory>) giftInfo.getGiftInfoCategories();
+
                 ((TextView) view.findViewById(R.id.tv_gift_info_detail_name)).setText(giftInfo.getTitle());
                 ((TextView) view.findViewById(R.id.tv_gift_info_detail_description)).setText(giftInfo.getDescription());
                 ((TextView) view.findViewById(R.id.tv_gift_info_detail_essence)).setText(giftInfo.getEssence());
@@ -122,7 +128,7 @@ public class GiftInfoDetailFragment extends Fragment implements GiftInfoDetailCo
     @Override
     public void onStart() {
         super.onStart();
-        mPresenter.onStart(); // TODO menerima parameter model
+        mPresenter.onStart(giftInfoCategories); // TODO menerima parameter model
     }
 
     @Override

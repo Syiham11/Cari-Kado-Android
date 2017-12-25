@@ -21,6 +21,7 @@ import com.example.carikado.main.giftinfo.view.GiftInfoFragment;
 import com.example.carikado.main.help.presenter.HelpPresenter;
 import com.example.carikado.main.help.view.HelpFragment;
 import com.example.carikado.util.ActivityUtils;
+import com.example.carikado.util.Injection;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -93,11 +94,9 @@ public class MainActivity extends AppCompatActivity {
         HashMap<String, Object> objectHashMap = new HashMap<>();
         FindGiftFragment findGiftFragment = FindGiftFragment.newInstance();
 
-        // TODO buat repository
-
         objectHashMap.put(mTag, mFindGiftTag);
         objectHashMap.put(mFragmentTag, findGiftFragment);
-        objectHashMap.put(mPresenterTag, new FindGiftPresenter(findGiftFragment)); // TODO masukkan repository
+        objectHashMap.put(mPresenterTag, new FindGiftPresenter(Injection.proviceGiftInfoCategoryRepository(this), findGiftFragment));
         objectHashMap.put(mActiveTag, ContextCompat.getDrawable(this, R.drawable.ic_find_gift_active));
         objectHashMap.put(mInactiveTag, ContextCompat.getDrawable(this, R.drawable.ic_find_gift_inactive));
 
@@ -108,11 +107,9 @@ public class MainActivity extends AppCompatActivity {
         HashMap<String, Object> objectHashMap = new HashMap<>();
         GiftInfoFragment giftInfoFragment = GiftInfoFragment.newInstance();
 
-        // TODO buat repository
-
         objectHashMap.put(mTag, mGiftInfoTag);
         objectHashMap.put(mFragmentTag, giftInfoFragment);
-        objectHashMap.put(mPresenterTag, new GiftInfoPresenter(giftInfoFragment)); // TODO masukkan repository
+        objectHashMap.put(mPresenterTag, new GiftInfoPresenter(Injection.proviceGiftInfoRepository(this), giftInfoFragment));
         objectHashMap.put(mActiveTag, ContextCompat.getDrawable(this, R.drawable.ic_gift_info_active));
         objectHashMap.put(mInactiveTag, ContextCompat.getDrawable(this, R.drawable.ic_gift_info_inactive));
 

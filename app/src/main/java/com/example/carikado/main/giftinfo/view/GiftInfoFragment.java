@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,18 +16,16 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.carikado.giftinfodetail.view.activity.GiftInfoDetailActivity;
 import com.example.carikado.main.giftinfo.adapter.GiftInfoAdapter;
 import com.example.carikado.R;
 import com.example.carikado.main.giftinfo.contract.GiftInfoContract;
 import com.example.carikado.main.giftinfo.model.GiftInfo;
-import com.example.carikado.main.giftinfo.model.GiftInfoAge;
-import com.example.carikado.main.giftinfo.model.GiftInfoBudget;
 import com.example.carikado.review.view.activity.ReviewActivity;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,6 +42,9 @@ public class GiftInfoFragment extends Fragment implements GiftInfoContract.View 
 
     @BindView(R.id.rv_gift_info)
     public RecyclerView mRvGiftInfo;
+
+    @BindView(R.id.srl_gift_info)
+    public SwipeRefreshLayout mSrlGiftInfo;
 
     @BindView(R.id.tb_gift_info)
     public Toolbar mTbGiftInfo;
@@ -71,6 +73,9 @@ public class GiftInfoFragment extends Fragment implements GiftInfoContract.View 
         mRvGiftInfo.setLayoutManager(new LinearLayoutManager(getContext()));
         mRvGiftInfo.setHasFixedSize(true);
         mRvGiftInfo.setNestedScrollingEnabled(false);
+
+        mSrlGiftInfo.setColorSchemeResources(R.color.colorAccent, R.color.colorPrimary, R.color.colorPrimaryDark);
+        mSrlGiftInfo.setOnRefreshListener(new OnRefreshListener());
 
         return view;
     }
@@ -111,45 +116,35 @@ public class GiftInfoFragment extends Fragment implements GiftInfoContract.View 
     }
 
     @Override
-    public void showGiftInfos() {
-        if (mGiftInfos == null) {
+    public void showFirstGiftInfos() {
+        if (mGiftInfos == null)
             mGiftInfos = new ArrayList<>();
 
-            GiftInfo giftInfo = new GiftInfo();
+        mSrlGiftInfo.post(new Runnable() {
 
-            GiftInfoAge giftInfoAge = new GiftInfoAge("3", "30");
-            GiftInfoBudget giftInfoBudget = new GiftInfoBudget("10.000", "2.500.000");
+            @Override
+            public void run() {
+                mSrlGiftInfo.setRefreshing(true);
+                mGiftInfoPresenter.loadFirstGiftInfos(mGiftInfos);
+            }
+        });
+    }
 
-            giftInfo.setTitle("Boneka Teddy Bear");
-            giftInfo.setCreatedAt(new Date());
-            giftInfo.setDescription("Sebuah boneka berbentuk beruang");
-            giftInfo.setEssence("Boneka dimaksudkan agar si penerima hadiah tidak pernah merasa sendiri dan selalu merasa memiliki teman");
-            giftInfo.setGiftInfoAge(giftInfoAge);
-            giftInfo.setGiftInfoBudget(giftInfoBudget);
+    @Override
+    public void notifyAdapter() {
+        mSrlGiftInfo.setRefreshing(false);
 
-            mGiftInfos.add(giftInfo);
-
-            giftInfo = new GiftInfo();
-
-            giftInfoAge = new GiftInfoAge("8", "24");
-            giftInfoBudget = new GiftInfoBudget("50.000", "500.000");
-
-            giftInfo.setTitle("Jam Beker");
-            giftInfo.setCreatedAt(new Date());
-            giftInfo.setDescription("Sebuah jam yang ditaruh dimeja dan memiliki alarm");
-            giftInfo.setEssence("Hadiah ini diberikan dengan maksud agar si penerima dapat selalu tepat waktu");
-            giftInfo.setGiftInfoAge(giftInfoAge);
-            giftInfo.setGiftInfoBudget(giftInfoBudget);
-
-            mGiftInfos.add(giftInfo);
-        }
-
-        mGiftInfoPresenter.loadGiftInfos(mGiftInfos);
-
-        if (mGiftInfoAdapter == null)
+        if (mGiftInfoAdapter == null) {
             mGiftInfoAdapter = new GiftInfoAdapter(getContext(), mGiftInfos, mGiftInfoPresenter);
+            mRvGiftInfo.setAdapter(mGiftInfoAdapter);
+        } else
+            mGiftInfoAdapter.notifyDataSetChanged();
+    }
 
-        mRvGiftInfo.setAdapter(mGiftInfoAdapter);
+    @Override
+    public void showToastMessage(@NonNull String message) {
+        mSrlGiftInfo.setRefreshing(false);
+        Toast.makeText(getContext(), message, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -164,5 +159,13 @@ public class GiftInfoFragment extends Fragment implements GiftInfoContract.View 
         intent.putExtra("Gift Info", giftInfo);
 
         startActivity(intent);
+    }
+
+    private class OnRefreshListener implements SwipeRefreshLayout.OnRefreshListener {
+
+        @Override
+        public void onRefresh() {
+            mGiftInfoPresenter.loadFirstGiftInfos(mGiftInfos);
+        }
     }
 }

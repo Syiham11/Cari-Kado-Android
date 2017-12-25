@@ -20,6 +20,8 @@ public interface FindGiftContract {
 
         void showGender();
         void showCategory();
+        void notifyCategory();
+        void showToastMessage(@NonNull String message);
         void showAgeEmpty();
         void hideAgeEmpty();
         void showBudgetFromEmpty();

@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.example.carikado.R;
 import com.example.carikado.giftinfodetail.viewholder.GiftInfoDetailCategoryViewHolder;
+import com.example.carikado.main.giftinfo.model.GiftInfoCategory;
 
 import java.util.ArrayList;
 
@@ -21,11 +22,11 @@ import java.util.ArrayList;
 
 public class GiftInfoDetailCategoryAdapter extends RecyclerView.Adapter<GiftInfoDetailCategoryViewHolder> {
 
-    private ArrayList giftInfoList;
+    private ArrayList<GiftInfoCategory> giftInfoList;
     private Context context;
     private LayoutInflater inflater;
 
-    public GiftInfoDetailCategoryAdapter(Context context, ArrayList giftInfoList) {
+    public GiftInfoDetailCategoryAdapter(Context context, ArrayList<GiftInfoCategory> giftInfoList) {
         this.context = context;
         this.giftInfoList = giftInfoList;
 
@@ -40,7 +41,9 @@ public class GiftInfoDetailCategoryAdapter extends RecyclerView.Adapter<GiftInfo
 
     @Override
     public void onBindViewHolder(GiftInfoDetailCategoryViewHolder holder, int position) {
-        holder.tvGiftInfoDetailCategory.setText((String) giftInfoList.get(position));
+        GiftInfoCategory giftInfoCategory = giftInfoList.get(position);
+
+        holder.tvGiftInfoDetailCategory.setText(giftInfoCategory.getName());
     }
 
     @Override

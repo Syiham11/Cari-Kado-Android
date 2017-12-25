@@ -20,6 +20,6 @@ public interface GiftInfoDataSource {
         void onLoadFailed(@NonNull String message);
     }
 
-    void LoadGiftInfos(@NonNull HashMap<String, String> params,
+    void loadGiftInfos(@NonNull HashMap<String, Integer> params,
                        @NonNull LoadGiftInfosCallback loadGiftInfosCallback);
 }

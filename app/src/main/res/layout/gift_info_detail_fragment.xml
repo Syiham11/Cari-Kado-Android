@@ -238,7 +238,7 @@
                         android:layout_marginEnd="@dimen/activity_8dp_default_margin"
                         android:layout_marginStart="@dimen/activity_8dp_default_margin"
                         android:layout_toEndOf="@id/tv_gift_info_detail_budget_to"
-                        android:text="@string/year"
+                        android:text="@string/rupiah"
                         android:textAppearance="?android:textAppearanceMedium"
                         android:textColor="@color/colorWhite" />
 

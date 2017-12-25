@@ -1,10 +1,16 @@
 package com.example.carikado.main.giftinfo.presenter;
 
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.example.carikado.main.giftinfo.contract.GiftInfoContract;
+import com.example.carikado.main.giftinfo.datasource.GiftInfoDataSource;
+import com.example.carikado.main.giftinfo.datasource.GiftInfoRepository;
 import com.example.carikado.main.giftinfo.model.GiftInfo;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -17,8 +23,14 @@ import java.util.List;
 public class GiftInfoPresenter implements GiftInfoContract.Presenter {
 
     private final GiftInfoContract.View mView;
+    private GiftInfoRepository mGiftInfoRepository;
 
-    public GiftInfoPresenter(GiftInfoContract.View view) {
+    private Integer page = 1;
+    private Integer pageSize = 10;
+    private Integer sort = 1;
+
+    public GiftInfoPresenter(GiftInfoRepository giftInfoRepository, @NonNull GiftInfoContract.View view) {
+        mGiftInfoRepository = giftInfoRepository;
         mView = view;
         mView.setPresenter(this);
     }
@@ -35,7 +47,7 @@ public class GiftInfoPresenter implements GiftInfoContract.Presenter {
 
     @Override
     public void onResume() {
-        mView.showGiftInfos();
+        mView.showFirstGiftInfos();
     }
 
     @Override
@@ -53,9 +65,41 @@ public class GiftInfoPresenter implements GiftInfoContract.Presenter {
         // Do nothing
     }
 
+    private void loadGiftInfos(@NonNull final List giftInfoList) {
+        HashMap<String, Integer> params = new HashMap<>();
+
+        params.put("page", page);
+        params.put("pageSize", pageSize);
+        params.put("sort", sort);
+
+        mGiftInfoRepository.loadGiftInfos(params, new GiftInfoDataSource.LoadGiftInfosCallback() {
+
+            @Override
+            public void onLoadSuccess(@NonNull List giftInfos) {
+                for (Object o : giftInfos)
+                    giftInfoList.add(o);
+
+                mView.notifyAdapter();
+            }
+
+            @Override
+            public void onLoadFailed(@NonNull String message) {
+                mView.showToastMessage(message);
+            }
+        });
+    }
+
     @Override
-    public void loadGiftInfos(@NonNull List giftInfoList) {
-        // TODO load gift info from repository
+    public void loadFirstGiftInfos(@NonNull List giftInfoList) {
+        page = 1;
+        giftInfoList.clear();
+        loadGiftInfos(giftInfoList);
+    }
+
+    @Override
+    public void loadNextGiftInfos(@NonNull List giftInfoList) {
+        page++;
+        loadGiftInfos(giftInfoList);
     }
 
     @Override
