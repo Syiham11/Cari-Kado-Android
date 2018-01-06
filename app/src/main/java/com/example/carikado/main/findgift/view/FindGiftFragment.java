@@ -1,5 +1,6 @@
 package com.example.carikado.main.findgift.view;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -21,7 +22,7 @@ import android.widget.Toast;
 
 import com.example.carikado.R;
 import com.example.carikado.main.findgift.contract.FindGiftContract;
-import com.example.carikado.main.giftinfo.model.GiftInfoCategory;
+import com.example.carikado.main.findgift.model.Search;
 import com.example.carikado.resultgift.view.activity.ResultGiftActivity;
 import com.example.carikado.review.view.activity.ReviewActivity;
 
@@ -69,17 +70,22 @@ public class FindGiftFragment extends Fragment implements FindGiftContract.View 
 
     @OnClick(R.id.btn_search)
     public void search() {
-        String age = mTietAge.getText().toString();
+        String ageString = mTietAge.getText().toString();
+        String budgetFromString = mTietBudgetFrom.getText().toString();
+        String budgetToString = mTietBudgetTo.getText().toString();
+
+        Integer age = ageString.equals("") ? 0 : Integer.valueOf(ageString);
         String gender = (String) mSpGender.getSelectedItem();
-        String budgetFrom = mTietBudgetFrom.getText().toString();
-        String budgetTo = mTietBudgetTo.getText().toString();
+        Integer budgetFrom = budgetFromString.equals("") ? 0 : Integer.valueOf(budgetFromString);
+        Integer budgetTo = budgetToString.equals("") ? 0 : Integer.valueOf(budgetToString);
         String category = (String) mSpCategory.getSelectedItem();
 
-        // TODO buat model untuk dikirim ke presenter
-        mFindGiftPresenter.findGift(); // TODO mengirim model sebagai parameter
+        Search search = new Search(age, gender, budgetFrom, budgetTo, category);
+        mFindGiftPresenter.findGift(search);
     }
 
-    private ArrayList<GiftInfoCategory> mGiftInfoCategories;
+    private ArrayAdapter<String> mGenderAdapter, mCategoryAdapter;
+    private ArrayList<String> mGenders, mGiftInfoCategories;
     private FindGiftContract.Presenter mFindGiftPresenter;
 
     public FindGiftFragment() {
@@ -138,9 +144,27 @@ public class FindGiftFragment extends Fragment implements FindGiftContract.View 
     }
 
     @Override
+    public Context getContextView() {
+        return getContext();
+    }
+
+    @Override
     public void showGender() {
-        ArrayList<String> genderList = new ArrayList<>();
-        mFindGiftPresenter.loadGender(genderList);
+        if (mGenders == null)
+            mGenders = new ArrayList<>();
+
+        mFindGiftPresenter.loadGender(mGenders);
+    }
+
+    @Override
+    public void notifyGender() {
+        if (mGenderAdapter == null) {
+            mGenderAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, mGenders);
+            mGenderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+            mSpGender.setAdapter(mGenderAdapter);
+        } else
+            mGenderAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -153,7 +177,13 @@ public class FindGiftFragment extends Fragment implements FindGiftContract.View 
 
     @Override
     public void notifyCategory() {
+        if (mCategoryAdapter == null) {
+            mCategoryAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, mGiftInfoCategories);
+            mCategoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
+            mSpCategory.setAdapter(mCategoryAdapter);
+        } else
+            mCategoryAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -194,15 +224,12 @@ public class FindGiftFragment extends Fragment implements FindGiftContract.View 
         mTilBudgetTo.setErrorEnabled(false);
     }
 
-    /*
-     * TODO punya parameter model untuk dikirim
-     */
     @Override
-    public void showResultGift() {
+    public void showResultGift(@NonNull Search search) {
         Intent intent = new Intent(getContext(), ResultGiftActivity.class);
         Bundle bundle = new Bundle();
 
-        // TODO menyimpan model ke bundle
+        bundle.putSerializable("search", search);
 
         intent.putExtras(bundle);
         startActivity(intent);

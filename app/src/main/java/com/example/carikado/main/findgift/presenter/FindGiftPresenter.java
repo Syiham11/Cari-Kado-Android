@@ -1,13 +1,16 @@
 package com.example.carikado.main.findgift.presenter;
 
 import android.support.annotation.NonNull;
-import android.util.Log;
+import android.text.TextUtils;
 
 import com.example.carikado.main.findgift.contract.FindGiftContract;
+import com.example.carikado.main.findgift.datasource.GenderDataSource;
+import com.example.carikado.main.findgift.datasource.GenderRepository;
 import com.example.carikado.main.findgift.datasource.GiftInfoCategoryDataSource;
 import com.example.carikado.main.findgift.datasource.GiftInfoCategoryRepository;
+import com.example.carikado.main.findgift.model.Search;
+import com.example.carikado.main.giftinfo.model.GiftInfoCategory;
 
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -20,11 +23,14 @@ import java.util.List;
 public class FindGiftPresenter implements FindGiftContract.Presenter {
 
     private final FindGiftContract.View mView;
+    private final GenderRepository mGenderRepository;
     private final GiftInfoCategoryRepository mGiftInfoCategoryRepository;
 
     public FindGiftPresenter(@NonNull GiftInfoCategoryRepository giftInfoCategoryRepository,
+                             @NonNull GenderRepository genderRepository,
                              @NonNull FindGiftContract.View view) {
         mGiftInfoCategoryRepository = giftInfoCategoryRepository;
+        mGenderRepository = genderRepository;
         mView = view;
         view.setPresenter(this);
     }
@@ -61,8 +67,22 @@ public class FindGiftPresenter implements FindGiftContract.Presenter {
     }
 
     @Override
-    public void loadGender(@NonNull List genderList) {
-        // TODO load gender from database
+    public void loadGender(@NonNull final List genderList) {
+        mGenderRepository.loadGenders(new GenderDataSource.LoadGendersCallback() {
+
+            @Override
+            public void onLoadSuccess(@NonNull List genders) {
+                for (Object o : genders)
+                    genderList.add(o);
+
+                mView.notifyGender();
+            }
+
+            @Override
+            public void onLoadFailed(@NonNull String message) {
+                mView.showToastMessage(message);
+            }
+        });
     }
 
     @Override
@@ -71,8 +91,10 @@ public class FindGiftPresenter implements FindGiftContract.Presenter {
 
             @Override
             public void onLoadSuccess(@NonNull List giftInfoCategories) {
-                for (Object o : giftInfoCategories)
-                    categoryList.add(o);
+                for (Object o : giftInfoCategories) {
+                    GiftInfoCategory giftInfoCategory = (GiftInfoCategory) o;
+                    categoryList.add(giftInfoCategory.getName());
+                }
 
                 mView.notifyCategory();
             }
@@ -84,35 +106,31 @@ public class FindGiftPresenter implements FindGiftContract.Presenter {
         });
     }
 
-    /*
-     * TODO punya parameter model
-     */
     @Override
-    public void findGift() {
+    public void findGift(@NonNull Search search) {
         boolean isValidated = true;
 
-//        if (TextUtils.isEmpty(findGift.getAge())) {
-//            mView.showAgeEmpty();
-//            isValidated = false;
-//        } else
-//            mView.hideAgeEmpty();
+        if (search.getAge() == 0) {
+            mView.showAgeEmpty();
+            isValidated = false;
+        } else
+            mView.hideAgeEmpty();
 
-//        if (TextUtils.isEmpty(findGift.getBudgetFrom())) {
-//            mView.showBudgetFromEmpty();
-//            isValidated = false;
-//        } else
-//            mView.hideBudgetFromEmpty();
+        if (search.getBudgetFrom() == 0) {
+            mView.showBudgetFromEmpty();
+            isValidated = false;
+        } else
+            mView.hideBudgetFromEmpty();
 
-//        if (TextUtils.isEmpty(findGift.getBudgetTo())) {
-//            mView.showBudgetToEmpty();
-//            isValidated = false;
-//        } else
-//            mView.hideBudgetToEmpty();
+        if (search.getBudgetTo() == 0) {
+            mView.showBudgetToEmpty();
+            isValidated = false;
+        } else
+            mView.hideBudgetToEmpty();
 
-//        if (isValidated) {
-            mView.showResultGift(); // TODO punya parameter model
-            // TODO search gift from API
-//        }
+        if (isValidated) {
+            mView.showResultGift(search);
+        }
     }
 
     @Override

@@ -75,9 +75,6 @@ public class GiftInfoAdapter extends RecyclerView.Adapter<GIftInfoViewHolder> {
 
         cvGiftInfo.setOnClickListener(new GiftInfoClickListener(position));
         tvGiftInfo.setText(giftInfo.getTitle());
-
-        if (position == getItemCount())
-            mPresenter.loadNextGiftInfos(mGiftInfos);
     }
 
     /**

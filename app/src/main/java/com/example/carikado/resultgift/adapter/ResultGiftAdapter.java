@@ -6,12 +6,18 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RatingBar;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.carikado.R;
+import com.example.carikado.resultgift.contract.ResultGiftContract;
+import com.example.carikado.resultgift.model.Gift;
 import com.example.carikado.resultgift.viewholder.ResultGiftViewHolder;
 
 import java.util.ArrayList;
-import java.util.Random;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by Faza Zulfika P P on 10/3/2017.
@@ -19,37 +25,49 @@ import java.util.Random;
 
 public class ResultGiftAdapter extends RecyclerView.Adapter<ResultGiftViewHolder> {
 
-    private ArrayList giftList;
-    private Context context;
-    private LayoutInflater inflater;
+    private ArrayList<Gift> mGifts;
+    private Context mContext;
+    private LayoutInflater mInflater;
+    private ResultGiftContract.Presenter mPresenter;
 
-    public ResultGiftAdapter(Context context, ArrayList giftList) {
-        this.giftList = giftList;
-        this.context = context;
+    public ResultGiftAdapter(Context context, ArrayList<Gift> gifts, ResultGiftContract.Presenter presenter) {
+        mGifts = gifts;
+        mContext = context;
+        mPresenter = presenter;
 
-        this.inflater = LayoutInflater.from(context);
+        mInflater = LayoutInflater.from(context);
     }
 
     @Override
     public ResultGiftViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.result_gift_item, parent, false);
+        View view = mInflater.inflate(R.layout.result_gift_item, parent, false);
         return new ResultGiftViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ResultGiftViewHolder holder, int position) {
         CardView cvResultGift = holder.cvResultGift;
+        CircleImageView civResultGift = holder.civResultGift;
+        RatingBar rbResultGiftRate = holder.rbResultGiftRate;
+        TextView tvResultGiftName = holder.tvResultGiftName;
+        TextView tvResultGiftPrice = holder.tvResultGiftPrice;
+        TextView tvResultGiftStore = holder.tvResultGiftStore;
+
+        Gift gift = mGifts.get(position);
+
+        Glide.with(mContext).load(gift.getGiftPictures().get(0).getUrl()).into(civResultGift);
+
+        rbResultGiftRate.setNumStars(gift.getRating());
+        tvResultGiftName.setText(gift.getName());
+        tvResultGiftPrice.setText(String.valueOf(gift.getPrice()));
+        tvResultGiftStore.setText(gift.getStore());
 
         cvResultGift.setOnClickListener(new ResultGiftClickListener(position));
-        holder.rbResultGiftRate.setNumStars(new Random().nextInt(5) + 1);
-        holder.tvResultGiftName.setText((String) giftList.get(position));
-        holder.tvResultGiftPrice.setText((String) giftList.get(position));
-        holder.tvResultGiftStore.setText((String) giftList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return giftList.size();
+        return mGifts.size();
     }
 
     private class ResultGiftClickListener implements View.OnClickListener {
@@ -62,7 +80,8 @@ public class ResultGiftAdapter extends RecyclerView.Adapter<ResultGiftViewHolder
 
         @Override
         public void onClick(View v) {
-            // Do nothing
+            Gift gift = mGifts.get(mPosition);
+            mPresenter.openGiftDetail(gift);
         }
     }
 }

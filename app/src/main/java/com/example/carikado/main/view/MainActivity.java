@@ -96,7 +96,9 @@ public class MainActivity extends AppCompatActivity {
 
         objectHashMap.put(mTag, mFindGiftTag);
         objectHashMap.put(mFragmentTag, findGiftFragment);
-        objectHashMap.put(mPresenterTag, new FindGiftPresenter(Injection.proviceGiftInfoCategoryRepository(this), findGiftFragment));
+        objectHashMap.put(mPresenterTag, new FindGiftPresenter(Injection.provideGiftInfoCategoryRepository(this),
+                Injection.provideGenderRepository(this),
+                findGiftFragment));
         objectHashMap.put(mActiveTag, ContextCompat.getDrawable(this, R.drawable.ic_find_gift_active));
         objectHashMap.put(mInactiveTag, ContextCompat.getDrawable(this, R.drawable.ic_find_gift_inactive));
 
@@ -109,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
 
         objectHashMap.put(mTag, mGiftInfoTag);
         objectHashMap.put(mFragmentTag, giftInfoFragment);
-        objectHashMap.put(mPresenterTag, new GiftInfoPresenter(Injection.proviceGiftInfoRepository(this), giftInfoFragment));
+        objectHashMap.put(mPresenterTag, new GiftInfoPresenter(Injection.provideGiftInfoRepository(this), giftInfoFragment));
         objectHashMap.put(mActiveTag, ContextCompat.getDrawable(this, R.drawable.ic_gift_info_active));
         objectHashMap.put(mInactiveTag, ContextCompat.getDrawable(this, R.drawable.ic_gift_info_inactive));
 
@@ -172,6 +174,8 @@ public class MainActivity extends AppCompatActivity {
             int id = item.getItemId();
             item.setEnabled(true);
             item.setChecked(true);
+
+            setBottomNavigationMenu();
 
             HashMap<String, Object> menu;
 

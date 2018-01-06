@@ -33,7 +33,7 @@ public class GiftInfoDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gift_info_detail_activity);
 
-        GiftInfo giftInfo = (GiftInfo) getIntent().getSerializableExtra("Gift Info"); // TODO ambil model dari activity sebelumnya
+        GiftInfo giftInfo = (GiftInfo) getIntent().getSerializableExtra("Gift Info");
 
         GiftInfoDetailFragment giftInfoDetailFragment = GiftInfoDetailFragment.newInstance(giftInfo);
         ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), giftInfoDetailFragment,

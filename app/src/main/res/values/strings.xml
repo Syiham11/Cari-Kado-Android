@@ -1,18 +1,19 @@
 <resources>
     <string name="app_name">Cari Kado</string>
-    <string name="base_url">http://192.168.43.210:8080/api/</string>
+    <string name="base_url">http://192.168.43.200:8080/api/</string>
 
     <string name="find_gift">Cari Kado</string>
     <string name="gift_info">Info Kado</string>
     <string name="help">Bantuan</string>
     <string name="review">Review</string>
+    <string name="last_page_error">Already at last pages</string>
 
     <string name="exit">Keluar</string>
     <string name="exit_confirm">Apakah anda yakin ingin keluar ?</string>
     <string name="yes">Iya</string>
     <string name="no">Tidak</string>
 
-    <string name="age">Usia</string>
+    <string name="ageFrom">Usia</string>
     <string name="age_empty">Usia tidak dapat kosong</string>
     <string name="gender">Jenis Kelamin</string>
     <string name="budget">Budget</string>
@@ -20,6 +21,7 @@
     <string name="to">sampai</string>
     <string name="category">Kategori</string>
     <string name="search">Cari</string>
+    <string name="gender_error">Data gender tidak ditemukan</string>
     <string name="gift_info_category_error">Tidak dapat mengambil data kategori</string>
 
     <string name="sort_by">Urutkan berdasarkan</string>
@@ -30,6 +32,8 @@
     <string name="essence">Esensi</string>
     <string name="year">tahun</string>
     <string name="rupiah">rupiah</string>
+    <string name="result_gift_error">Tidak dapat mengambil data kado</string>
+    <string name="result_gift_not_found">Kado tidak ditemukan</string>
 
     <string name="name">Nama</string>
     <string name="name_empty">Nama tidak dapat kosong</string>
@@ -48,6 +52,9 @@
     <string name="chat">Chatting</string>
     <string name="call">Telepon</string>
     <string name="contact">Hubungi</string>
+    <string name="chat_desc">Komunikasikan ide dan pendapat anda dengan kami melalui fitur chat dibawah ini</string>
+    <string name="email_desc">Kirim pesan dan diskusi mu melalui fitur email kami</string>
+    <string name="contact_desc">Tidak ingin menunggu ? telepon kami sekarang</string>
 
     <string name="email_user">Email Anda</string>
     <string name="email_user_empty">Email anda tidak dapat kosong</string>
@@ -62,24 +69,9 @@
     <string name="base_email_subject">Bantuan Kado : </string>
     <string name="email_not_found">Aplikasi email tidak ditemukan#8230</string>
 
-    <string-array name="loren_ipsum">
-        <item>Loren</item>
-        <item>Ipsum</item>
-        <item>Lopez</item>
-        <item>Mark</item>
-        <item>Marquez</item>
-    </string-array>
-
     <string-array name="gender_array">
+        <item>All</item>
         <item>Male</item>
         <item>Female</item>
-    </string-array>
-    
-    <string-array name="category_array">
-        <item>Perhiasan</item>
-        <item>Barang Elektronik</item>
-        <item>Makanan</item>
-        <item>Minuman</item>
-        <item>Karya Tangan</item>
     </string-array>
 </resources>

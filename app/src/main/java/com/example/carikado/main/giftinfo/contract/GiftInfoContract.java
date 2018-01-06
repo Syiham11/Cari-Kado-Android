@@ -20,7 +20,7 @@ public interface GiftInfoContract {
     interface View extends BaseView<Presenter> {
 
         void showFirstGiftInfos();
-        void notifyAdapter();
+        void notifyGiftInfos();
         void showToastMessage(@NonNull String message);
         void showReview();
         void showGiftInfoDetail(@NonNull GiftInfo giftInfo);

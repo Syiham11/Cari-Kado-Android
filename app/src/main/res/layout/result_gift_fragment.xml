@@ -1,82 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/srl_result_gift"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.carikado.resultgift.view.activity.ResultGiftActivity">
 
-    <RelativeLayout
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/nsv_result_gift"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/tb_result_gift"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:theme="@style/AppTheme.Toolbar"
-            app:popupTheme="@style/AppTheme.NoActionBar" />
+            android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingBottom="@dimen/activity_16dp_default_margin"
-            android:paddingEnd="@dimen/activity_16dp_default_margin"
-            android:paddingStart="@dimen/activity_16dp_default_margin"
-            android:paddingTop="@dimen/activity_16dp_default_margin">
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/tb_result_gift"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:theme="@style/AppTheme.Toolbar"
+                app:popupTheme="@style/AppTheme.NoActionBar" />
 
-            <ImageView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:contentDescription="@string/find_gift"
-                android:paddingEnd="@dimen/activity_40dp_default_margin"
-                android:paddingStart="@dimen/activity_40dp_default_margin"
-                android:src="@drawable/ic_find_gift_header" />
-
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/tiet_search"
-                style="@style/AppTheme.EditText.Search"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/activity_40dp_default_margin"
-                android:layout_marginStart="@dimen/activity_40dp_default_margin"
-                android:hint="@string/search"
-                android:inputType="text"
-                android:paddingBottom="@dimen/activity_8dp_default_margin"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/activity_16dp_default_margin"
                 android:paddingEnd="@dimen/activity_16dp_default_margin"
                 android:paddingStart="@dimen/activity_16dp_default_margin"
-                android:paddingTop="@dimen/activity_8dp_default_margin"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/colorBlack" />
+                android:paddingTop="@dimen/activity_16dp_default_margin">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/activity_4dp_default_margin"
-                android:layout_marginBottom="@dimen/activity_16dp_default_margin"
-                android:layout_marginEnd="@dimen/activity_16dp_default_margin"
-                android:layout_marginStart="@dimen/activity_16dp_default_margin"
-                android:layout_marginTop="@dimen/activity_24dp_default_margin"
-                android:background="@color/colorPrimaryDark" />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/find_gift"
+                    android:paddingEnd="@dimen/activity_40dp_default_margin"
+                    android:paddingStart="@dimen/activity_40dp_default_margin"
+                    android:src="@drawable/ic_find_gift_header" />
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_result_gift"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:scrollbars="none"
-                android:visibility="gone" />
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/tiet_search"
+                    style="@style/AppTheme.EditText.Search"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/activity_40dp_default_margin"
+                    android:layout_marginStart="@dimen/activity_40dp_default_margin"
+                    android:hint="@string/search"
+                    android:inputType="text"
+                    android:paddingBottom="@dimen/activity_8dp_default_margin"
+                    android:paddingEnd="@dimen/activity_16dp_default_margin"
+                    android:paddingStart="@dimen/activity_16dp_default_margin"
+                    android:paddingTop="@dimen/activity_8dp_default_margin"
+                    android:textAppearance="?android:textAppearanceMedium"
+                    android:textColor="@color/colorBlack" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Under Maintenance"
-                android:textAppearance="?android:textAppearanceLarge"
-                android:textColor="@color/colorPrimary" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/activity_4dp_default_margin"
+                    android:layout_marginBottom="@dimen/activity_16dp_default_margin"
+                    android:layout_marginEnd="@dimen/activity_16dp_default_margin"
+                    android:layout_marginStart="@dimen/activity_16dp_default_margin"
+                    android:layout_marginTop="@dimen/activity_24dp_default_margin"
+                    android:background="@color/colorPrimaryDark" />
 
-        </LinearLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-    </RelativeLayout>
+                    <TextView
+                        android:id="@+id/tv_result_gift"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/result_gift_not_found"
+                        android:textAppearance="?android:textAppearanceLarge"
+                        android:textColor="@color/colorPrimary" />
 
-</android.support.v4.widget.NestedScrollView>
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rv_result_gift"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:scrollbars="none"
+                        android:visibility="gone" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.v4.widget.SwipeRefreshLayout>

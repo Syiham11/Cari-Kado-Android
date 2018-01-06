@@ -2,6 +2,9 @@ package com.example.carikado.main.giftinfo.datasource;
 
 import android.support.annotation.NonNull;
 
+import com.example.carikado.base.model.MyPage;
+import com.example.carikado.main.giftinfo.model.GiftInfo;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -16,10 +19,12 @@ public interface GiftInfoDataSource {
 
     interface LoadGiftInfosCallback {
 
-        void onLoadSuccess(@NonNull List giftInfos);
+        void onLoadSuccess(@NonNull MyPage<List<GiftInfo>> giftInfoPages);
         void onLoadFailed(@NonNull String message);
     }
 
-    void loadGiftInfos(@NonNull HashMap<String, Integer> params,
+    void loadGiftInfos(@NonNull Integer page,
+                       @NonNull Integer pageSize,
+                       @NonNull Integer sort,
                        @NonNull LoadGiftInfosCallback loadGiftInfosCallback);
 }

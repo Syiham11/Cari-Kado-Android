@@ -1,6 +1,7 @@
 package com.example.carikado.emailhelp.view.fragment;
 
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -95,6 +96,11 @@ public class EmailHelpFragment extends Fragment implements EmailHelpContract.Vie
     @Override
     public void setPresenter(@NonNull EmailHelpContract.Presenter presenter) {
         mPresenter = presenter;
+    }
+
+    @Override
+    public Context getContextView() {
+        return getContext();
     }
 
     @Override

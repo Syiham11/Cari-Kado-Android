@@ -4,6 +4,7 @@ import com.example.carikado.base.model.MyPage;
 import com.example.carikado.base.model.MyResponse;
 import com.example.carikado.main.giftinfo.model.GiftInfo;
 import com.example.carikado.main.giftinfo.model.GiftInfoCategory;
+import com.example.carikado.resultgift.model.Gift;
 import com.example.carikado.review.model.Review;
 
 import java.util.List;
@@ -38,4 +39,14 @@ public interface ApiInterface {
 
     @GET("gift-info/{giftInfoId}")
     Call<MyResponse<GiftInfo>> findGiftInfo(@Path("giftInfoId") Integer giftInfoId);
+
+    @GET("gift/suggestion")
+    Call<MyResponse<MyPage<List<Gift>>>> findGifts(@Query("page") Integer page,
+                                                  @Query("pageSize") Integer pageSize,
+                                                  @Query("sort") Integer sort,
+                                                  @Query("gender") String gender,
+                                                  @Query("age") Integer age,
+                                                  @Query("budgetFrom") Integer budgetFrom,
+                                                  @Query("budgetTo") Integer budgetTo,
+                                                  @Query("category") String category);
 }

@@ -29,7 +29,7 @@ public class GiftInfoRepository implements GiftInfoDataSource {
     }
 
     @Override
-    public void loadGiftInfos(@NonNull HashMap<String, Integer> params, @NonNull LoadGiftInfosCallback loadGiftInfosCallback) {
-        mGiftInfoDataSource.loadGiftInfos(params, loadGiftInfosCallback);
+    public void loadGiftInfos(@NonNull Integer page, @NonNull Integer pageSize, @NonNull Integer sort, @NonNull LoadGiftInfosCallback loadGiftInfosCallback) {
+        mGiftInfoDataSource.loadGiftInfos(page, pageSize, sort, loadGiftInfosCallback);
     }
 }

@@ -1,16 +1,14 @@
 package com.example.carikado.main.giftinfo.presenter;
 
 import android.support.annotation.NonNull;
-import android.util.Log;
 
+import com.example.carikado.R;
+import com.example.carikado.base.model.MyPage;
 import com.example.carikado.main.giftinfo.contract.GiftInfoContract;
 import com.example.carikado.main.giftinfo.datasource.GiftInfoDataSource;
 import com.example.carikado.main.giftinfo.datasource.GiftInfoRepository;
 import com.example.carikado.main.giftinfo.model.GiftInfo;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -26,6 +24,7 @@ public class GiftInfoPresenter implements GiftInfoContract.Presenter {
     private GiftInfoRepository mGiftInfoRepository;
 
     private Integer page = 1;
+    private Integer lastPage = 1;
     private Integer pageSize = 10;
     private Integer sort = 1;
 
@@ -66,20 +65,17 @@ public class GiftInfoPresenter implements GiftInfoContract.Presenter {
     }
 
     private void loadGiftInfos(@NonNull final List giftInfoList) {
-        HashMap<String, Integer> params = new HashMap<>();
-
-        params.put("page", page);
-        params.put("pageSize", pageSize);
-        params.put("sort", sort);
-
-        mGiftInfoRepository.loadGiftInfos(params, new GiftInfoDataSource.LoadGiftInfosCallback() {
+        mGiftInfoRepository.loadGiftInfos(page, pageSize, sort, new GiftInfoDataSource.LoadGiftInfosCallback() {
 
             @Override
-            public void onLoadSuccess(@NonNull List giftInfos) {
-                for (Object o : giftInfos)
-                    giftInfoList.add(o);
+            public void onLoadSuccess(@NonNull MyPage<List<GiftInfo>> giftInfoPages) {
+                List<GiftInfo> giftInfos = giftInfoPages.getData();
 
-                mView.notifyAdapter();
+                for (GiftInfo giftInfo : giftInfos)
+                    giftInfoList.add(giftInfo);
+
+                lastPage = giftInfoPages.getLastPage();
+                mView.notifyGiftInfos();
             }
 
             @Override
@@ -98,8 +94,13 @@ public class GiftInfoPresenter implements GiftInfoContract.Presenter {
 
     @Override
     public void loadNextGiftInfos(@NonNull List giftInfoList) {
-        page++;
-        loadGiftInfos(giftInfoList);
+        if (!page.equals(lastPage)) {
+            page++;
+            loadGiftInfos(giftInfoList);
+        } else {
+            String message = mView.getContextView().getString(R.string.last_page_error);
+            mView.showToastMessage(message);
+        }
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.example.carikado.splashscreen.view.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -95,6 +96,11 @@ public class SplashFragment extends Fragment implements SplashContract.View {
     @Override
     public void setPresenter(@NonNull SplashContract.Presenter presenter) {
         mSplashPresenter = presenter;
+    }
+
+    @Override
+    public Context getContextView() {
+        return getContext();
     }
 
     @Override

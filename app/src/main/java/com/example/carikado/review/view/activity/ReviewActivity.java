@@ -2,10 +2,7 @@ package com.example.carikado.review.view.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 
 import com.example.carikado.R;
 import com.example.carikado.review.presenter.ReviewPresenter;
@@ -32,6 +29,6 @@ public class ReviewActivity extends AppCompatActivity {
         ActivityUtils.addFragmentToActivity(getSupportFragmentManager(), reviewFragment,
                 R.id.fl_review);
 
-        new ReviewPresenter(Injection.proviceReviewRepository(this), reviewFragment); // TODO tambahkan repository
+        new ReviewPresenter(Injection.provideReviewRepository(this), reviewFragment); // TODO tambahkan repository
     }
 }

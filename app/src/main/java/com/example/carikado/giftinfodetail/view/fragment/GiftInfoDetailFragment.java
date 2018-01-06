@@ -1,5 +1,6 @@
 package com.example.carikado.giftinfodetail.view.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -19,7 +20,6 @@ import com.example.carikado.R;
 import com.example.carikado.giftinfodetail.adapter.GiftInfoDetailCategoryAdapter;
 import com.example.carikado.giftinfodetail.contract.GiftInfoDetailContract;
 import com.example.carikado.main.giftinfo.model.GiftInfo;
-import com.example.carikado.main.giftinfo.model.GiftInfoCategory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,7 +66,7 @@ public class GiftInfoDetailFragment extends Fragment implements GiftInfoDetailCo
     @BindView(R.id.rv_gift_info_detail_category)
     public RecyclerView mRvGiftInfoDetailCategory;
 
-    private ArrayList<GiftInfoCategory> giftInfoCategories;
+    private GiftInfo mGiftInfo;
     private GiftInfoDetailCategoryAdapter mAdapter;
     private GiftInfoDetailContract.Presenter mPresenter;
 
@@ -100,23 +100,8 @@ public class GiftInfoDetailFragment extends Fragment implements GiftInfoDetailCo
             actionBar.setDisplayShowHomeEnabled(true);
         }
 
-        giftInfoCategories = new ArrayList<>();
-
-        if (getArguments() != null) {
-            GiftInfo giftInfo = (GiftInfo) getArguments().getSerializable("Gift Info");
-
-            if (giftInfo != null) {
-                giftInfoCategories = (ArrayList<GiftInfoCategory>) giftInfo.getGiftInfoCategories();
-
-                ((TextView) view.findViewById(R.id.tv_gift_info_detail_name)).setText(giftInfo.getTitle());
-                ((TextView) view.findViewById(R.id.tv_gift_info_detail_description)).setText(giftInfo.getDescription());
-                ((TextView) view.findViewById(R.id.tv_gift_info_detail_essence)).setText(giftInfo.getEssence());
-                ((TextView) view.findViewById(R.id.tv_gift_info_detail_age_from)).setText(giftInfo.getGiftInfoAge().getFrom());
-                ((TextView) view.findViewById(R.id.tv_gift_info_detail_age_to)).setText(giftInfo.getGiftInfoAge().getTo());
-                ((TextView) view.findViewById(R.id.tv_gift_info_detail_budget_from)).setText(giftInfo.getGiftInfoBudget().getFrom());
-                ((TextView) view.findViewById(R.id.tv_gift_info_detail_budget_to)).setText(giftInfo.getGiftInfoBudget().getTo());
-            }
-        }
+        if (getArguments() != null)
+            mGiftInfo = (GiftInfo) getArguments().getSerializable("Gift Info");
 
         mRvGiftInfoDetailCategory.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         mRvGiftInfoDetailCategory.setHasFixedSize(true);
@@ -128,7 +113,7 @@ public class GiftInfoDetailFragment extends Fragment implements GiftInfoDetailCo
     @Override
     public void onStart() {
         super.onStart();
-        mPresenter.onStart(giftInfoCategories); // TODO menerima parameter model
+        mPresenter.onStart(mGiftInfo);
     }
 
     @Override
@@ -137,9 +122,19 @@ public class GiftInfoDetailFragment extends Fragment implements GiftInfoDetailCo
     }
 
     @Override
-    public void showDetail() {
-        // TODO masukkan parameter model
-        // TODO isikan setiap view dengan model
+    public Context getContextView() {
+        return getContext();
+    }
+
+    @Override
+    public void showDetail(@NonNull GiftInfo giftInfo) {
+        mTvGiftInfoDetailName.setText(giftInfo.getTitle());
+        mTvGiftInfoDetailDescription.setText(giftInfo.getDescription());
+        mTvGiftInfoDetailEssence.setText(giftInfo.getEssence());
+        mTvGiftInfoDetailAgeFrom.setText(String.valueOf(giftInfo.getGiftInfoAge().getFrom()));
+        mTvGiftInfoDetailAgeTo.setText(String.valueOf(giftInfo.getGiftInfoAge().getTo()));
+        mTvGiftInfoDetailBudgetFrom.setText(String.valueOf(giftInfo.getGiftInfoBudget().getFrom()));
+        mTvGiftInfoDetailBudgetTo.setText(String.valueOf(giftInfo.getGiftInfoBudget().getTo()));
     }
 
     @Override
@@ -149,8 +144,6 @@ public class GiftInfoDetailFragment extends Fragment implements GiftInfoDetailCo
 
     @Override
     public void showDetailCategory(@NonNull List categories) {
-        // TODO tampilkan category-category gift info
-
         mAdapter = new GiftInfoDetailCategoryAdapter(getContext(), (ArrayList) categories);
         mRvGiftInfoDetailCategory.setAdapter(mAdapter);
     }

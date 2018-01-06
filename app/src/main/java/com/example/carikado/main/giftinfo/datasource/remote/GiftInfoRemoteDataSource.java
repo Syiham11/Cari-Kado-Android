@@ -10,7 +10,6 @@ import com.example.carikado.main.giftinfo.datasource.GiftInfoDataSource;
 import com.example.carikado.main.giftinfo.model.GiftInfo;
 import com.example.carikado.rest.ApiClient;
 
-import java.util.HashMap;
 import java.util.List;
 
 import retrofit2.Call;
@@ -42,11 +41,7 @@ public class GiftInfoRemoteDataSource implements GiftInfoDataSource {
     }
 
     @Override
-    public void loadGiftInfos(@NonNull HashMap<String, Integer> params, @NonNull LoadGiftInfosCallback loadGiftInfosCallback) {
-        Integer page = params.get("page");
-        Integer pageSize = params.get("pageSize");
-        Integer sort = params.get("sort");
-
+    public void loadGiftInfos(@NonNull Integer page, @NonNull Integer pageSize, @NonNull Integer sort, @NonNull LoadGiftInfosCallback loadGiftInfosCallback) {
         Call<MyResponse<MyPage<List<GiftInfo>>>> loadGiftInfos = ApiClient.getApiInterface(mContext).findGiftInfos(page, pageSize, sort);
         loadGiftInfos.enqueue(new LoadGiftInfoResponseCallback(loadGiftInfosCallback));
     }
@@ -64,8 +59,8 @@ public class GiftInfoRemoteDataSource implements GiftInfoDataSource {
             MyResponse<MyPage<List<GiftInfo>>> myResponse = response.body();
 
             if (myResponse != null) {
-                List<GiftInfo> giftInfos = myResponse.getData().getData();
-                mLoadGiftInfosCallback.onLoadSuccess(giftInfos);
+                MyPage<List<GiftInfo>> giftInfoPages = myResponse.getData();
+                mLoadGiftInfosCallback.onLoadSuccess(giftInfoPages);
             } else {
                 String message = mContext.getString(R.string.gift_info_error);
                 mLoadGiftInfosCallback.onLoadFailed(message);

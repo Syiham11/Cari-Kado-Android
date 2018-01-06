@@ -1,10 +1,12 @@
 package com.example.carikado.main.giftinfo.view;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -40,6 +42,9 @@ import butterknife.ButterKnife;
 
 public class GiftInfoFragment extends Fragment implements GiftInfoContract.View {
 
+    @BindView(R.id.nsv_gift_info)
+    public NestedScrollView mNsvGiftInfo;
+
     @BindView(R.id.rv_gift_info)
     public RecyclerView mRvGiftInfo;
 
@@ -69,6 +74,8 @@ public class GiftInfoFragment extends Fragment implements GiftInfoContract.View 
 
         mTbGiftInfo.setTitle("");
         ((AppCompatActivity) getActivity()).setSupportActionBar(mTbGiftInfo);
+
+        mNsvGiftInfo.setOnScrollChangeListener(new OnScrollListener());
 
         mRvGiftInfo.setLayoutManager(new LinearLayoutManager(getContext()));
         mRvGiftInfo.setHasFixedSize(true);
@@ -116,6 +123,11 @@ public class GiftInfoFragment extends Fragment implements GiftInfoContract.View 
     }
 
     @Override
+    public Context getContextView() {
+        return getContext();
+    }
+
+    @Override
     public void showFirstGiftInfos() {
         if (mGiftInfos == null)
             mGiftInfos = new ArrayList<>();
@@ -131,7 +143,7 @@ public class GiftInfoFragment extends Fragment implements GiftInfoContract.View 
     }
 
     @Override
-    public void notifyAdapter() {
+    public void notifyGiftInfos() {
         mSrlGiftInfo.setRefreshing(false);
 
         if (mGiftInfoAdapter == null) {
@@ -159,6 +171,17 @@ public class GiftInfoFragment extends Fragment implements GiftInfoContract.View 
         intent.putExtra("Gift Info", giftInfo);
 
         startActivity(intent);
+    }
+
+    private class OnScrollListener implements NestedScrollView.OnScrollChangeListener {
+
+        @Override
+        public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+            int height = v.getChildAt(0).getMeasuredHeight() - v.getMeasuredHeight();
+
+            if (scrollY == height)
+                mGiftInfoPresenter.loadNextGiftInfos(mGiftInfos);
+        }
     }
 
     private class OnRefreshListener implements SwipeRefreshLayout.OnRefreshListener {

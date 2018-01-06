@@ -1,6 +1,7 @@
 package com.example.carikado.main.help.view;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -126,6 +127,11 @@ public class HelpFragment extends Fragment implements HelpContract.View {
     }
 
     @Override
+    public Context getContextView() {
+        return getContext();
+    }
+
+    @Override
     public void showHelps() {
         if (mHelps == null) {
             mHelps = new ArrayList<>();
@@ -198,9 +204,10 @@ public class HelpFragment extends Fragment implements HelpContract.View {
     public void generateHelpEmail(@NonNull List helps) {
         Help help = new Help();
         int color = ContextCompat.getColor(getContext(), R.color.colorEmail);
+        String desc = getContext().getString(R.string.email_desc);
 
         help.setName(getString(R.string.email));
-        help.setDesc("Deskripsinya masih dibikin, sabar ya");
+        help.setDesc(desc);
         help.setImageSmall(R.drawable.ic_help_mail);
         help.setImageBig(R.drawable.ic_help_mail_big);
         help.setColor(color);
@@ -213,9 +220,10 @@ public class HelpFragment extends Fragment implements HelpContract.View {
     public void generateHelpChat(@NonNull List helps) {
         Help help = new Help();
         int color = ContextCompat.getColor(getContext(), R.color.colorChat);
+        String desc = getContext().getString(R.string.chat_desc);
 
         help.setName(getString(R.string.chat));
-        help.setDesc("Deskripsinya masih dibikin, sabar ya");
+        help.setDesc(desc);
         help.setImageSmall(R.drawable.ic_help_chat);
         help.setImageBig(R.drawable.ic_help_chat_big);
         help.setColor(color);
@@ -228,9 +236,10 @@ public class HelpFragment extends Fragment implements HelpContract.View {
     public void generateHelpCall(@NonNull List helps) {
         Help help = new Help();
         int color = ContextCompat.getColor(getContext(), R.color.colorAccent);
+        String desc = getContext().getString(R.string.contact_desc);
 
         help.setName(getString(R.string.call));
-        help.setDesc("Deskripsinya masih dibikin, sabar ya");
+        help.setDesc(desc);
         help.setImageSmall(R.drawable.ic_help_call);
         help.setImageBig(R.drawable.ic_help_call_big);
         help.setColor(color);

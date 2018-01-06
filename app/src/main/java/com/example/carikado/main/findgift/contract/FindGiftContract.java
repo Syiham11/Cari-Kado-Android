@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.example.carikado.base.BasePresenter;
 import com.example.carikado.base.BaseView;
+import com.example.carikado.main.findgift.model.Search;
 
 import java.util.List;
 
@@ -19,6 +20,7 @@ public interface FindGiftContract {
     interface View extends BaseView<Presenter> {
 
         void showGender();
+        void notifyGender();
         void showCategory();
         void notifyCategory();
         void showToastMessage(@NonNull String message);
@@ -28,7 +30,7 @@ public interface FindGiftContract {
         void hideBudgetFromEmpty();
         void showBudgetToEmpty();
         void hideBudgetToEmpty();
-        void showResultGift(); // TODO punya parameter model
+        void showResultGift(@NonNull Search search);
         void showReview();
     }
 
@@ -36,7 +38,7 @@ public interface FindGiftContract {
 
         void loadGender(@NonNull List genderList);
         void loadCategory(@NonNull List categoryList);
-        void findGift(); // TODO punya parameter model
+        void findGift(@NonNull Search search);
         void openReview();
     }
 }

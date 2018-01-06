@@ -1,6 +1,7 @@
 package com.example.carikado.review.view.fragment;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -115,6 +116,11 @@ public class ReviewFragment extends Fragment implements ReviewContract.View {
     @Override
     public void setPresenter(@NonNull ReviewContract.Presenter presenter) {
         mReviewPresenter = presenter;
+    }
+
+    @Override
+    public Context getContextView() {
+        return getContext();
     }
 
     @Override
