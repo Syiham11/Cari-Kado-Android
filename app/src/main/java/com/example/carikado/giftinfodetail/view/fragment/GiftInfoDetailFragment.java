@@ -18,12 +18,16 @@ import android.widget.TextView;
 
 import com.example.carikado.R;
 import com.example.carikado.giftinfodetail.adapter.GiftInfoDetailCategoryAdapter;
+import com.example.carikado.giftinfodetail.adapter.GiftInfoPictureAdapter;
 import com.example.carikado.giftinfodetail.contract.GiftInfoDetailContract;
 import com.example.carikado.main.giftinfo.model.GiftInfo;
 import com.example.carikado.main.giftinfo.model.GiftInfoCategory;
+import com.example.carikado.main.giftinfo.model.GiftInfoPicture;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -68,8 +72,10 @@ public class GiftInfoDetailFragment extends Fragment implements GiftInfoDetailCo
     public RecyclerView mRvGiftInfoDetailCategory;
 
     private GiftInfo mGiftInfo;
-    private GiftInfoDetailCategoryAdapter mAdapter;
+    private GiftInfoDetailCategoryAdapter mGiftInfoDetailCategoryAdapter;
+    private GiftInfoPictureAdapter mGiftInfoPictureAdapter;
     private GiftInfoDetailContract.Presenter mPresenter;
+    private NumberFormat mNumberFormat;
 
     public GiftInfoDetailFragment() {
         super();
@@ -91,6 +97,7 @@ public class GiftInfoDetailFragment extends Fragment implements GiftInfoDetailCo
         View view = inflater.inflate(R.layout.gift_info_detail_fragment, container, false);
         ButterKnife.bind(this, view);
 
+        mNumberFormat = NumberFormat.getNumberInstance(Locale.GERMAN);
         mTbGiftInfoDetail.setTitle("");
 
         if (getActivity() != null)
@@ -131,23 +138,27 @@ public class GiftInfoDetailFragment extends Fragment implements GiftInfoDetailCo
 
     @Override
     public void showDetail(@NonNull GiftInfo giftInfo) {
+        String budgetFrom = "Rp. " + mNumberFormat.format(giftInfo.getGiftInfoBudget().getFrom()) + ",-";
+        String budgetTo = "Rp. " + mNumberFormat.format(giftInfo.getGiftInfoBudget().getTo()) + ",-";
+
         mTvGiftInfoDetailName.setText(giftInfo.getTitle());
         mTvGiftInfoDetailDescription.setText(giftInfo.getDescription());
         mTvGiftInfoDetailEssence.setText(giftInfo.getEssence());
         mTvGiftInfoDetailAgeFrom.setText(String.valueOf(giftInfo.getGiftInfoAge().getFrom()));
         mTvGiftInfoDetailAgeTo.setText(String.valueOf(giftInfo.getGiftInfoAge().getTo()));
-        mTvGiftInfoDetailBudgetFrom.setText(String.valueOf(giftInfo.getGiftInfoBudget().getFrom()));
-        mTvGiftInfoDetailBudgetTo.setText(String.valueOf(giftInfo.getGiftInfoBudget().getTo()));
+        mTvGiftInfoDetailBudgetFrom.setText(budgetFrom);
+        mTvGiftInfoDetailBudgetTo.setText(budgetTo);
     }
 
     @Override
-    public void showDetailImages(@NonNull List images) {
-        // TODO tampilkan gambar-gambar gift info
+    public void showDetailImages(@NonNull List<GiftInfoPicture> images) {
+        mGiftInfoPictureAdapter = new GiftInfoPictureAdapter(getContext(), (ArrayList<GiftInfoPicture>) images);
+        mVpGiftInfoDetailImage.setAdapter(mGiftInfoPictureAdapter);
     }
 
     @Override
     public void showDetailCategory(@NonNull List<GiftInfoCategory> categories) {
-        mAdapter = new GiftInfoDetailCategoryAdapter(getContext(), (ArrayList<GiftInfoCategory>) categories);
-        mRvGiftInfoDetailCategory.setAdapter(mAdapter);
+        mGiftInfoDetailCategoryAdapter = new GiftInfoDetailCategoryAdapter(getContext(), (ArrayList<GiftInfoCategory>) categories);
+        mRvGiftInfoDetailCategory.setAdapter(mGiftInfoDetailCategoryAdapter);
     }
 }

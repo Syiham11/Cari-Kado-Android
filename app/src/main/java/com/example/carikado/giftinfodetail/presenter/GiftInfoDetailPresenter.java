@@ -5,8 +5,6 @@ import android.support.annotation.NonNull;
 import com.example.carikado.giftinfodetail.contract.GiftInfoDetailContract;
 import com.example.carikado.main.giftinfo.model.GiftInfo;
 
-import java.util.ArrayList;
-
 /**
  * Merupakan presenter yang mengatur logic dari gift info detail
  *
@@ -35,10 +33,8 @@ public class GiftInfoDetailPresenter implements GiftInfoDetailContract.Presenter
 
     @Override
     public void onStart(@NonNull GiftInfo giftInfo) {
-        ArrayList<String> model = new ArrayList<>();
-
         mView.showDetail(giftInfo);
-        mView.showDetailImages(model); // TODO ambil list image dari model
+        mView.showDetailImages(giftInfo.getGiftInfoPictures());
         mView.showDetailCategory(giftInfo.getGiftInfoCategories());
     }
 

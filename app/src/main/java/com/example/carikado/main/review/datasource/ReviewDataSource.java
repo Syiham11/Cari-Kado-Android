@@ -16,7 +16,7 @@ public interface ReviewDataSource {
 
     interface AddReviewCallback {
 
-        void onAddSuccess(@NonNull MyResponse response, @NonNull Boolean isFinish);
+        void onAddSuccess(@NonNull MyResponse response);
         void onAddFailed(@NonNull String message);
     }
 

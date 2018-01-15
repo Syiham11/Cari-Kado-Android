@@ -61,7 +61,7 @@ public class ReviewRemoteDataSource implements ReviewDataSource {
                         mContext.getString(R.string.review_error);
 
                 myResponse.setMessage(message);
-                mAddReviewCallback.onAddSuccess(myResponse, isFinish);
+                mAddReviewCallback.onAddSuccess(myResponse);
             } else {
                 String message = mContext.getString(R.string.review_error);
                 mAddReviewCallback.onAddFailed(message);

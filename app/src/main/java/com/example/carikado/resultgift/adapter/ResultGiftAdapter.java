@@ -15,7 +15,9 @@ import com.example.carikado.resultgift.contract.ResultGiftContract;
 import com.example.carikado.resultgift.model.Gift;
 import com.example.carikado.resultgift.viewholder.ResultGiftViewHolder;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -28,6 +30,7 @@ public class ResultGiftAdapter extends RecyclerView.Adapter<ResultGiftViewHolder
     private ArrayList<Gift> mGifts;
     private Context mContext;
     private LayoutInflater mInflater;
+    private NumberFormat mNumberFormat;
     private ResultGiftContract.Presenter mPresenter;
 
     public ResultGiftAdapter(Context context, ArrayList<Gift> gifts, ResultGiftContract.Presenter presenter) {
@@ -36,6 +39,7 @@ public class ResultGiftAdapter extends RecyclerView.Adapter<ResultGiftViewHolder
         mPresenter = presenter;
 
         mInflater = LayoutInflater.from(context);
+        mNumberFormat = NumberFormat.getNumberInstance(Locale.GERMAN);
     }
 
     @Override
@@ -57,9 +61,11 @@ public class ResultGiftAdapter extends RecyclerView.Adapter<ResultGiftViewHolder
 
         Glide.with(mContext).load(gift.getGiftPictures().get(0).getUrl()).into(civResultGift);
 
+        String price = "Rp. " + mNumberFormat.format(gift.getPrice()) + ",-";
+
         rbResultGiftRate.setNumStars(gift.getRating());
         tvResultGiftName.setText(gift.getName());
-        tvResultGiftPrice.setText(String.valueOf(gift.getPrice()));
+        tvResultGiftPrice.setText(price);
         tvResultGiftStore.setText(gift.getStore());
 
         cvResultGift.setOnClickListener(new ResultGiftClickListener(position));

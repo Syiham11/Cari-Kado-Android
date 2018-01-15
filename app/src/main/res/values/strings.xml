@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Cari Kado</string>
     <string name="base_url">http://madamita.ml:8080/cari-kado/api/</string>
+    <string name="base_images_url">http://madamita.ml:8080/cari-kado/images/</string>
+    <!--<string name="base_url">http://192.168.137.109:8080/api/</string>-->
+    <!--<string name="base_images_url">http://192.168.137.109:8080/images/</string>-->
 
     <string name="find_gift">Cari Kado</string>
     <string name="gift_info">Info Kado</string>

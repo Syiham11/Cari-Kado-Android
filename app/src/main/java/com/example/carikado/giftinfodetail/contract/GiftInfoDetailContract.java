@@ -6,6 +6,7 @@ import com.example.carikado.base.BasePresenter;
 import com.example.carikado.base.BaseView;
 import com.example.carikado.main.giftinfo.model.GiftInfo;
 import com.example.carikado.main.giftinfo.model.GiftInfoCategory;
+import com.example.carikado.main.giftinfo.model.GiftInfoPicture;
 
 import java.util.List;
 
@@ -21,7 +22,7 @@ public interface GiftInfoDetailContract {
     interface View extends BaseView<Presenter> {
 
         void showDetail(@NonNull GiftInfo giftInfo);
-        void showDetailImages(@NonNull List images);
+        void showDetailImages(@NonNull List<GiftInfoPicture> images);
         void showDetailCategory(@NonNull List<GiftInfoCategory> categories);
     }
 

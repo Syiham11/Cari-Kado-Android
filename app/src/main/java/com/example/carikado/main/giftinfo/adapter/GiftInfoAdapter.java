@@ -8,12 +8,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.carikado.R;
 import com.example.carikado.main.giftinfo.contract.GiftInfoContract;
 import com.example.carikado.main.giftinfo.model.GiftInfo;
+import com.example.carikado.main.giftinfo.model.GiftInfoPicture;
 import com.example.carikado.main.giftinfo.viewholder.GIftInfoViewHolder;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -35,7 +38,7 @@ public class GiftInfoAdapter extends RecyclerView.Adapter<GIftInfoViewHolder> {
     /**
      * Constructor untuk membuat object layout mInflater yang digunakna untuk menginflate layout list
      *
-     * @param context merupakan mContext dari activity yang menggunakan list
+     * @param context   merupakan mContext dari activity yang menggunakan list
      * @param giftInfos merupakan list data yang akan ditampilkan
      */
     public GiftInfoAdapter(Context context, ArrayList<GiftInfo> giftInfos, GiftInfoContract.Presenter presenter) {
@@ -49,7 +52,7 @@ public class GiftInfoAdapter extends RecyclerView.Adapter<GIftInfoViewHolder> {
     /**
      * Method yang dipanggil saat membuat view untuk item list
      *
-     * @param parent merupakan parent dari setiap list item
+     * @param parent   merupakan parent dari setiap list item
      * @param viewType merupakan tipe view dari setiap list item
      * @return merupakan view holder dari setiap list item
      */
@@ -62,16 +65,24 @@ public class GiftInfoAdapter extends RecyclerView.Adapter<GIftInfoViewHolder> {
     /**
      * Method yang dipanggil saat view list item telah dibuat
      *
-     * @param holder merupakan holder dari setiap list item
+     * @param holder   merupakan holder dari setiap list item
      * @param position merupakan posisi dari list item
      */
     @Override
     public void onBindViewHolder(GIftInfoViewHolder holder, int position) {
         GiftInfo giftInfo = mGiftInfos.get(position);
+        List<GiftInfoPicture> giftInfoPictures = giftInfo.getGiftInfoPictures();
 
         CardView cvGiftInfo = holder.cvGiftInfo;
         CircleImageView civGiftInfo = holder.civGiftInfo;
         TextView tvGiftInfo = holder.tvGiftInfo;
+
+        if (giftInfoPictures.size() > 0) {
+            String url = mContext.getString(R.string.base_images_url);
+            url += "gift-info/" + giftInfoPictures.get(0).getUrl();
+
+            Glide.with(mContext).load(url).into(civGiftInfo);
+        }
 
         cvGiftInfo.setOnClickListener(new GiftInfoClickListener(position));
         tvGiftInfo.setText(giftInfo.getTitle());

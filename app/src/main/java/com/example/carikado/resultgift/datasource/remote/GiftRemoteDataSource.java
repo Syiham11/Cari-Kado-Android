@@ -48,7 +48,9 @@ public class GiftRemoteDataSource implements GiftDataSource {
                           @NonNull Search search,
                           @NonNull LoadGiftsCallback loadGiftsCallback) {
         Call<MyResponse<MyPage<List<Gift>>>> loadGifts = ApiClient.getApiInterface(mContext)
-                .findGifts(page, pageSize, sort, search.getGender(), search.getAge(), search.getBudgetFrom(), search.getBudgetTo(), search.getCategory());
+                .findGifts(page, pageSize, sort, search.getGender(), search.getAge(),
+                        search.getBudgetFrom(), search.getBudgetTo(), search.getCategory(),
+                        search.getName());
         loadGifts.enqueue(new LoadGiftsResponseCallback(loadGiftsCallback));
     }
 

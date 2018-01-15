@@ -116,10 +116,11 @@ public class ReviewPresenter implements ReviewContract.Presenter {
         mReviewRepository.addReview(review, new ReviewDataSource.AddReviewCallback() {
 
             @Override
-            public void onAddSuccess(@NonNull MyResponse response, @NonNull Boolean isFinish) {
+            public void onAddSuccess(@NonNull MyResponse response) {
                 if (mView.getContextView() != null) {
                     mView.hideProgressDialog();
-                    mView.showSubmitAlert(response.getMessage(), isFinish);
+                    mView.clearForm();
+                    mView.showSubmitAlert(response.getMessage());
                 }
             }
 
@@ -127,7 +128,7 @@ public class ReviewPresenter implements ReviewContract.Presenter {
             public void onAddFailed(@NonNull String message) {
                 if (mView.getContextView() != null) {
                     mView.hideProgressDialog();
-                    mView.showSubmitAlert(message, false);
+                    mView.showSubmitAlert(message);
                 }
             }
         });

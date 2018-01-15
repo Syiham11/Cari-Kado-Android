@@ -41,11 +41,12 @@ public interface ApiInterface {
 
     @GET("gift/suggestion")
     Call<MyResponse<MyPage<List<Gift>>>> findGifts(@Query("page") Integer page,
-                                                  @Query("pageSize") Integer pageSize,
-                                                  @Query("sort") Integer sort,
-                                                  @Query("gender") String gender,
-                                                  @Query("age") Integer age,
-                                                  @Query("budgetFrom") Integer budgetFrom,
-                                                  @Query("budgetTo") Integer budgetTo,
-                                                  @Query("category") String category);
+                                                   @Query("pageSize") Integer pageSize,
+                                                   @Query("sort") Integer sort,
+                                                   @Query("gender") String gender,
+                                                   @Query("age") Integer age,
+                                                   @Query("budgetFrom") Integer budgetFrom,
+                                                   @Query("budgetTo") Integer budgetTo,
+                                                   @Query("category") String category,
+                                                   @Query("name") String name);
 }

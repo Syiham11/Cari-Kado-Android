@@ -16,6 +16,7 @@ public class GiftInfo implements Serializable {
     private GiftInfoAge giftInfoAge;
     private List<GiftInfoCategory> giftInfoCategories = new ArrayList<>();
     private GiftInfoBudget giftInfoBudget;
+    private List<GiftInfoPicture> giftInfoPictures = new ArrayList<>();
 
     public GiftInfo() {
 
@@ -101,5 +102,17 @@ public class GiftInfo implements Serializable {
 
     public void setGiftInfoBudget(GiftInfoBudget giftInfoBudget) {
         this.giftInfoBudget = giftInfoBudget;
+    }
+
+    public void addGiftInfoPicture(GiftInfoPicture giftInfoPicture) {
+        giftInfoPictures.add(giftInfoPicture);
+    }
+
+    public void removeGiftInfoPicture(GiftInfoPicture giftInfoPicture) {
+        giftInfoPictures.remove(giftInfoPicture);
+    }
+
+    public List<GiftInfoPicture> getGiftInfoPictures() {
+        return giftInfoPictures;
     }
 }

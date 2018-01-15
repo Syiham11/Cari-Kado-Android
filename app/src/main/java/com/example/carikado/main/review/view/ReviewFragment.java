@@ -167,7 +167,7 @@ public class ReviewFragment extends Fragment implements ReviewContract.View {
     }
 
     @Override
-    public void showSubmitAlert(@NonNull String message, @NonNull Boolean isFinish) {
+    public void showSubmitAlert(@NonNull String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 
         String title = getString(R.string.review);
@@ -175,7 +175,7 @@ public class ReviewFragment extends Fragment implements ReviewContract.View {
 
         builder.setTitle(title)
                 .setMessage(message)
-                .setNegativeButton(ok, new AlertOkClickListener(isFinish));
+                .setNegativeButton(ok, new AlertOkClickListener());
 
         AlertDialog dialog = builder.create();
 
@@ -184,20 +184,19 @@ public class ReviewFragment extends Fragment implements ReviewContract.View {
         dialog.show();
     }
 
+    @Override
+    public void clearForm() {
+        mTietName.setText("");
+        mTietEmail.setText("");
+        mTietComment.setText("");
+        mRbRating.setRating(0.0f);
+    }
+
     private class AlertOkClickListener implements DialogInterface.OnClickListener {
-
-        private boolean mIsFinish;
-
-        private AlertOkClickListener(boolean isFinish) {
-            mIsFinish = isFinish;
-        }
 
         @Override
         public void onClick(DialogInterface dialog, int which) {
             dialog.dismiss();
-
-            if (mIsFinish)
-                getActivity().finish();
         }
     }
 }

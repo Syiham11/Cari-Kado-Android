@@ -71,6 +71,7 @@ public class FindGiftPresenter implements FindGiftContract.Presenter {
 
     @Override
     public void loadGender(@NonNull final List<String> genderList) {
+        genderList.clear();
         mGenderRepository.loadGenders(new GenderDataSource.LoadGendersCallback() {
 
             @Override
@@ -88,6 +89,7 @@ public class FindGiftPresenter implements FindGiftContract.Presenter {
 
     @Override
     public void loadCategory(@NonNull final List<String> categoryList) {
+        categoryList.clear();
         mGiftInfoCategoryRepository.loadGiftInfoCategories(new GiftInfoCategoryDataSource.LoadGiftInfoCategoriessCallback() {
 
             @Override

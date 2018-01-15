@@ -26,7 +26,8 @@ public interface ReviewContract {
         void showStarsEmpty();
         void showProgressDialog();
         void hideProgressDialog();
-        void showSubmitAlert(@NonNull String message, @NonNull Boolean isFinish);
+        void showSubmitAlert(@NonNull String message);
+        void clearForm();
     }
 
     interface Presenter extends BasePresenter {
