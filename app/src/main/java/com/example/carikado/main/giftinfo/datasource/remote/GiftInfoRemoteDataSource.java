@@ -41,7 +41,10 @@ public class GiftInfoRemoteDataSource implements GiftInfoDataSource {
     }
 
     @Override
-    public void loadGiftInfos(@NonNull Integer page, @NonNull Integer pageSize, @NonNull Integer sort, @NonNull LoadGiftInfosCallback loadGiftInfosCallback) {
+    public void loadGiftInfos(@NonNull Integer page,
+                              @NonNull Integer pageSize,
+                              @NonNull Integer sort,
+                              @NonNull LoadGiftInfosCallback loadGiftInfosCallback) {
         Call<MyResponse<MyPage<List<GiftInfo>>>> loadGiftInfos = ApiClient.getApiInterface(mContext).findGiftInfos(page, pageSize, sort);
         loadGiftInfos.enqueue(new LoadGiftInfoResponseCallback(loadGiftInfosCallback));
     }
@@ -55,7 +58,8 @@ public class GiftInfoRemoteDataSource implements GiftInfoDataSource {
         }
 
         @Override
-        public void onResponse(Call<MyResponse<MyPage<List<GiftInfo>>>> call, Response<MyResponse<MyPage<List<GiftInfo>>>> response) {
+        public void onResponse(@NonNull Call<MyResponse<MyPage<List<GiftInfo>>>> call,
+                               @NonNull Response<MyResponse<MyPage<List<GiftInfo>>>> response) {
             MyResponse<MyPage<List<GiftInfo>>> myResponse = response.body();
 
             if (myResponse != null) {
@@ -68,7 +72,8 @@ public class GiftInfoRemoteDataSource implements GiftInfoDataSource {
         }
 
         @Override
-        public void onFailure(Call<MyResponse<MyPage<List<GiftInfo>>>> call, Throwable t) {
+        public void onFailure(@NonNull Call<MyResponse<MyPage<List<GiftInfo>>>> call,
+                              @NonNull Throwable t) {
             mLoadGiftInfosCallback.onLoadFailed(t.getMessage());
         }
     }

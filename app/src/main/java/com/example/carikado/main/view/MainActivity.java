@@ -20,6 +20,8 @@ import com.example.carikado.main.giftinfo.presenter.GiftInfoPresenter;
 import com.example.carikado.main.giftinfo.view.GiftInfoFragment;
 import com.example.carikado.main.help.presenter.HelpPresenter;
 import com.example.carikado.main.help.view.HelpFragment;
+import com.example.carikado.main.review.presenter.ReviewPresenter;
+import com.example.carikado.main.review.view.ReviewFragment;
 import com.example.carikado.util.ActivityUtils;
 import com.example.carikado.util.Injection;
 
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private final String mFindGiftTag = "Find Gift Fragment";
     private final String mGiftInfoTag = "Gift Info Fragment";
     private final String mHelpTag = "Help Fragment";
+    private final String mReviewTag = "Review Fragment";
 
     private final String mTag = "Tag";
     private final String mFragmentTag = "Fragment";
@@ -88,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
         setFindGiftMenu();
         setGiftInfoMenu();
         setHelpMenu();
+        setReviewMenu();
     }
 
     private void setFindGiftMenu() {
@@ -131,6 +135,19 @@ public class MainActivity extends AppCompatActivity {
         objectHashMap.put(mInactiveTag, ContextCompat.getDrawable(this, R.drawable.ic_help_inactive));
 
         mMenuMap.put(R.id.menu_help, objectHashMap);
+    }
+
+    private void setReviewMenu() {
+        HashMap<String, Object> objectHashMap = new HashMap<>();
+        ReviewFragment reviewFragment = ReviewFragment.newInstance();
+
+        objectHashMap.put(mTag, mReviewTag);
+        objectHashMap.put(mFragmentTag, reviewFragment);
+        objectHashMap.put(mPresenterTag, new ReviewPresenter(Injection.provideReviewRepository(this), reviewFragment));
+        objectHashMap.put(mActiveTag, ContextCompat.getDrawable(this, R.drawable.ic_review_active));
+        objectHashMap.put(mInactiveTag, ContextCompat.getDrawable(this, R.drawable.ic_review_inactive));
+
+        mMenuMap.put(R.id.menu_review, objectHashMap);
     }
 
     private void showExitConfirmation() {

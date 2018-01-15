@@ -29,7 +29,11 @@ public class GiftRepository implements GiftDataSource {
     }
 
     @Override
-    public void loadGifts(@NonNull Integer page, @NonNull Integer pageSize, @NonNull Integer sort, @NonNull Search search, @NonNull LoadGiftsCallback loadGiftsCallback) {
+    public void loadGifts(@NonNull Integer page,
+                          @NonNull Integer pageSize,
+                          @NonNull Integer sort,
+                          @NonNull Search search,
+                          @NonNull LoadGiftsCallback loadGiftsCallback) {
         mGiftDataSource.loadGifts(page, pageSize, sort, search, loadGiftsCallback);
     }
 }

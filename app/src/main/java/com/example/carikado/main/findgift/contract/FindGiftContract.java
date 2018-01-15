@@ -19,6 +19,8 @@ public interface FindGiftContract {
 
     interface View extends BaseView<Presenter> {
 
+        void showProgressDialog();
+        void hideProgressDialog();
         void showGender();
         void notifyGender();
         void showCategory();
@@ -31,14 +33,12 @@ public interface FindGiftContract {
         void showBudgetToEmpty();
         void hideBudgetToEmpty();
         void showResultGift(@NonNull Search search);
-        void showReview();
     }
 
     interface Presenter extends BasePresenter {
 
-        void loadGender(@NonNull List genderList);
-        void loadCategory(@NonNull List categoryList);
+        void loadGender(@NonNull List<String> genderList);
+        void loadCategory(@NonNull List<String> categoryList);
         void findGift(@NonNull Search search);
-        void openReview();
     }
 }

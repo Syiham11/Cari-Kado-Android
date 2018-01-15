@@ -1,5 +1,6 @@
 package com.example.carikado.main.findgift.view;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,9 +12,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -24,7 +22,6 @@ import com.example.carikado.R;
 import com.example.carikado.main.findgift.contract.FindGiftContract;
 import com.example.carikado.main.findgift.model.Search;
 import com.example.carikado.resultgift.view.activity.ResultGiftActivity;
-import com.example.carikado.review.view.activity.ReviewActivity;
 
 import java.util.ArrayList;
 
@@ -84,6 +81,7 @@ public class FindGiftFragment extends Fragment implements FindGiftContract.View 
         mFindGiftPresenter.findGift(search);
     }
 
+    private ProgressDialog mProgressDialog;
     private ArrayAdapter<String> mGenderAdapter, mCategoryAdapter;
     private ArrayList<String> mGenders, mGiftInfoCategories;
     private FindGiftContract.Presenter mFindGiftPresenter;
@@ -98,12 +96,19 @@ public class FindGiftFragment extends Fragment implements FindGiftContract.View 
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.find_gift_fragment, container, false);
         ButterKnife.bind(this, view);
 
         mTbFindGift.setTitle("");
-        ((AppCompatActivity) getActivity()).setSupportActionBar(mTbFindGift);
+
+        if (getActivity() != null)
+            ((AppCompatActivity) getActivity()).setSupportActionBar(mTbFindGift);
+
+        mProgressDialog = new ProgressDialog(getContext());
+        mProgressDialog.setMessage(getString(R.string.loading_data));
+        mProgressDialog.setCancelable(false);
+        mProgressDialog.setCanceledOnTouchOutside(false);
 
         return view;
     }
@@ -111,25 +116,6 @@ public class FindGiftFragment extends Fragment implements FindGiftContract.View 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.find_gift_menu, menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        switch (id) {
-            case R.id.menu_review:
-                mFindGiftPresenter.openReview();
-                return true;
-            default:
-                return false;
-        }
     }
 
     @Override
@@ -146,6 +132,16 @@ public class FindGiftFragment extends Fragment implements FindGiftContract.View 
     @Override
     public Context getContextView() {
         return getContext();
+    }
+
+    @Override
+    public void showProgressDialog() {
+        mProgressDialog.show();
+    }
+
+    @Override
+    public void hideProgressDialog() {
+        mProgressDialog.dismiss();
     }
 
     @Override
@@ -235,9 +231,4 @@ public class FindGiftFragment extends Fragment implements FindGiftContract.View 
         startActivity(intent);
     }
 
-    @Override
-    public void showReview() {
-        Intent intent = new Intent(getContext(), ReviewActivity.class);
-        startActivity(intent);
-    }
 }

@@ -24,6 +24,7 @@ public interface ResultGiftContract {
         void notifyGifts();
         void showResultGifts();
         void hideResultGifts();
+        void showSortByDialog();
         void showToastMessage(@NonNull String message);
         void showGiftDetail(@NonNull Gift gift);
     }
@@ -31,12 +32,13 @@ public interface ResultGiftContract {
     interface Presenter extends BasePresenter {
 
         void loadFirstGifts(@NonNull Search search,
-                            @NonNull List gifts);
+                            @NonNull List<Gift> gifts);
         void loadNextGifts(@NonNull Search search,
-                           @NonNull List gifts);
+                           @NonNull List<Gift> gifts);
         void showResultGifts();
         void hideResultGifts();
-        void searchGift(@NonNull String name);
+        void openSortByDialog();
+        void changeSortBy(@NonNull Integer sort);
         void openGiftDetail(@NonNull Gift gift);
     }
 }

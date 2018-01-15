@@ -17,6 +17,7 @@ public class Search implements Serializable {
     private Integer mBudgetFrom;
     private Integer mBudgetTo;
     private String mCategory;
+    private String mName;
 
     public Search() {
 
@@ -68,5 +69,13 @@ public class Search implements Serializable {
 
     public void setmCategory(String category) {
         mCategory = category;
+    }
+
+    public String getName() {
+        return mName;
+    }
+
+    public void setName(String name) {
+        mName = name;
     }
 }

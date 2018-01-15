@@ -11,13 +11,22 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -59,6 +68,7 @@ public class ResultGiftFragment extends Fragment implements ResultGiftContract.V
     @BindView(R.id.srl_result_gift)
     public SwipeRefreshLayout mSrlResultGift;
 
+    private AlertDialog mSortByDialog;
     private ArrayList<Gift> mGifts;
     private ResultGiftAdapter mAdapter;
     private ResultGiftContract.Presenter mResultGiftPresenter;
@@ -80,12 +90,15 @@ public class ResultGiftFragment extends Fragment implements ResultGiftContract.V
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.result_gift_fragment, container, false);
         ButterKnife.bind(this, view);
 
         mTbResultGift.setTitle("");
-        ((AppCompatActivity) getActivity()).setSupportActionBar(mTbResultGift);
+
+        if (getActivity() != null)
+            ((AppCompatActivity) getActivity()).setSupportActionBar(mTbResultGift);
+
         ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
 
         if (actionBar != null) {
@@ -96,6 +109,7 @@ public class ResultGiftFragment extends Fragment implements ResultGiftContract.V
         if (getArguments() != null)
             mSearch = (Search) getArguments().getSerializable("search");
 
+        mTietSearch.addTextChangedListener(new OnTextChangedListener());
         mNsvResultGift.setOnScrollChangeListener(new OnScrollListener());
 
         mRvResultGift.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
@@ -105,7 +119,33 @@ public class ResultGiftFragment extends Fragment implements ResultGiftContract.V
         mSrlResultGift.setColorSchemeResources(R.color.colorAccent, R.color.colorPrimary, R.color.colorPrimaryDark);
         mSrlResultGift.setOnRefreshListener(new OnRefreshListener());
 
+        setUpSortByDialog();
+
         return view;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.result_gift_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        switch (id) {
+            case R.id.menu_sort_by:
+                mResultGiftPresenter.openSortByDialog();
+                return true;
+            default:
+                return false;
+        }
     }
 
     @Override
@@ -133,6 +173,8 @@ public class ResultGiftFragment extends Fragment implements ResultGiftContract.V
 
             @Override
             public void run() {
+                addNameSearch();
+
                 mSrlResultGift.setRefreshing(true);
                 mResultGiftPresenter.loadFirstGifts(mSearch, mGifts);
             }
@@ -153,6 +195,11 @@ public class ResultGiftFragment extends Fragment implements ResultGiftContract.V
             mRvResultGift.setAdapter(mAdapter);
         } else
             mAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void showSortByDialog() {
+        mSortByDialog.show();
     }
 
     @Override
@@ -184,14 +231,87 @@ public class ResultGiftFragment extends Fragment implements ResultGiftContract.V
         startActivity(intent);
     }
 
+    private void setUpSortByDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+
+        String title = getString(R.string.sort_by);
+        String[] sorts = getResources().getStringArray(R.array.gift_sort_by);
+        int[] sortCodes = getResources().getIntArray(R.array.gift_sort_by_code);
+
+        LayoutInflater inflater = getLayoutInflater();
+        View view = inflater.inflate(R.layout.sort_by_dialog, null);
+
+        RadioGroup rgSortBy = view.findViewById(R.id.rg_sort_by);
+
+        for (int i = 0; i < sorts.length; i++) {
+            RadioButton radioButton = new RadioButton(getContext());
+            RadioGroup.LayoutParams params = new RadioGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT);
+
+            if (i == 0)
+                radioButton.setChecked(true);
+
+            radioButton.setId(sortCodes[i]);
+            radioButton.setLayoutParams(params);
+            radioButton.setText(sorts[i]);
+
+            rgSortBy.addView(radioButton);
+        }
+
+        rgSortBy.setOnCheckedChangeListener(new OnCheckedChangedListener());
+
+        builder.setTitle(title)
+                .setView(view);
+
+        mSortByDialog = builder.create();
+    }
+
+    private void addNameSearch() {
+        String name = mTietSearch.getText().toString();
+
+        if (TextUtils.isEmpty(name))
+            mSearch.setName(null);
+        else
+            mSearch.setName(name);
+    }
+
+    private class OnTextChangedListener implements TextWatcher {
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            //  Do nothing
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            // Do nothing
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            showFirstGifts();
+        }
+    }
+
+    private class OnCheckedChangedListener implements RadioGroup.OnCheckedChangeListener {
+
+        @Override
+        public void onCheckedChanged(RadioGroup group, int checkedId) {
+            mResultGiftPresenter.changeSortBy(checkedId);
+            mSortByDialog.dismiss();
+        }
+    }
+
     private class OnScrollListener implements NestedScrollView.OnScrollChangeListener {
 
         @Override
         public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
             int height = v.getChildAt(0).getMeasuredHeight() - v.getMeasuredHeight();
 
-            if (scrollY == height)
+            if (scrollY == height) {
+                addNameSearch();
                 mResultGiftPresenter.loadNextGifts(mSearch, mGifts);
+            }
         }
     }
 

@@ -22,15 +22,16 @@ public interface GiftInfoContract {
         void showFirstGiftInfos();
         void notifyGiftInfos();
         void showToastMessage(@NonNull String message);
-        void showReview();
+        void showSortByDialog();
         void showGiftInfoDetail(@NonNull GiftInfo giftInfo);
     }
 
     interface Presenter extends BasePresenter {
 
-        void loadFirstGiftInfos(@NonNull List giftInfoList);
-        void loadNextGiftInfos(@NonNull List giftInfoList);
-        void openReview();
+        void loadFirstGiftInfos(@NonNull List<GiftInfo> giftInfoList);
+        void loadNextGiftInfos(@NonNull List<GiftInfo> giftInfoList);
+        void openSortByDialog();
+        void changeSortBy(@NonNull Integer sort);
         void openGiftInfoDetail(@NonNull GiftInfo giftInfo);
     }
 }

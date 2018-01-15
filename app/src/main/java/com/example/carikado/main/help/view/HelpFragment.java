@@ -16,9 +16,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -27,7 +24,6 @@ import com.example.carikado.emailhelp.view.activity.EmailHelpActivity;
 import com.example.carikado.main.help.adapter.HelpAdapter;
 import com.example.carikado.main.help.contract.HelpContract;
 import com.example.carikado.main.help.model.Help;
-import com.example.carikado.review.view.activity.ReviewActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,12 +62,14 @@ public class HelpFragment extends Fragment implements HelpContract.View {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.help_fragment, container, false);
         ButterKnife.bind(this, view);
 
         mTbHelp.setTitle("");
-        ((AppCompatActivity) getActivity()).setSupportActionBar(mTbHelp);
+
+        if (getActivity() != null)
+            ((AppCompatActivity) getActivity()).setSupportActionBar(mTbHelp);
 
         mRvHelp.setLayoutManager(new LinearLayoutManager(getContext()));
         mRvHelp.setHasFixedSize(true);
@@ -94,25 +92,6 @@ public class HelpFragment extends Fragment implements HelpContract.View {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.help_menu, menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        switch (id) {
-            case R.id.menu_review:
-                mHelpPresenter.openReview();
-                return true;
-            default:
-                return false;
-        }
     }
 
     @Override
@@ -170,13 +149,7 @@ public class HelpFragment extends Fragment implements HelpContract.View {
     }
 
     @Override
-    public void showReview() {
-        Intent intent = new Intent(getContext(), ReviewActivity.class);
-        startActivity(intent);
-    }
-
-    @Override
-    public void showHelpCard(@NonNull List helps, @NonNull Help help) {
+    public void showHelpCard(@NonNull List<Help> helps, @NonNull Help help) {
         help.setIsActive(!help.isActive());
         mAdapter.notifyDataSetChanged();
     }
@@ -196,12 +169,12 @@ public class HelpFragment extends Fragment implements HelpContract.View {
     }
 
     @Override
-    public void generateHelps(@NonNull List helps) {
+    public void generateHelps(@NonNull List<Help> helps) {
         mHelpPresenter.generateHelps(helps);
     }
 
     @Override
-    public void generateHelpEmail(@NonNull List helps) {
+    public void generateHelpEmail(@NonNull List<Help> helps) {
         Help help = new Help();
         int color = ContextCompat.getColor(getContext(), R.color.colorEmail);
         String desc = getContext().getString(R.string.email_desc);
@@ -217,7 +190,7 @@ public class HelpFragment extends Fragment implements HelpContract.View {
     }
 
     @Override
-    public void generateHelpChat(@NonNull List helps) {
+    public void generateHelpChat(@NonNull List<Help> helps) {
         Help help = new Help();
         int color = ContextCompat.getColor(getContext(), R.color.colorChat);
         String desc = getContext().getString(R.string.chat_desc);
@@ -233,7 +206,7 @@ public class HelpFragment extends Fragment implements HelpContract.View {
     }
 
     @Override
-    public void generateHelpCall(@NonNull List helps) {
+    public void generateHelpCall(@NonNull List<Help> helps) {
         Help help = new Help();
         int color = ContextCompat.getColor(getContext(), R.color.colorAccent);
         String desc = getContext().getString(R.string.contact_desc);

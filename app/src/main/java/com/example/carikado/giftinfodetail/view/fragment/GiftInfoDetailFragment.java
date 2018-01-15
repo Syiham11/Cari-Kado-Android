@@ -20,6 +20,7 @@ import com.example.carikado.R;
 import com.example.carikado.giftinfodetail.adapter.GiftInfoDetailCategoryAdapter;
 import com.example.carikado.giftinfodetail.contract.GiftInfoDetailContract;
 import com.example.carikado.main.giftinfo.model.GiftInfo;
+import com.example.carikado.main.giftinfo.model.GiftInfoCategory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -86,13 +87,15 @@ public class GiftInfoDetailFragment extends Fragment implements GiftInfoDetailCo
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.gift_info_detail_fragment, container, false);
         ButterKnife.bind(this, view);
 
         mTbGiftInfoDetail.setTitle("");
 
-        ((AppCompatActivity) getActivity()).setSupportActionBar(mTbGiftInfoDetail);
+        if (getActivity() != null)
+            ((AppCompatActivity) getActivity()).setSupportActionBar(mTbGiftInfoDetail);
+
         ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
 
         if (actionBar != null) {
@@ -143,8 +146,8 @@ public class GiftInfoDetailFragment extends Fragment implements GiftInfoDetailCo
     }
 
     @Override
-    public void showDetailCategory(@NonNull List categories) {
-        mAdapter = new GiftInfoDetailCategoryAdapter(getContext(), (ArrayList) categories);
+    public void showDetailCategory(@NonNull List<GiftInfoCategory> categories) {
+        mAdapter = new GiftInfoDetailCategoryAdapter(getContext(), (ArrayList<GiftInfoCategory>) categories);
         mRvGiftInfoDetailCategory.setAdapter(mAdapter);
     }
 }

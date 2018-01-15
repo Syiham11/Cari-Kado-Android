@@ -20,27 +20,25 @@ public interface HelpContract {
     interface View extends BaseView<Presenter> {
 
         void showHelps();
-        void generateHelps(@NonNull List helps);
-        void generateHelpEmail(@NonNull List helps);
-        void generateHelpChat(@NonNull List helps);
-        void generateHelpCall(@NonNull List helps);
+        void generateHelps(@NonNull List<Help> helps);
+        void generateHelpEmail(@NonNull List<Help> helps);
+        void generateHelpChat(@NonNull List<Help> helps);
+        void generateHelpCall(@NonNull List<Help> helps);
         void showEmailHelp();
         void showChatHelp();
         void showCallHelp();
-        void showReview();
-        void showHelpCard(@NonNull List helps, @NonNull Help help);
+        void showHelpCard(@NonNull List<Help> helps, @NonNull Help help);
         void showHelp(@NonNull Help help);
     }
 
     interface Presenter extends BasePresenter {
 
-        void loadHelps(@NonNull List helps);
-        void generateHelps(@NonNull List helps);
+        void loadHelps(@NonNull List<Help> helps);
+        void generateHelps(@NonNull List<Help> helps);
         void openEmailHelp();
         void openChatHelp();
         void openCallHelp();
-        void openHelpCard(@NonNull List helps, @NonNull Help help);
+        void openHelpCard(@NonNull List<Help> helps, @NonNull Help help);
         void openHelp(@NonNull Help help);
-        void openReview();
     }
 }

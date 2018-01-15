@@ -42,7 +42,11 @@ public class GiftRemoteDataSource implements GiftDataSource {
     }
 
     @Override
-    public void loadGifts(@NonNull Integer page, @NonNull Integer pageSize, @NonNull Integer sort, @NonNull Search search, @NonNull LoadGiftsCallback loadGiftsCallback) {
+    public void loadGifts(@NonNull Integer page,
+                          @NonNull Integer pageSize,
+                          @NonNull Integer sort,
+                          @NonNull Search search,
+                          @NonNull LoadGiftsCallback loadGiftsCallback) {
         Call<MyResponse<MyPage<List<Gift>>>> loadGifts = ApiClient.getApiInterface(mContext)
                 .findGifts(page, pageSize, sort, search.getGender(), search.getAge(), search.getBudgetFrom(), search.getBudgetTo(), search.getCategory());
         loadGifts.enqueue(new LoadGiftsResponseCallback(loadGiftsCallback));
@@ -57,7 +61,8 @@ public class GiftRemoteDataSource implements GiftDataSource {
         }
 
         @Override
-        public void onResponse(Call<MyResponse<MyPage<List<Gift>>>> call, Response<MyResponse<MyPage<List<Gift>>>> response) {
+        public void onResponse(@NonNull Call<MyResponse<MyPage<List<Gift>>>> call,
+                               @NonNull Response<MyResponse<MyPage<List<Gift>>>> response) {
             MyResponse<MyPage<List<Gift>>> myResponse = response.body();
 
             if (myResponse != null) {
@@ -70,7 +75,8 @@ public class GiftRemoteDataSource implements GiftDataSource {
         }
 
         @Override
-        public void onFailure(Call<MyResponse<MyPage<List<Gift>>>> call, Throwable t) {
+        public void onFailure(@NonNull Call<MyResponse<MyPage<List<Gift>>>> call,
+                              @NonNull Throwable t) {
             mLoadGiftsCallback.onLoadFailed(t.getMessage());
         }
     }

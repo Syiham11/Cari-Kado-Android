@@ -12,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
+
         <activity android:name=".splashscreen.view.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,16 +20,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".main.view.MainActivity" />
-        <activity
-            android:name=".review.view.activity.ReviewActivity"
-            android:parentActivityName=".main.view.MainActivity" />
+
         <activity
             android:name=".resultgift.view.activity.ResultGiftActivity"
             android:parentActivityName=".main.view.MainActivity" />
+
         <activity
             android:name=".giftinfodetail.view.activity.GiftInfoDetailActivity"
             android:parentActivityName=".main.view.MainActivity" />
+
         <activity
             android:name=".emailhelp.view.activity.EmailHelpActivity"
             android:parentActivityName=".main.view.MainActivity" />

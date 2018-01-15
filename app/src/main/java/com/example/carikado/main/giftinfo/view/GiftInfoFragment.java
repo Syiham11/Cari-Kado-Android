@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,6 +19,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.carikado.giftinfodetail.view.activity.GiftInfoDetailActivity;
@@ -25,7 +28,6 @@ import com.example.carikado.main.giftinfo.adapter.GiftInfoAdapter;
 import com.example.carikado.R;
 import com.example.carikado.main.giftinfo.contract.GiftInfoContract;
 import com.example.carikado.main.giftinfo.model.GiftInfo;
-import com.example.carikado.review.view.activity.ReviewActivity;
 
 import java.util.ArrayList;
 
@@ -54,6 +56,7 @@ public class GiftInfoFragment extends Fragment implements GiftInfoContract.View 
     @BindView(R.id.tb_gift_info)
     public Toolbar mTbGiftInfo;
 
+    private AlertDialog mSortByDialog;
     private ArrayList<GiftInfo> mGiftInfos;
     private GiftInfoAdapter mGiftInfoAdapter;
     private GiftInfoContract.Presenter mGiftInfoPresenter;
@@ -68,12 +71,14 @@ public class GiftInfoFragment extends Fragment implements GiftInfoContract.View 
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.gift_info_fragment, container, false);
         ButterKnife.bind(this, view);
 
         mTbGiftInfo.setTitle("");
-        ((AppCompatActivity) getActivity()).setSupportActionBar(mTbGiftInfo);
+
+        if (getActivity() != null)
+            ((AppCompatActivity) getActivity()).setSupportActionBar(mTbGiftInfo);
 
         mNsvGiftInfo.setOnScrollChangeListener(new OnScrollListener());
 
@@ -83,6 +88,8 @@ public class GiftInfoFragment extends Fragment implements GiftInfoContract.View 
 
         mSrlGiftInfo.setColorSchemeResources(R.color.colorAccent, R.color.colorPrimary, R.color.colorPrimaryDark);
         mSrlGiftInfo.setOnRefreshListener(new OnRefreshListener());
+
+        setUpSortByDialog();
 
         return view;
     }
@@ -103,8 +110,8 @@ public class GiftInfoFragment extends Fragment implements GiftInfoContract.View 
         int id = item.getItemId();
 
         switch (id) {
-            case R.id.menu_review:
-                mGiftInfoPresenter.openReview();
+            case R.id.menu_sort_by:
+                mGiftInfoPresenter.openSortByDialog();
                 return true;
             default:
                 return false;
@@ -160,9 +167,8 @@ public class GiftInfoFragment extends Fragment implements GiftInfoContract.View 
     }
 
     @Override
-    public void showReview() {
-        Intent intent = new Intent(getContext(), ReviewActivity.class);
-        startActivity(intent);
+    public void showSortByDialog() {
+        mSortByDialog.show();
     }
 
     @Override
@@ -171,6 +177,50 @@ public class GiftInfoFragment extends Fragment implements GiftInfoContract.View 
         intent.putExtra("Gift Info", giftInfo);
 
         startActivity(intent);
+    }
+
+    private void setUpSortByDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+
+        String title = getString(R.string.sort_by);
+        String[] sorts = getResources().getStringArray(R.array.gift_info_sort_by);
+        int[] sortCodes = getResources().getIntArray(R.array.gift_info_sort_by_code);
+
+        LayoutInflater inflater = getLayoutInflater();
+        View view = inflater.inflate(R.layout.sort_by_dialog, null);
+
+        RadioGroup rgSortBy = view.findViewById(R.id.rg_sort_by);
+
+        for (int i = 0; i < sorts.length; i++) {
+            RadioButton radioButton = new RadioButton(getContext());
+            RadioGroup.LayoutParams params = new RadioGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT);
+
+            if (i == 0)
+                radioButton.setChecked(true);
+
+            radioButton.setId(sortCodes[i]);
+            radioButton.setLayoutParams(params);
+            radioButton.setText(sorts[i]);
+
+            rgSortBy.addView(radioButton);
+        }
+
+        rgSortBy.setOnCheckedChangeListener(new OnCheckedChangedListener());
+
+        builder.setTitle(title)
+                .setView(view);
+
+        mSortByDialog = builder.create();
+    }
+
+    private class OnCheckedChangedListener implements RadioGroup.OnCheckedChangeListener {
+
+        @Override
+        public void onCheckedChanged(RadioGroup group, int checkedId) {
+            mGiftInfoPresenter.changeSortBy(checkedId);
+            mSortByDialog.dismiss();
+        }
     }
 
     private class OnScrollListener implements NestedScrollView.OnScrollChangeListener {

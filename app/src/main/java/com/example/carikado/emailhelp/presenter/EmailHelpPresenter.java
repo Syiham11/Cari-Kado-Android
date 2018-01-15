@@ -54,23 +54,34 @@ public class EmailHelpPresenter implements EmailHelpContract.Presenter {
 
     @Override
     public void sendEmailHelp(@NonNull EmailHelp emailHelp) {
-        boolean isValid = true;
-
-        if (TextUtils.isEmpty(emailHelp.getEmailSubject())) {
-            mView.showEmailSubjectEmpty();
-            isValid = false;
-        } else
-            mView.hideEmailSubjectEmpty();
-
-        if (TextUtils.isEmpty(emailHelp.getEmailContent())) {
-            mView.showEmailContentEmpty();
-            isValid = false;
-        } else
-            mView.hideEmailContentEmpty();
+        boolean isValid = !checkEmailSubjectIsEmpty(emailHelp.getEmailSubject()) &&
+                !checkEmailContentIsEmpty(emailHelp.getEmailContent());
 
         if (isValid) {
             mView.showEmailApplication(emailHelp);
             mView.clearAllContent();
         }
+    }
+
+    private boolean checkEmailSubjectIsEmpty(String emailSubject) {
+        boolean isEmpty = TextUtils.isEmpty(emailSubject);
+
+        if (isEmpty)
+            mView.showEmailSubjectEmpty();
+        else
+            mView.hideEmailSubjectEmpty();
+
+        return isEmpty;
+    }
+
+    private boolean checkEmailContentIsEmpty(String emailContent) {
+        boolean isEmpty = TextUtils.isEmpty(emailContent);
+
+        if (isEmpty)
+            mView.showEmailContentEmpty();
+        else
+            mView.hideEmailContentEmpty();
+
+        return isEmpty;
     }
 }

@@ -1,7 +1,6 @@
 package com.example.carikado.main.findgift.presenter;
 
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
 
 import com.example.carikado.main.findgift.contract.FindGiftContract;
 import com.example.carikado.main.findgift.datasource.GenderDataSource;
@@ -11,6 +10,7 @@ import com.example.carikado.main.findgift.datasource.GiftInfoCategoryRepository;
 import com.example.carikado.main.findgift.model.Search;
 import com.example.carikado.main.giftinfo.model.GiftInfoCategory;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -32,6 +32,7 @@ public class FindGiftPresenter implements FindGiftContract.Presenter {
         mGiftInfoCategoryRepository = giftInfoCategoryRepository;
         mGenderRepository = genderRepository;
         mView = view;
+
         view.setPresenter(this);
     }
 
@@ -42,6 +43,8 @@ public class FindGiftPresenter implements FindGiftContract.Presenter {
 
     @Override
     public void onStart() {
+        mView.showProgressDialog();
+
         mView.showGender();
         mView.showCategory();
     }
@@ -67,14 +70,12 @@ public class FindGiftPresenter implements FindGiftContract.Presenter {
     }
 
     @Override
-    public void loadGender(@NonNull final List genderList) {
+    public void loadGender(@NonNull final List<String> genderList) {
         mGenderRepository.loadGenders(new GenderDataSource.LoadGendersCallback() {
 
             @Override
-            public void onLoadSuccess(@NonNull List genders) {
-                for (Object o : genders)
-                    genderList.add(o);
-
+            public void onLoadSuccess(@NonNull List<String> genders) {
+                Collections.addAll(genderList, genders.toArray(new String[0]));
                 mView.notifyGender();
             }
 
@@ -86,55 +87,70 @@ public class FindGiftPresenter implements FindGiftContract.Presenter {
     }
 
     @Override
-    public void loadCategory(@NonNull final List categoryList) {
+    public void loadCategory(@NonNull final List<String> categoryList) {
         mGiftInfoCategoryRepository.loadGiftInfoCategories(new GiftInfoCategoryDataSource.LoadGiftInfoCategoriessCallback() {
 
             @Override
-            public void onLoadSuccess(@NonNull List giftInfoCategories) {
-                for (Object o : giftInfoCategories) {
-                    GiftInfoCategory giftInfoCategory = (GiftInfoCategory) o;
-                    categoryList.add(giftInfoCategory.getName());
-                }
+            public void onLoadSuccess(@NonNull List<GiftInfoCategory> giftInfoCategories) {
+                if (mView.getContextView() != null) {
+                    for (GiftInfoCategory giftInfoCategory : giftInfoCategories)
+                        categoryList.add(giftInfoCategory.getName());
 
-                mView.notifyCategory();
+                    mView.notifyCategory();
+                    mView.hideProgressDialog();
+                }
             }
 
             @Override
             public void onLoadFailed(@NonNull String message) {
-                mView.showToastMessage(message);
+                if (mView.getContextView() != null) {
+                    mView.showToastMessage(message);
+                    mView.hideProgressDialog();
+                }
             }
         });
     }
 
     @Override
     public void findGift(@NonNull Search search) {
-        boolean isValidated = true;
+        boolean isValidated = !checkAgeIsEmpty(search.getAge()) &&
+                !checkBudgetFromIsEmpty(search.getBudgetFrom()) &&
+                !checkBudgetToIsEmpty(search.getBudgetTo());
 
-        if (search.getAge() == 0) {
-            mView.showAgeEmpty();
-            isValidated = false;
-        } else
-            mView.hideAgeEmpty();
-
-        if (search.getBudgetFrom() == 0) {
-            mView.showBudgetFromEmpty();
-            isValidated = false;
-        } else
-            mView.hideBudgetFromEmpty();
-
-        if (search.getBudgetTo() == 0) {
-            mView.showBudgetToEmpty();
-            isValidated = false;
-        } else
-            mView.hideBudgetToEmpty();
-
-        if (isValidated) {
+        if (isValidated)
             mView.showResultGift(search);
-        }
     }
 
-    @Override
-    public void openReview() {
-        mView.showReview();
+    private boolean checkAgeIsEmpty(int age) {
+        boolean isEmpty = age == 0;
+
+        if (isEmpty)
+            mView.showAgeEmpty();
+        else
+            mView.hideAgeEmpty();
+
+        return isEmpty;
+    }
+
+    private boolean checkBudgetFromIsEmpty(int budgetFrom) {
+        boolean isEmpty = budgetFrom == 0;
+
+        if (isEmpty)
+            mView.showBudgetFromEmpty();
+        else
+            mView.hideBudgetFromEmpty();
+
+        return isEmpty;
+    }
+
+    private boolean checkBudgetToIsEmpty(int budgetTo) {
+        boolean isEmpty = budgetTo == 0;
+
+        if (isEmpty)
+            mView.showBudgetToEmpty();
+        else
+            mView.hideBudgetToEmpty();
+
+        return isEmpty;
     }
 }

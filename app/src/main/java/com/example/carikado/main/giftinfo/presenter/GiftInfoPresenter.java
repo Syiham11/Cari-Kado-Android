@@ -9,6 +9,7 @@ import com.example.carikado.main.giftinfo.datasource.GiftInfoDataSource;
 import com.example.carikado.main.giftinfo.datasource.GiftInfoRepository;
 import com.example.carikado.main.giftinfo.model.GiftInfo;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -31,6 +32,7 @@ public class GiftInfoPresenter implements GiftInfoContract.Presenter {
     public GiftInfoPresenter(GiftInfoRepository giftInfoRepository, @NonNull GiftInfoContract.View view) {
         mGiftInfoRepository = giftInfoRepository;
         mView = view;
+
         mView.setPresenter(this);
     }
 
@@ -64,36 +66,37 @@ public class GiftInfoPresenter implements GiftInfoContract.Presenter {
         // Do nothing
     }
 
-    private void loadGiftInfos(@NonNull final List giftInfoList) {
+    private void loadGiftInfos(@NonNull final List<GiftInfo> giftInfoList) {
         mGiftInfoRepository.loadGiftInfos(page, pageSize, sort, new GiftInfoDataSource.LoadGiftInfosCallback() {
 
             @Override
             public void onLoadSuccess(@NonNull MyPage<List<GiftInfo>> giftInfoPages) {
-                List<GiftInfo> giftInfos = giftInfoPages.getData();
+                if (mView.getContextView() != null) {
+                    List<GiftInfo> giftInfos = giftInfoPages.getData();
+                    Collections.addAll(giftInfoList, giftInfos.toArray(new GiftInfo[0]));
 
-                for (GiftInfo giftInfo : giftInfos)
-                    giftInfoList.add(giftInfo);
-
-                lastPage = giftInfoPages.getLastPage();
-                mView.notifyGiftInfos();
+                    lastPage = giftInfoPages.getLastPage();
+                    mView.notifyGiftInfos();
+                }
             }
 
             @Override
             public void onLoadFailed(@NonNull String message) {
-                mView.showToastMessage(message);
+                if (mView.getContextView() != null)
+                    mView.showToastMessage(message);
             }
         });
     }
 
     @Override
-    public void loadFirstGiftInfos(@NonNull List giftInfoList) {
+    public void loadFirstGiftInfos(@NonNull List<GiftInfo> giftInfoList) {
         page = 1;
         giftInfoList.clear();
         loadGiftInfos(giftInfoList);
     }
 
     @Override
-    public void loadNextGiftInfos(@NonNull List giftInfoList) {
+    public void loadNextGiftInfos(@NonNull List<GiftInfo> giftInfoList) {
         if (!page.equals(lastPage)) {
             page++;
             loadGiftInfos(giftInfoList);
@@ -104,8 +107,14 @@ public class GiftInfoPresenter implements GiftInfoContract.Presenter {
     }
 
     @Override
-    public void openReview() {
-        mView.showReview();
+    public void openSortByDialog() {
+        mView.showSortByDialog();
+    }
+
+    @Override
+    public void changeSortBy(@NonNull Integer sort) {
+        this.sort = sort;
+        mView.showFirstGiftInfos();
     }
 
     @Override

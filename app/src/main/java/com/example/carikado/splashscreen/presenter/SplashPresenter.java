@@ -40,7 +40,7 @@ public class SplashPresenter implements SplashContract.Presenter {
      */
     @Override
     public void onStart() {
-        mSplashView.showSplashAnimation();
+        mSplashView.sleepSplashScreen();
     }
 
     @Override

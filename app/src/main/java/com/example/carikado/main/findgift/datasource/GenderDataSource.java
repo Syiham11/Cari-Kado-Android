@@ -15,7 +15,7 @@ public interface GenderDataSource {
 
     interface LoadGendersCallback {
 
-        void onLoadSuccess(@NonNull List genders);
+        void onLoadSuccess(@NonNull List<String> genders);
         void onLoadFailed(@NonNull String message);
     }
 

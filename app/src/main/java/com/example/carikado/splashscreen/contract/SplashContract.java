@@ -20,7 +20,7 @@ public interface SplashContract {
         /**
          * Merupakan method yang digunakan untuk menampilkan animasi pada splash screen
          */
-        void showSplashAnimation();
+        void sleepSplashScreen();
 
         /**
          * Merupakan method yang digunakan untuk menampilkan main activity

@@ -7,25 +7,13 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
 import com.example.carikado.R;
 import com.example.carikado.main.view.MainActivity;
 import com.example.carikado.splashscreen.contract.SplashContract;
-
-import org.apache.commons.io.IOUtils;
-
-import java.io.IOException;
-import java.io.InputStream;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 
 /**
  * Fragment untuk splashscreen
@@ -36,12 +24,6 @@ import butterknife.ButterKnife;
  * @since 8 Oktober 2017
  */
 public class SplashFragment extends Fragment implements SplashContract.View {
-
-    /**
-     * Merupakan object dari icon yang akan menampilkan animasi
-     */
-    @BindView(R.id.iv_icon)
-    public ImageView mIvIcon;
 
     /**
      * Merupakan object dari presenter
@@ -66,25 +48,8 @@ public class SplashFragment extends Fragment implements SplashContract.View {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.splash_fragment, container, false);
-        ButterKnife.bind(this, view);
-
-        view.setOnClickListener(new ViewClickListener());
-
-        try {
-            InputStream inputStream = getContext().getAssets().open("ic_splash.gif");
-            byte[] bytes = IOUtils.toByteArray(inputStream);
-
-            Glide.with(this)
-                    .asGif()
-                    .load(bytes)
-                    .into(mIvIcon);
-        } catch (IOException e) {
-            Log.e("Animation Exception", e.getMessage());
-        }
-
-        return view;
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.splash_fragment, container, false);
     }
 
     @Override
@@ -104,7 +69,7 @@ public class SplashFragment extends Fragment implements SplashContract.View {
     }
 
     @Override
-    public void showSplashAnimation() {
+    public void sleepSplashScreen() {
         new Handler().postDelayed(new Runnable() {
 
             @Override
@@ -112,7 +77,7 @@ public class SplashFragment extends Fragment implements SplashContract.View {
                 if (getActivity() != null)
                     mSplashPresenter.openMainActivity();
             }
-        }, 7500);
+        }, 1500);
     }
 
     @Override
@@ -120,13 +85,5 @@ public class SplashFragment extends Fragment implements SplashContract.View {
         Intent intent = new Intent(getContext(), MainActivity.class);
         startActivity(intent);
         getActivity().finish();
-    }
-
-    private class ViewClickListener implements View.OnClickListener {
-
-        @Override
-        public void onClick(View v) {
-            mSplashPresenter.openMainActivity();
-        }
     }
 }

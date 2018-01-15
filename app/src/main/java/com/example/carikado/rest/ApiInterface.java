@@ -5,13 +5,12 @@ import com.example.carikado.base.model.MyResponse;
 import com.example.carikado.main.giftinfo.model.GiftInfo;
 import com.example.carikado.main.giftinfo.model.GiftInfoCategory;
 import com.example.carikado.resultgift.model.Gift;
-import com.example.carikado.review.model.Review;
+import com.example.carikado.main.review.model.Review;
 
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.Field;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;

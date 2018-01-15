@@ -75,12 +75,15 @@ public class EmailHelpFragment extends Fragment implements EmailHelpContract.Vie
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.email_help_fragment, container, false);
         ButterKnife.bind(this, view);
 
         mTbEmailHelp.setTitle("");
-        ((AppCompatActivity) getActivity()).setSupportActionBar(mTbEmailHelp);
+
+        if (getActivity() != null)
+            ((AppCompatActivity) getActivity()).setSupportActionBar(mTbEmailHelp);
+
         ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
 
         if (actionBar != null) {

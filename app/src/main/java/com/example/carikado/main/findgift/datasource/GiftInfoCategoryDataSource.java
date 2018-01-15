@@ -2,6 +2,8 @@ package com.example.carikado.main.findgift.datasource;
 
 import android.support.annotation.NonNull;
 
+import com.example.carikado.main.giftinfo.model.GiftInfoCategory;
+
 import java.util.List;
 
 /**
@@ -15,7 +17,7 @@ public interface GiftInfoCategoryDataSource {
 
     interface LoadGiftInfoCategoriessCallback {
 
-        void onLoadSuccess(@NonNull List giftInfoCategories);
+        void onLoadSuccess(@NonNull List<GiftInfoCategory> giftInfoCategories);
         void onLoadFailed(@NonNull String message);
     }
 

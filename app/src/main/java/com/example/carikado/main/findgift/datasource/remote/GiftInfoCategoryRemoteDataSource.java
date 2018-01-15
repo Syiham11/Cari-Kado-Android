@@ -54,7 +54,8 @@ public class GiftInfoCategoryRemoteDataSource implements GiftInfoCategoryDataSou
         }
 
         @Override
-        public void onResponse(Call<MyResponse<List<GiftInfoCategory>>> call, Response<MyResponse<List<GiftInfoCategory>>> response) {
+        public void onResponse(@NonNull Call<MyResponse<List<GiftInfoCategory>>> call,
+                               @NonNull Response<MyResponse<List<GiftInfoCategory>>> response) {
             MyResponse<List<GiftInfoCategory>> myResponse = response.body();
 
             if (myResponse != null) {
@@ -67,7 +68,8 @@ public class GiftInfoCategoryRemoteDataSource implements GiftInfoCategoryDataSou
         }
 
         @Override
-        public void onFailure(Call<MyResponse<List<GiftInfoCategory>>> call, Throwable t) {
+        public void onFailure(@NonNull Call<MyResponse<List<GiftInfoCategory>>> call,
+                              @NonNull Throwable t) {
             mLoadGiftInfoCategoriessCallback.onLoadFailed(t.getMessage());
         }
     }

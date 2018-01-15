@@ -55,14 +55,14 @@ public class HelpPresenter implements HelpContract.Presenter {
     }
 
     @Override
-    public void loadHelps(@NonNull List helps) {
+    public void loadHelps(@NonNull List<Help> helps) {
         mView.generateHelps(helps);
     }
 
     @Override
-    public void generateHelps(@NonNull List helps) {
+    public void generateHelps(@NonNull List<Help> helps) {
         mView.generateHelpEmail(helps);
-        mView.generateHelpChat(helps);
+//        mView.generateHelpChat(helps);
         mView.generateHelpCall(helps);
     }
 
@@ -82,13 +82,8 @@ public class HelpPresenter implements HelpContract.Presenter {
     }
 
     @Override
-    public void openReview() {
-        mView.showReview();
-    }
-
-    @Override
-    public void openHelpCard(@NonNull List helps, @NonNull Help help) {
-        ArrayList<Help> helpArrayList = (ArrayList) helps;
+    public void openHelpCard(@NonNull List<Help> helps, @NonNull Help help) {
+        ArrayList<Help> helpArrayList = (ArrayList<Help>) helps;
 
         for (Help h : helpArrayList) {
             if (!h.getName().equals(help.getName()))
