@@ -13,10 +13,12 @@ import com.bumptech.glide.Glide;
 import com.example.carikado.R;
 import com.example.carikado.resultgift.contract.ResultGiftContract;
 import com.example.carikado.resultgift.model.Gift;
+import com.example.carikado.resultgift.model.GiftPicture;
 import com.example.carikado.resultgift.viewholder.ResultGiftViewHolder;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -58,8 +60,10 @@ public class ResultGiftAdapter extends RecyclerView.Adapter<ResultGiftViewHolder
         TextView tvResultGiftStore = holder.tvResultGiftStore;
 
         Gift gift = mGifts.get(position);
+        List<GiftPicture> giftPictures = gift.getGiftPictures();
 
-        Glide.with(mContext).load(gift.getGiftPictures().get(0).getUrl()).into(civResultGift);
+        if (giftPictures.size() > 0)
+            Glide.with(mContext).load(giftPictures.get(0).getUrl()).into(civResultGift);
 
         String price = "Rp. " + mNumberFormat.format(gift.getPrice()) + ",-";
 

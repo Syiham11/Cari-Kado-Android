@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/result_gift_image_height"
             android:padding="@dimen/activity_16dp_default_margin"
-            android:src="@drawable/ic_find_gift_inactive"
+            android:src="@drawable/ic_img_default"
             app:civ_border_width="0dp" />
 
         <LinearLayout
